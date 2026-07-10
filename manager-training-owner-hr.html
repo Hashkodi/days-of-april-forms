@@ -1,0 +1,306 @@
+<!doctype html>
+<!-- ============================================================================
+     Days of April · HR Consultancy — Manager Essentials Programme · OWNER & HR
+     Netlify-hosted HTML form. Locked house style (light mode: ivory ground, navy
+     text, Cormorant + Poppins, champagne #C6AC72 whisper accent only).
+     Part 1 of the programme intake — the MD / owner (and the HR person if separate).
+
+     DEPLOY-TIME CHECKLIST (set these before this form goes live):
+       1. Replace your company (page title + intro + foot) with the client's name.
+       2. Netlify site/account: publish under the Days of April HR Consultancy
+          Netlify team. Submissions go via Web3Forms (paste the «WEB3FORMS_ACCESS_KEY»). Form id manager-training-owner-hr
+          (matches the <form name> and the hidden form-name input — do not change
+          one without the other, or Netlify will not record submissions).
+       3. Submission notifications: set the notification mailbox in the Netlify
+          dashboard (Site settings > Forms > Form notifications). NOT set in code.
+          Intended: daysofaprilhr@gmail.com  «VERIFY account wiring».
+       4. This form has no document upload.
+       5. CONSENT GATE (P7): only if the owner answers "Yes" here is the anonymous
+          Staff survey link ever created and sent. If "No", do not build or send
+          manager-training-staff-survey.html — the wrong-link protection is that
+          the link does not exist.
+       6. NEVER ASK TWICE: for a post-audit client, HIDE P4, P5, P6 (the «AUDIT-SKIP»
+          items) and show them as "already on file from your audit". Direct-entry
+          clients see everything.
+       7. Save each audience form's public link into client-questionnaire.md.
+     ============================================================================ -->
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Manager Essentials Programme · Owner and HR · prepared for your company</title>
+<link rel="icon" href="assets/days-of-april-favicon.png">
+<style>
+:root{
+  --navy:#1B2431; --navy-2:#232F3E; --paper:#F5F0E6; --ground:#E9E2D1;
+  --ivory:#F4EFE4; --ink:#1B2431; --champ:#C6AC72; --deep:#9A7B3A;
+  --muted:#6E6857; --sec:#4A5260; --line:#DED7C4;
+  --display:'Cormorant','Hoefler Text',Georgia,serif;
+  --sans:'Poppins','Avenir Next',Avenir,system-ui,sans-serif;
+}
+@font-face{font-family:'Cormorant';src:url('assets/fonts/Cormorant.ttf') format('truetype');font-weight:300 700;font-style:normal;font-display:swap;}
+@font-face{font-family:'Cormorant';src:url('assets/fonts/Cormorant-Italic.ttf') format('truetype');font-weight:300 700;font-style:italic;font-display:swap;}
+@font-face{font-family:'Poppins';src:url('assets/fonts/Poppins-Light.ttf') format('truetype');font-weight:300;font-display:swap;}
+@font-face{font-family:'Poppins';src:url('assets/fonts/Poppins-Regular.ttf') format('truetype');font-weight:400;font-display:swap;}
+@font-face{font-family:'Poppins';src:url('assets/fonts/Poppins-Medium.ttf') format('truetype');font-weight:500;font-display:swap;}
+@font-face{font-family:'Poppins';src:url('assets/fonts/Poppins-SemiBold.ttf') format('truetype');font-weight:600;font-display:swap;}
+
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);font-weight:400;line-height:1.5;}
+img{max-width:100%;display:block;}
+.shell{max-width:780px;margin:0 auto;background:var(--paper);min-height:100vh;box-shadow:0 0 44px rgba(27,36,49,.07);}
+.banner{width:100%;height:auto;}
+.wrap{padding:0 clamp(20px,5vw,54px);}
+
+.sticky{position:sticky;top:0;z-index:20;background:rgba(245,240,230,.94);backdrop-filter:saturate(140%) blur(6px);border-bottom:1px solid var(--line);}
+.sticky .row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px clamp(20px,5vw,54px);}
+.sticky .aud{font-family:var(--sans);font-weight:600;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);}
+.sticky .cnt{font-family:var(--sans);font-weight:500;font-size:11px;letter-spacing:.05em;color:var(--muted);white-space:nowrap;}
+.track{height:2px;background:var(--line);}
+.track .fill{height:2px;width:0;background:var(--navy);transition:width .25s ease;}
+
+.intro{padding:40px 0 6px;}
+.kick{font-family:var(--sans);font-weight:500;font-size:10.5px;letter-spacing:.34em;text-transform:uppercase;color:var(--deep);}
+.intro h1{font-family:var(--display);font-weight:600;font-size:clamp(30px,7vw,44px);line-height:1.02;margin:14px 0 0;letter-spacing:.005em;}
+.intro .for{font-family:var(--display);font-style:italic;font-size:clamp(17px,4vw,21px);color:var(--sec);margin-top:6px;}
+.rule{width:44px;height:1px;background:var(--champ);border:0;margin:22px 0;}
+.welcome{font-size:15px;line-height:1.64;color:var(--ink);max-width:62ch;}
+.note{margin-top:20px;padding:15px 17px;background:#EDE7D8;border-left:2px solid var(--champ);font-size:13.5px;line-height:1.55;color:var(--sec);}
+
+.sec{padding:32px 0;border-top:1px solid var(--line);}
+.sec-h{display:flex;align-items:baseline;gap:16px;margin-bottom:4px;}
+.sec-h .num{font-family:var(--display);font-weight:500;font-size:34px;line-height:.8;color:var(--champ);}
+.sec-h h2{font-family:var(--display);font-weight:600;font-size:24px;line-height:1.05;margin:0;color:var(--ink);}
+.sec .sub{font-size:13.5px;color:var(--muted);margin:0 0 4px 50px;}
+
+.q{border:0;margin:0;padding:24px 0;border-bottom:1px solid var(--line);min-inline-size:auto;}
+.q:last-child{border-bottom:0;}
+.q .qlab{font-size:15px;line-height:1.5;color:var(--ink);margin:0;font-weight:400;}
+.q .tag{font-family:var(--sans);font-weight:600;font-size:10px;letter-spacing:.1em;color:var(--deep);margin-right:9px;}
+.q .help{font-size:13px;line-height:1.5;color:var(--muted);font-style:italic;margin:9px 0 0;}
+
+.radios{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px;max-width:430px;}
+.radios.yn{grid-template-columns:repeat(2,1fr);max-width:290px;}
+.opt{position:relative;display:block;}
+.opt input{position:absolute;opacity:0;inset:0;width:100%;height:100%;margin:0;cursor:pointer;}
+.opt span{display:block;padding:12px 6px;text-align:center;border:1px solid var(--line);background:transparent;font-family:var(--sans);font-weight:500;font-size:13px;color:var(--sec);transition:.15s;}
+.opt input:checked+span{background:var(--navy);border-color:var(--navy);color:var(--ivory);}
+.opt input:focus-visible+span{outline:2px solid var(--navy);outline-offset:2px;}
+.opt:hover span{border-color:var(--navy);}
+
+.checks{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+.chk{position:relative;display:inline-flex;}
+.chk input{position:absolute;opacity:0;inset:0;width:100%;height:100%;margin:0;cursor:pointer;}
+.chk span{display:block;padding:10px 15px;border:1px solid var(--line);font-family:var(--sans);font-weight:500;font-size:13px;color:var(--sec);transition:.15s;}
+.chk input:checked+span{background:var(--navy);border-color:var(--navy);color:var(--ivory);}
+.chk input:focus-visible+span{outline:2px solid var(--navy);outline-offset:2px;}
+.chk:hover span{border-color:var(--navy);}
+
+.reveal{margin-top:14px;}
+.reveal[hidden]{display:none;}
+.tl{display:block;font-size:12.5px;color:var(--muted);margin:14px 0 6px;}
+input.txt,textarea.txt,select.txt{width:100%;font-family:var(--sans);font-size:14px;color:var(--ink);background:#FBF8F1;border:1px solid var(--line);padding:11px 12px;border-radius:0;}
+textarea.txt{min-height:88px;resize:vertical;line-height:1.55;}
+input.txt:focus,textarea.txt:focus,select.txt:focus{outline:2px solid var(--navy);outline-offset:1px;border-color:var(--navy);}
+
+.actions{padding:34px 0 6px;}
+.btn{display:inline-block;font-family:var(--sans);font-weight:600;font-size:13.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ivory);background:var(--navy);border:1px solid var(--navy);padding:15px 36px;cursor:pointer;text-decoration:none;transition:.15s;}
+.btn:hover{background:var(--navy-2);border-color:var(--navy-2);}
+.ns{font-size:12px;color:var(--muted);margin-top:12px;}
+
+.foot{padding:28px 0 50px;border-top:1px solid var(--line);margin-top:10px;}
+.foot .seal{width:34px;margin-bottom:12px;opacity:.92;}
+.foot p{font-size:12px;line-height:1.6;color:var(--muted);margin:0 0 6px;max-width:66ch;}
+.foot .cc{font-weight:500;color:var(--sec);}
+
+.thanks{padding:74px 0;}
+.thanks[hidden]{display:none;}
+.thanks .seal{width:46px;margin-bottom:24px;}
+.thanks h2{font-family:var(--display);font-weight:600;font-size:clamp(28px,7vw,36px);margin:0 0 14px;color:var(--ink);}
+.thanks p{font-size:15px;line-height:1.62;color:var(--sec);max-width:56ch;}
+.thanks .sign{font-family:var(--display);font-style:italic;font-size:19px;color:var(--ink);margin-top:16px;}
+
+.hp{position:absolute!important;left:-9999px;top:-9999px;height:0;overflow:hidden;}
+[hidden]{display:none;}
+@media (max-width:520px){ .sec-h .num{font-size:28px;} }
+@media (prefers-reduced-motion:reduce){ *{transition:none!important;scroll-behavior:auto!important;} }
+</style>
+</head>
+<body>
+<main class="shell">
+  <img class="banner" src="assets/dataroom-cover-banner.png" alt="Days of April · HR Consultancy · Client Data Room">
+
+  <div class="sticky">
+    <div class="row"><span class="aud">Manager Essentials &middot; Owner and HR</span><span class="cnt" id="cnt">0 answered</span></div>
+    <div class="track"><div class="fill" id="fill"></div></div>
+  </div>
+
+  <div class="wrap">
+    <section class="intro">
+      <span class="kick">Manager Essentials Programme</span>
+      <h1>What you want changed</h1>
+      <div class="for">Prepared for your company &middot; for the owner and HR</div>
+      <hr class="rule">
+      <p class="welcome">This short form shapes the training around what you want changed. There are no wrong answers, and nothing here is shared with your managers in your name. It takes about ten minutes.</p>
+      <p class="note">The programme is built from your answers, not a fixed syllabus. Nothing is saved on this device until you send it at the end.</p>
+    </section>
+
+    <form id="mt-form" name="manager-training-owner-hr" method="POST" action="https://api.web3forms.com/submit">
+      <input type="hidden" name="access_key" value="«WEB3FORMS_ACCESS_KEY»">
+      <input type="hidden" name="from_name" value="Days of April HR form">
+      <input type="hidden" name="subject" value="New form submission — manager-training-owner-hr">
+      <input type="hidden" name="form_id" value="manager-training-owner-hr">
+      <p class="hp" aria-hidden="true"><label>Do not fill this in: <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off"></label></p>
+
+      <!-- 01 -->
+      <section class="sec">
+        <div class="sec-h"><span class="num">01</span><h2>Why now, and who</h2></div>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">P1</span>What made you decide to look at manager training now? Was there a moment or a problem behind it?</p>
+          <label class="tl">In your own words</label>
+          <textarea class="txt qinput" name="P1 what prompted the training now"></textarea>
+          <p class="help">The sessions open on the problems you actually have, not a generic syllabus.</p>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">P2</span>Which managers should attend? List names or roles, and how many people each one manages.</p>
+          <label class="tl">In your own words</label>
+          <textarea class="txt qinput" name="P2 who should attend and team sizes"></textarea>
+          <p class="help">Group size and team sizes shape the exercises; the one-to-one rhythm we teach depends on how many people each manager has.</p>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">P3</span>Six months after the programme, what should be visibly different in how your managers work?</p>
+          <label class="tl">In your own words</label>
+          <textarea class="txt qinput" name="P3 what should be different in six months"></textarea>
+          <p class="help">This becomes the measure of success in your closing report, so we are both judging the programme by your yardstick.</p>
+        </fieldset>
+      </section>
+
+      <!-- 02 -->
+      <section class="sec">
+        <div class="sec-h"><span class="num">02</span><h2>How your managers work today</h2></div>
+
+        <fieldset class="q">
+          <!-- «AUDIT-SKIP: pulled from audit 2.6» — hide and pre-fill for post-audit clients. -->
+          <p class="qlab"><span class="tag">P4</span>Which everyday people-matters do your managers handle themselves today, and which still come to you? Tick all they handle themselves.</p>
+          <div class="checks">
+            <label class="chk"><input type="checkbox" name="P4 managers handle - leave approvals" value="Leave approvals"><span>Leave approvals</span></label>
+            <label class="chk"><input type="checkbox" name="P4 managers handle - small disputes" value="Small disputes"><span>Small disputes</span></label>
+            <label class="chk"><input type="checkbox" name="P4 managers handle - performance conversations" value="Performance conversations"><span>Performance conversations</span></label>
+            <label class="chk"><input type="checkbox" name="P4 managers handle - everyday discipline" value="Everyday discipline"><span>Everyday discipline</span></label>
+            <label class="chk"><input type="checkbox" name="P4 managers handle - almost everything comes to me" value="Almost everything comes to me"><span>Almost everything comes to me</span></label>
+          </div>
+          <p class="help">Shows how much is on your desk that the programme can move off it.</p>
+        </fieldset>
+
+        <fieldset class="q">
+          <!-- «AUDIT-SKIP: pulled from audit 14.3» — hide and pre-fill for post-audit clients. -->
+          <p class="qlab"><span class="tag">P5</span>What usually earns someone a promotion to manager here?</p>
+          <label class="tl">In your own words</label>
+          <textarea class="txt qinput" name="P5 what earns a promotion to manager"></textarea>
+          <p class="help">Tells us where your managers started from, so the sessions meet them there.</p>
+        </fieldset>
+
+        <fieldset class="q">
+          <!-- «AUDIT-SKIP: pulled from audit 14.7» — hide and pre-fill for post-audit clients. -->
+          <p class="qlab"><span class="tag">P6</span>Have your managers had any training in managing people before?</p>
+          <div class="radios" role="radiogroup" aria-label="P6">
+            <label class="opt"><input type="radio" name="P6 managers trained before" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="P6 managers trained before" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="P6 managers trained before" value="No"><span>No</span></label>
+          </div>
+          <p class="help">If something was tried before, we build on it rather than repeat it.</p>
+          <div class="reveal" hidden><label class="tl">Add a note (optional)</label><textarea class="txt" name="P6 note" rows="2"></textarea></div>
+        </fieldset>
+      </section>
+
+      <!-- 03 -->
+      <section class="sec">
+        <div class="sec-h"><span class="num">03</span><h2>Before we stand in the room</h2></div>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">P7</span>May we ask your staff a few anonymous questions about day-to-day management, once now and once about three months after the training? No names are taken, and we report only the overall picture.</p>
+          <div class="radios yn" role="radiogroup" aria-label="P7">
+            <label class="opt"><input type="radio" name="P7 consent to staff survey" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="P7 consent to staff survey" value="No"><span>No</span></label>
+          </div>
+          <p class="help">Asking the same questions before and after is how you see, in plain numbers, whether the training worked. If you would rather not, the programme still runs, and the anonymous survey is never sent.</p>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">P8</span>Is there anything sensitive we should know before standing in front of your managers? For example a recent dispute, a resignation, or a manager who may resist the training.</p>
+          <label class="tl">In your own words (optional)</label>
+          <textarea class="txt qinput" name="P8 anything sensitive to know"></textarea>
+          <p class="help">Nothing you write here is repeated; it simply keeps us from stepping on a landmine in the room.</p>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">P9</span>Which day and time of week could your managers realistically be free for 90 minutes without the operation suffering?</p>
+          <label class="tl">In your own words</label>
+          <textarea class="txt qinput" name="P9 best day and time for sessions"></textarea>
+          <p class="help">Sessions that fight the production schedule get skipped; we fit yours instead.</p>
+        </fieldset>
+      </section>
+
+      <div class="actions">
+        <button class="btn" type="submit">Send my answers</button>
+        <p class="ns">Your answers are sent only when you press this button, and only to Days of April.</p>
+      </div>
+    </form>
+
+    <section class="thanks" id="thanks" hidden>
+      <img class="seal" src="assets/days-of-april-seal.png" alt="">
+      <h2>Thank you.</h2>
+      <p>We will come back once with anything that needs a second look, then confirm the session plan and dates. Everything you have shared is treated as confidential.</p>
+      <p class="sign">Days of April</p>
+    </section>
+
+    <footer class="foot">
+      <img class="seal" src="assets/days-of-april-seal.png" alt="">
+      <p>Everything you share here is confidential, used only for this engagement, and deleted after it ends, as set out in our engagement letter.</p>
+      <p class="cc">Private &amp; Confidential. Prepared for your company by Days of April.</p>
+    </footer>
+  </div>
+</main>
+
+<script>
+(function(){
+  var form=document.getElementById('mt-form');
+  var thanks=document.getElementById('thanks');
+  var fill=document.getElementById('fill');
+  var cnt=document.getElementById('cnt');
+  var qs=Array.prototype.slice.call(document.querySelectorAll('.q'));
+  var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  function answered(fs){
+    if(fs.querySelector('input[type=radio]:checked'))return true;
+    if(fs.querySelector('input[type=checkbox]:checked'))return true;
+    var t=fs.querySelector('.qinput');
+    if(t&&t.value&&t.value.trim()!=='')return true;
+    return false;
+  }
+  function update(){
+    var d=0;for(var i=0;i<qs.length;i++){if(answered(qs[i]))d++;}
+    fill.style.width=(qs.length?d/qs.length*100:0)+'%';
+    cnt.textContent=d+' of '+qs.length+' answered';
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('.radios'),function(g){
+    g.addEventListener('change',function(){
+      var box=g.parentNode.querySelector('.reveal');
+      if(box){var v=g.querySelector('input:checked');box.hidden=!(v&&/^(Partly|No|Disagree|Can.t say)$/.test(v.value));}
+    });
+  });
+  form.addEventListener('input',update);
+  form.addEventListener('change',update);
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    fetch('https://api.web3forms.com/submit',{method:'POST',body:new FormData(form)}).then(finish).catch(finish);
+  });
+  function finish(){form.hidden=true;thanks.hidden=false;window.scrollTo({top:0,behavior:reduce?'auto':'smooth'});}
+  update();
+})();
+</script>
+</body>
+</html>

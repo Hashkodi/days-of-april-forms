@@ -1,0 +1,295 @@
+<!doctype html>
+<!-- ============================================================================
+     Days of April · HR Consultancy — Manager Essentials Programme · MANAGERS
+     Netlify-hosted HTML form. Locked house style (light mode: ivory ground, navy
+     text, Cormorant + Poppins, champagne #C6AC72 whisper accent only).
+     Part 2 of the programme intake — one short form per attending manager.
+
+     DESIGN LAW: this is a fitting, not a test. No item has a right answer, nothing
+     is scored, and no manager's answers are shown to the MD as an individual
+     assessment. Keep it that way in any edit.
+
+     DEPLOY-TIME CHECKLIST (set these before this form goes live):
+       1. Replace your company (page title + intro + foot) with the client's name.
+       2. Netlify site/account: publish under the Days of April HR Consultancy
+          Netlify team. Submissions go via Web3Forms (paste the «WEB3FORMS_ACCESS_KEY»). Form id manager-training-managers
+          (matches the <form name> and the hidden form-name input — do not change
+          one without the other, or Netlify will not record submissions).
+       3. Submission notifications: set the notification mailbox in the Netlify
+          dashboard (Site settings > Forms > Form notifications). NOT set in code.
+          Intended: daysofaprilhr@gmail.com  «VERIFY account wiring».
+       4. This form has no document upload.
+       5. NEVER ASK TWICE: for a post-audit client where the same managers answered
+          the audit's Form L, HIDE G3 (the «AUDIT-SKIP» item, audit 14.4). A
+          contradiction between the two is a private facilitator note, never raised
+          in the room. Direct-entry clients see everything.
+       6. Save each audience form's public link into client-questionnaire.md.
+     ============================================================================ -->
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Manager Essentials Programme · Managers · prepared for your company</title>
+<link rel="icon" href="assets/days-of-april-favicon.png">
+<style>
+:root{
+  --navy:#1B2431; --navy-2:#232F3E; --paper:#F5F0E6; --ground:#E9E2D1;
+  --ivory:#F4EFE4; --ink:#1B2431; --champ:#C6AC72; --deep:#9A7B3A;
+  --muted:#6E6857; --sec:#4A5260; --line:#DED7C4;
+  --display:'Cormorant','Hoefler Text',Georgia,serif;
+  --sans:'Poppins','Avenir Next',Avenir,system-ui,sans-serif;
+}
+@font-face{font-family:'Cormorant';src:url('assets/fonts/Cormorant.ttf') format('truetype');font-weight:300 700;font-style:normal;font-display:swap;}
+@font-face{font-family:'Cormorant';src:url('assets/fonts/Cormorant-Italic.ttf') format('truetype');font-weight:300 700;font-style:italic;font-display:swap;}
+@font-face{font-family:'Poppins';src:url('assets/fonts/Poppins-Light.ttf') format('truetype');font-weight:300;font-display:swap;}
+@font-face{font-family:'Poppins';src:url('assets/fonts/Poppins-Regular.ttf') format('truetype');font-weight:400;font-display:swap;}
+@font-face{font-family:'Poppins';src:url('assets/fonts/Poppins-Medium.ttf') format('truetype');font-weight:500;font-display:swap;}
+@font-face{font-family:'Poppins';src:url('assets/fonts/Poppins-SemiBold.ttf') format('truetype');font-weight:600;font-display:swap;}
+
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);font-weight:400;line-height:1.5;}
+img{max-width:100%;display:block;}
+.shell{max-width:780px;margin:0 auto;background:var(--paper);min-height:100vh;box-shadow:0 0 44px rgba(27,36,49,.07);}
+.banner{width:100%;height:auto;}
+.wrap{padding:0 clamp(20px,5vw,54px);}
+
+.sticky{position:sticky;top:0;z-index:20;background:rgba(245,240,230,.94);backdrop-filter:saturate(140%) blur(6px);border-bottom:1px solid var(--line);}
+.sticky .row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px clamp(20px,5vw,54px);}
+.sticky .aud{font-family:var(--sans);font-weight:600;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);}
+.sticky .cnt{font-family:var(--sans);font-weight:500;font-size:11px;letter-spacing:.05em;color:var(--muted);white-space:nowrap;}
+.track{height:2px;background:var(--line);}
+.track .fill{height:2px;width:0;background:var(--navy);transition:width .25s ease;}
+
+.intro{padding:40px 0 6px;}
+.kick{font-family:var(--sans);font-weight:500;font-size:10.5px;letter-spacing:.34em;text-transform:uppercase;color:var(--deep);}
+.intro h1{font-family:var(--display);font-weight:600;font-size:clamp(30px,7vw,44px);line-height:1.02;margin:14px 0 0;letter-spacing:.005em;}
+.intro .for{font-family:var(--display);font-style:italic;font-size:clamp(17px,4vw,21px);color:var(--sec);margin-top:6px;}
+.rule{width:44px;height:1px;background:var(--champ);border:0;margin:22px 0;}
+.welcome{font-size:15px;line-height:1.64;color:var(--ink);max-width:62ch;}
+.note{margin-top:20px;padding:15px 17px;background:#EDE7D8;border-left:2px solid var(--champ);font-size:13.5px;line-height:1.55;color:var(--sec);}
+
+.sec{padding:32px 0;border-top:1px solid var(--line);}
+.sec-h{display:flex;align-items:baseline;gap:16px;margin-bottom:4px;}
+.sec-h .num{font-family:var(--display);font-weight:500;font-size:34px;line-height:.8;color:var(--champ);}
+.sec-h h2{font-family:var(--display);font-weight:600;font-size:24px;line-height:1.05;margin:0;color:var(--ink);}
+.sec .sub{font-size:13.5px;color:var(--muted);margin:0 0 4px 50px;}
+
+.q{border:0;margin:0;padding:24px 0;border-bottom:1px solid var(--line);min-inline-size:auto;}
+.q:last-child{border-bottom:0;}
+.q .qlab{font-size:15px;line-height:1.5;color:var(--ink);margin:0;font-weight:400;}
+.q .tag{font-family:var(--sans);font-weight:600;font-size:10px;letter-spacing:.1em;color:var(--deep);margin-right:9px;}
+.q .help{font-size:13px;line-height:1.5;color:var(--muted);font-style:italic;margin:9px 0 0;}
+
+.radios{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px;max-width:430px;}
+.radios.yn{grid-template-columns:repeat(2,1fr);max-width:290px;}
+.opt{position:relative;display:block;}
+.opt input{position:absolute;opacity:0;inset:0;width:100%;height:100%;margin:0;cursor:pointer;}
+.opt span{display:block;padding:12px 6px;text-align:center;border:1px solid var(--line);background:transparent;font-family:var(--sans);font-weight:500;font-size:13px;color:var(--sec);transition:.15s;}
+.opt input:checked+span{background:var(--navy);border-color:var(--navy);color:var(--ivory);}
+.opt input:focus-visible+span{outline:2px solid var(--navy);outline-offset:2px;}
+.opt:hover span{border-color:var(--navy);}
+
+.checks{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+.chk{position:relative;display:inline-flex;}
+.chk input{position:absolute;opacity:0;inset:0;width:100%;height:100%;margin:0;cursor:pointer;}
+.chk span{display:block;padding:10px 15px;border:1px solid var(--line);font-family:var(--sans);font-weight:500;font-size:13px;color:var(--sec);transition:.15s;}
+.chk input:checked+span{background:var(--navy);border-color:var(--navy);color:var(--ivory);}
+.chk input:focus-visible+span{outline:2px solid var(--navy);outline-offset:2px;}
+.chk:hover span{border-color:var(--navy);}
+
+.reveal{margin-top:14px;}
+.reveal[hidden]{display:none;}
+.tl{display:block;font-size:12.5px;color:var(--muted);margin:14px 0 6px;}
+input.txt,textarea.txt,select.txt{width:100%;font-family:var(--sans);font-size:14px;color:var(--ink);background:#FBF8F1;border:1px solid var(--line);padding:11px 12px;border-radius:0;}
+textarea.txt{min-height:88px;resize:vertical;line-height:1.55;}
+input.txt:focus,textarea.txt:focus,select.txt:focus{outline:2px solid var(--navy);outline-offset:1px;border-color:var(--navy);}
+
+.actions{padding:34px 0 6px;}
+.btn{display:inline-block;font-family:var(--sans);font-weight:600;font-size:13.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ivory);background:var(--navy);border:1px solid var(--navy);padding:15px 36px;cursor:pointer;text-decoration:none;transition:.15s;}
+.btn:hover{background:var(--navy-2);border-color:var(--navy-2);}
+.ns{font-size:12px;color:var(--muted);margin-top:12px;}
+
+.foot{padding:28px 0 50px;border-top:1px solid var(--line);margin-top:10px;}
+.foot .seal{width:34px;margin-bottom:12px;opacity:.92;}
+.foot p{font-size:12px;line-height:1.6;color:var(--muted);margin:0 0 6px;max-width:66ch;}
+.foot .cc{font-weight:500;color:var(--sec);}
+
+.thanks{padding:74px 0;}
+.thanks[hidden]{display:none;}
+.thanks .seal{width:46px;margin-bottom:24px;}
+.thanks h2{font-family:var(--display);font-weight:600;font-size:clamp(28px,7vw,36px);margin:0 0 14px;color:var(--ink);}
+.thanks p{font-size:15px;line-height:1.62;color:var(--sec);max-width:56ch;}
+.thanks .sign{font-family:var(--display);font-style:italic;font-size:19px;color:var(--ink);margin-top:16px;}
+
+.hp{position:absolute!important;left:-9999px;top:-9999px;height:0;overflow:hidden;}
+[hidden]{display:none;}
+@media (max-width:520px){ .sec-h .num{font-size:28px;} }
+@media (prefers-reduced-motion:reduce){ *{transition:none!important;scroll-behavior:auto!important;} }
+</style>
+</head>
+<body>
+<main class="shell">
+  <img class="banner" src="assets/dataroom-cover-banner.png" alt="Days of April · HR Consultancy · Client Data Room">
+
+  <div class="sticky">
+    <div class="row"><span class="aud">Manager Essentials &middot; Managers</span><span class="cnt" id="cnt">0 answered</span></div>
+    <div class="track"><div class="fill" id="fill"></div></div>
+  </div>
+
+  <div class="wrap">
+    <section class="intro">
+      <span class="kick">Manager Essentials Programme</span>
+      <h1>How things work for you now</h1>
+      <div class="for">Prepared for your company &middot; for attending managers</div>
+      <hr class="rule">
+      <p class="welcome">You are taking part in a short practical training series about managing people. This form is not a test and has no right answers. It simply tells us how things work for you now, so the sessions fit your real situation instead of a textbook one. Your answers come to Days of April to plan the sessions; they are not given to your management as a report on you.</p>
+      <p class="note">Nothing here is scored, and nothing you write is shown to the MD as an assessment of you. Answer as things really are. It takes about seven minutes.</p>
+    </section>
+
+    <form id="mt-form" name="manager-training-managers" method="POST" action="https://api.web3forms.com/submit">
+      <input type="hidden" name="access_key" value="«WEB3FORMS_ACCESS_KEY»">
+      <input type="hidden" name="from_name" value="Days of April HR form">
+      <input type="hidden" name="subject" value="New form submission — manager-training-managers">
+      <input type="hidden" name="form_id" value="manager-training-managers">
+      <p class="hp" aria-hidden="true"><label>Do not fill this in: <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off"></label></p>
+
+      <!-- 01 -->
+      <section class="sec">
+        <div class="sec-h"><span class="num">01</span><h2>How you came to manage</h2></div>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">G1</span>How did you become a manager here? For example promoted from the team, hired into the role, or the role grew around you.</p>
+          <label class="tl">In your own words</label>
+          <textarea class="txt qinput" name="G1 how you became a manager"></textarea>
+          <p class="help">Most managers here were promoted for being good at the work itself; knowing your path helps us start from where you are.</p>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">G2</span>How many people report to you, and roughly how long have you managed them?</p>
+          <label class="tl">In your own words</label>
+          <textarea class="txt qinput" name="G2 team size and how long managing"></textarea>
+          <p class="help">Team size decides which tools fit you; managing three people and managing fifteen are different jobs.</p>
+        </fieldset>
+      </section>
+
+      <!-- 02 -->
+      <section class="sec">
+        <div class="sec-h"><span class="num">02</span><h2>How you run your team today</h2></div>
+
+        <fieldset class="q">
+          <!-- «AUDIT-SKIP: pulled from audit 14.4 (Form L)» — hide for post-audit clients whose managers answered Form L. -->
+          <p class="qlab"><span class="tag">G3</span>Do you talk with each of your people one-to-one on some regular rhythm?</p>
+          <div class="radios" role="radiogroup" aria-label="G3">
+            <label class="opt"><input type="radio" name="G3 regular one-to-ones" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="G3 regular one-to-ones" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="G3 regular one-to-ones" value="No"><span>No</span></label>
+          </div>
+          <p class="help">If you already do this, the sessions sharpen it; if not, we build it with you from zero, which is where most attendees start.</p>
+          <div class="reveal" hidden><label class="tl">Add a note (optional)</label><textarea class="txt" name="G3 note" rows="2"></textarea></div>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">G4</span>When you have to tell someone their work is not right, how do you usually go about it?</p>
+          <label class="tl">In your own words</label>
+          <textarea class="txt qinput" name="G4 how you correct work"></textarea>
+          <p class="help">There is no right answer here; your real approach is the starting point the feedback session works from.</p>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">G5</span>Do the people in your team have clear targets that you could both point to?</p>
+          <div class="radios" role="radiogroup" aria-label="G5">
+            <label class="opt"><input type="radio" name="G5 team has clear targets" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="G5 team has clear targets" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="G5 team has clear targets" value="No"><span>No</span></label>
+          </div>
+          <p class="help">If targets are fuzzy, that is the single most common finding, and one session is dedicated to fixing it.</p>
+          <div class="reveal" hidden><label class="tl">Add a note (optional)</label><textarea class="txt" name="G5 note" rows="2"></textarea></div>
+        </fieldset>
+      </section>
+
+      <!-- 03 -->
+      <section class="sec">
+        <div class="sec-h"><span class="num">03</span><h2>Where you want more practice</h2></div>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">G6</span>Which of these situations do you find hardest? Tick any that apply.</p>
+          <div class="checks">
+            <label class="chk"><input type="checkbox" name="G6 hardest - telling someone their work is not good enough" value="Telling someone their work is not good enough"><span>Telling someone their work is not good enough</span></label>
+            <label class="chk"><input type="checkbox" name="G6 hardest - a team member who has stopped trying" value="A team member who has stopped trying"><span>A team member who has stopped trying</span></label>
+            <label class="chk"><input type="checkbox" name="G6 hardest - a dispute between two team members" value="A dispute between two team members"><span>A dispute between two team members</span></label>
+            <label class="chk"><input type="checkbox" name="G6 hardest - handling a discipline matter" value="Handling a discipline matter"><span>Handling a discipline matter</span></label>
+            <label class="chk"><input type="checkbox" name="G6 hardest - running meetings that keep everyone's attention" value="Running meetings that keep everyone's attention"><span>Running meetings that keep everyone's attention</span></label>
+            <label class="chk"><input type="checkbox" name="G6 hardest - handing work over without it coming back wrong" value="Handing work over without it coming back wrong"><span>Handing work over without it coming back wrong</span></label>
+            <label class="chk"><input type="checkbox" name="G6 hardest - none of these" value="None of these"><span>None of these</span></label>
+          </div>
+          <p class="help">The sessions give extra weight to whatever the group ticks most; your honest ticks buy you more practice where you want it.</p>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">G7</span>What would make this training worth your time? What do you want to be better at afterwards?</p>
+          <label class="tl">In your own words</label>
+          <textarea class="txt qinput" name="G7 what makes the training worth your time"></textarea>
+          <p class="help">We read every answer before session one and shape the examples around them.</p>
+        </fieldset>
+      </section>
+
+      <div class="actions">
+        <button class="btn" type="submit">Send my answers</button>
+        <p class="ns">Your answers are sent only when you press this button, and only to Days of April.</p>
+      </div>
+    </form>
+
+    <section class="thanks" id="thanks" hidden>
+      <img class="seal" src="assets/days-of-april-seal.png" alt="">
+      <h2>Thank you.</h2>
+      <p>The sessions are built from what you and the other managers have written, so what you practise will be your own situations, not invented ones. Everything you have shared is treated as confidential.</p>
+      <p class="sign">Days of April</p>
+    </section>
+
+    <footer class="foot">
+      <img class="seal" src="assets/days-of-april-seal.png" alt="">
+      <p>Everything you share here is confidential, used only for this engagement, and deleted after it ends, as set out in our engagement letter.</p>
+      <p class="cc">Private &amp; Confidential. Prepared for your company by Days of April.</p>
+    </footer>
+  </div>
+</main>
+
+<script>
+(function(){
+  var form=document.getElementById('mt-form');
+  var thanks=document.getElementById('thanks');
+  var fill=document.getElementById('fill');
+  var cnt=document.getElementById('cnt');
+  var qs=Array.prototype.slice.call(document.querySelectorAll('.q'));
+  var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  function answered(fs){
+    if(fs.querySelector('input[type=radio]:checked'))return true;
+    if(fs.querySelector('input[type=checkbox]:checked'))return true;
+    var t=fs.querySelector('.qinput');
+    if(t&&t.value&&t.value.trim()!=='')return true;
+    return false;
+  }
+  function update(){
+    var d=0;for(var i=0;i<qs.length;i++){if(answered(qs[i]))d++;}
+    fill.style.width=(qs.length?d/qs.length*100:0)+'%';
+    cnt.textContent=d+' of '+qs.length+' answered';
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('.radios'),function(g){
+    g.addEventListener('change',function(){
+      var box=g.parentNode.querySelector('.reveal');
+      if(box){var v=g.querySelector('input:checked');box.hidden=!(v&&/^(Partly|No|Disagree|Can.t say)$/.test(v.value));}
+    });
+  });
+  form.addEventListener('input',update);
+  form.addEventListener('change',update);
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    fetch('https://api.web3forms.com/submit',{method:'POST',body:new FormData(form)}).then(finish).catch(finish);
+  });
+  function finish(){form.hidden=true;thanks.hidden=false;window.scrollTo({top:0,behavior:reduce?'auto':'smooth'});}
+  update();
+})();
+</script>
+</body>
+</html>

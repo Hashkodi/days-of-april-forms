@@ -1,0 +1,376 @@
+<!doctype html>
+<!-- ============================================================================
+     Days of April · HR Consultancy — Initial HR Audit · FORM L (Line managers)
+     Netlify-hosted HTML form. Locked house style (light mode). One link is sent
+     to every line manager; answers are reported only as patterns, never by name.
+
+     DEPLOY-TIME CHECKLIST (set these before this form goes live):
+       1. Replace your company (page title + intro + foot).
+       2. Netlify site/account: publish under the Days of April HR Consultancy
+          Netlify team. Submissions go via Web3Forms (paste the «WEB3FORMS_ACCESS_KEY»). Form id audit-line-managers
+          (matches <form name> and the hidden form-name input — keep identical).
+       3. Submission notifications: set the mailbox in the Netlify dashboard
+          (Site settings > Forms > Form notifications). NOT set in code.
+          Intended: daysofaprilhr@gmail.com  «VERIFY account wiring».
+       4. No document upload on this form (uploads live on FORM B / the HR form).
+       5. Save each audience form's public link into client-questionnaire.md.
+     ============================================================================ -->
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Initial HR Audit · Line managers · prepared for your company</title>
+<link rel="icon" href="assets/days-of-april-favicon.png">
+<style>
+:root{
+  --navy:#1B2431; --navy-2:#232F3E; --paper:#F5F0E6; --ground:#E9E2D1;
+  --ivory:#F4EFE4; --ink:#1B2431; --champ:#C6AC72; --deep:#9A7B3A;
+  --muted:#6E6857; --sec:#4A5260; --line:#DED7C4;
+  --display:'Cormorant','Hoefler Text',Georgia,serif;
+  --sans:'Poppins','Avenir Next',Avenir,system-ui,sans-serif;
+}
+@font-face{font-family:'Cormorant';src:url('assets/fonts/Cormorant.ttf') format('truetype');font-weight:300 700;font-style:normal;font-display:swap;}
+@font-face{font-family:'Cormorant';src:url('assets/fonts/Cormorant-Italic.ttf') format('truetype');font-weight:300 700;font-style:italic;font-display:swap;}
+@font-face{font-family:'Poppins';src:url('assets/fonts/Poppins-Light.ttf') format('truetype');font-weight:300;font-display:swap;}
+@font-face{font-family:'Poppins';src:url('assets/fonts/Poppins-Regular.ttf') format('truetype');font-weight:400;font-display:swap;}
+@font-face{font-family:'Poppins';src:url('assets/fonts/Poppins-Medium.ttf') format('truetype');font-weight:500;font-display:swap;}
+@font-face{font-family:'Poppins';src:url('assets/fonts/Poppins-SemiBold.ttf') format('truetype');font-weight:600;font-display:swap;}
+
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);font-weight:400;line-height:1.5;}
+img{max-width:100%;display:block;}
+.shell{max-width:780px;margin:0 auto;background:var(--paper);min-height:100vh;box-shadow:0 0 44px rgba(27,36,49,.07);}
+.banner{width:100%;height:auto;}
+.wrap{padding:0 clamp(20px,5vw,54px);}
+
+.sticky{position:sticky;top:0;z-index:20;background:rgba(245,240,230,.94);backdrop-filter:saturate(140%) blur(6px);border-bottom:1px solid var(--line);}
+.sticky .row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px clamp(20px,5vw,54px);}
+.sticky .aud{font-family:var(--sans);font-weight:600;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);}
+.sticky .cnt{font-family:var(--sans);font-weight:500;font-size:11px;letter-spacing:.05em;color:var(--muted);white-space:nowrap;}
+.track{height:2px;background:var(--line);}
+.track .fill{height:2px;width:0;background:var(--navy);transition:width .25s ease;}
+
+.intro{padding:40px 0 6px;}
+.kick{font-family:var(--sans);font-weight:500;font-size:10.5px;letter-spacing:.34em;text-transform:uppercase;color:var(--deep);}
+.intro h1{font-family:var(--display);font-weight:600;font-size:clamp(30px,7vw,44px);line-height:1.02;margin:14px 0 0;letter-spacing:.005em;}
+.intro .for{font-family:var(--display);font-style:italic;font-size:clamp(17px,4vw,21px);color:var(--sec);margin-top:6px;}
+.rule{width:44px;height:1px;background:var(--champ);border:0;margin:22px 0;}
+.welcome{font-size:15px;line-height:1.64;color:var(--ink);max-width:62ch;}
+.note{margin-top:20px;padding:15px 17px;background:#EDE7D8;border-left:2px solid var(--champ);font-size:13.5px;line-height:1.55;color:var(--sec);}
+
+.sec{padding:32px 0;border-top:1px solid var(--line);}
+.sec-h{display:flex;align-items:baseline;gap:16px;margin-bottom:4px;}
+.sec-h .num{font-family:var(--display);font-weight:500;font-size:34px;line-height:.8;color:var(--champ);}
+.sec-h h2{font-family:var(--display);font-weight:600;font-size:24px;line-height:1.05;margin:0;color:var(--ink);}
+.sec .sub{font-size:13.5px;color:var(--muted);margin:0 0 4px 50px;}
+
+.q{border:0;margin:0;padding:24px 0;border-bottom:1px solid var(--line);min-inline-size:auto;}
+.q:last-child{border-bottom:0;}
+.q .qlab{font-size:15px;line-height:1.5;color:var(--ink);margin:0;font-weight:400;}
+.q .tag{font-family:var(--sans);font-weight:600;font-size:10px;letter-spacing:.1em;color:var(--deep);margin-right:9px;}
+.q .help{font-size:13px;line-height:1.5;color:var(--muted);font-style:italic;margin:9px 0 0;}
+
+.radios{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px;max-width:430px;}
+.radios.yn{grid-template-columns:repeat(2,1fr);max-width:290px;}
+.opt{position:relative;display:block;}
+.opt input{position:absolute;opacity:0;inset:0;width:100%;height:100%;margin:0;cursor:pointer;}
+.opt span{display:block;padding:12px 6px;text-align:center;border:1px solid var(--line);background:transparent;font-family:var(--sans);font-weight:500;font-size:13px;color:var(--sec);transition:.15s;}
+.opt input:checked+span{background:var(--navy);border-color:var(--navy);color:var(--ivory);}
+.opt input:focus-visible+span{outline:2px solid var(--navy);outline-offset:2px;}
+.opt:hover span{border-color:var(--navy);}
+
+.checks{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+.chk{position:relative;display:inline-flex;}
+.chk input{position:absolute;opacity:0;inset:0;width:100%;height:100%;margin:0;cursor:pointer;}
+.chk span{display:block;padding:10px 15px;border:1px solid var(--line);font-family:var(--sans);font-weight:500;font-size:13px;color:var(--sec);transition:.15s;}
+.chk input:checked+span{background:var(--navy);border-color:var(--navy);color:var(--ivory);}
+.chk input:focus-visible+span{outline:2px solid var(--navy);outline-offset:2px;}
+.chk:hover span{border-color:var(--navy);}
+
+.reveal{margin-top:14px;}
+.reveal[hidden]{display:none;}
+.tl{display:block;font-size:12.5px;color:var(--muted);margin:14px 0 6px;}
+input.txt,textarea.txt,select.txt{width:100%;font-family:var(--sans);font-size:14px;color:var(--ink);background:#FBF8F1;border:1px solid var(--line);padding:11px 12px;border-radius:0;}
+textarea.txt{min-height:88px;resize:vertical;line-height:1.55;}
+input.txt:focus,textarea.txt:focus,select.txt:focus{outline:2px solid var(--navy);outline-offset:1px;border-color:var(--navy);}
+
+.actions{padding:34px 0 6px;}
+.btn{display:inline-block;font-family:var(--sans);font-weight:600;font-size:13.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ivory);background:var(--navy);border:1px solid var(--navy);padding:15px 36px;cursor:pointer;text-decoration:none;transition:.15s;}
+.btn:hover{background:var(--navy-2);border-color:var(--navy-2);}
+.ns{font-size:12px;color:var(--muted);margin-top:12px;}
+
+.foot{padding:28px 0 50px;border-top:1px solid var(--line);margin-top:10px;}
+.foot .seal{width:34px;margin-bottom:12px;opacity:.92;}
+.foot p{font-size:12px;line-height:1.6;color:var(--muted);margin:0 0 6px;max-width:66ch;}
+.foot .cc{font-weight:500;color:var(--sec);}
+
+.thanks{padding:74px 0;}
+.thanks[hidden]{display:none;}
+.thanks .seal{width:46px;margin-bottom:24px;}
+.thanks h2{font-family:var(--display);font-weight:600;font-size:clamp(28px,7vw,36px);margin:0 0 14px;color:var(--ink);}
+.thanks p{font-size:15px;line-height:1.62;color:var(--sec);max-width:56ch;}
+.thanks .sign{font-family:var(--display);font-style:italic;font-size:19px;color:var(--ink);margin-top:16px;}
+
+.hp{position:absolute!important;left:-9999px;top:-9999px;height:0;overflow:hidden;}
+[hidden]{display:none;}
+@media (max-width:520px){ .sec-h .num{font-size:28px;} }
+@media (prefers-reduced-motion:reduce){ *{transition:none!important;scroll-behavior:auto!important;} }
+</style>
+</head>
+<body>
+<main class="shell">
+  <img class="banner" src="assets/dataroom-cover-banner.png" alt="Days of April · HR Consultancy · Client Data Room">
+
+  <div class="sticky">
+    <div class="row"><span class="aud">Audit &middot; Line managers</span><span class="cnt" id="cnt">0 answered</span></div>
+    <div class="track"><div class="fill" id="fill"></div></div>
+  </div>
+
+  <div class="wrap">
+    <section class="intro">
+      <span class="kick">Initial HR Audit</span>
+      <h1>What you see</h1>
+      <div class="for">Prepared for your company &middot; for line managers</div>
+      <hr class="rule">
+      <p class="welcome">You manage people day to day, so you see what the paperwork does not. This short form asks how things actually work in your team. Your answers go to Days of April, not to your management, and appear in our report only as patterns across all managers, never with your name.</p>
+      <p class="note">There are no wrong answers here, and nothing you say is traced back to you. It takes about seven minutes. Answer as things really are on your team, not as they are meant to be.</p>
+    </section>
+
+    <form id="audit-form" name="audit-line-managers" method="POST" action="https://api.web3forms.com/submit">
+      <input type="hidden" name="access_key" value="«WEB3FORMS_ACCESS_KEY»">
+      <input type="hidden" name="from_name" value="Days of April HR form">
+      <input type="hidden" name="subject" value="New form submission — audit-line-managers">
+      <input type="hidden" name="form_id" value="audit-line-managers">
+      <p class="hp" aria-hidden="true"><label>Do not fill this in: <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off"></label></p>
+
+      <!-- 01 -->
+      <section class="sec">
+        <div class="sec-h"><span class="num">01</span><h2>Your patch</h2></div>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">2.6</span>Which everyday people-matters do you handle yourself? Tick all that apply.</p>
+          <div class="checks">
+            <label class="chk"><input type="checkbox" name="2.6 handles - leave approvals" value="Leave approvals"><span>Leave approvals</span></label>
+            <label class="chk"><input type="checkbox" name="2.6 handles - small disputes" value="Small disputes"><span>Small disputes</span></label>
+            <label class="chk"><input type="checkbox" name="2.6 handles - performance chats" value="Performance chats"><span>Performance chats</span></label>
+            <label class="chk"><input type="checkbox" name="2.6 handles - discipline" value="Discipline"><span>Discipline</span></label>
+            <label class="chk"><input type="checkbox" name="2.6 handles - none of these" value="None of these"><span>None of these</span></label>
+          </div>
+          <p class="help">Shows where managers need more backing.</p>
+        </fieldset>
+      </section>
+
+      <!-- 02 -->
+      <section class="sec">
+        <div class="sec-h"><span class="num">02</span><h2>Hiring and first days</h2></div>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">3.7</span>Last time you interviewed, did the interviewers agree the questions beforehand?</p>
+          <div class="radios" role="radiogroup" aria-label="3.7">
+            <label class="opt"><input type="radio" name="3.7 interview questions agreed beforehand" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="3.7 interview questions agreed beforehand" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="3.7 interview questions agreed beforehand" value="No"><span>No</span></label>
+          </div>
+          <p class="help">Agreed questions make comparing candidates fair and fast.</p>
+          <div class="reveal" hidden><label class="tl">Add a note (optional)</label><textarea class="txt" name="3.7 note" rows="2"></textarea></div>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">8.1</span>Think of your newest team member's first day: was everything ready for them (desk, tools, accesses, paperwork)?</p>
+          <div class="radios" role="radiogroup" aria-label="8.1">
+            <label class="opt"><input type="radio" name="8.1 first day ready" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="8.1 first day ready" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="8.1 first day ready" value="No"><span>No</span></label>
+          </div>
+          <p class="help">First days set the tone for everything after.</p>
+          <div class="reveal" hidden><label class="tl">Add a note (optional)</label><textarea class="txt" name="8.1 note" rows="2"></textarea></div>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">8.2</span>Did a named person welcome and orient them?</p>
+          <div class="radios" role="radiogroup" aria-label="8.2">
+            <label class="opt"><input type="radio" name="8.2 named person welcomed them" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="8.2 named person welcomed them" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="8.2 named person welcomed them" value="No"><span>No</span></label>
+          </div>
+          <div class="reveal" hidden><label class="tl">Add a note (optional)</label><textarea class="txt" name="8.2 note" rows="2"></textarea></div>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">8.4</span>Did they know what to do in week one without guessing?</p>
+          <div class="radios" role="radiogroup" aria-label="8.4">
+            <label class="opt"><input type="radio" name="8.4 knew what to do in week one" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="8.4 knew what to do in week one" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="8.4 knew what to do in week one" value="No"><span>No</span></label>
+          </div>
+          <div class="reveal" hidden><label class="tl">Add a note (optional)</label><textarea class="txt" name="8.4 note" rows="2"></textarea></div>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">8.5</span>Was someone assigned to answer their everyday questions?</p>
+          <div class="radios" role="radiogroup" aria-label="8.5">
+            <label class="opt"><input type="radio" name="8.5 someone assigned for questions" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="8.5 someone assigned for questions" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="8.5 someone assigned for questions" value="No"><span>No</span></label>
+          </div>
+          <div class="reveal" hidden><label class="tl">Add a note (optional)</label><textarea class="txt" name="8.5 note" rows="2"></textarea></div>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">8.6</span>Did you review them during probation, or only when the confirmation letter was due?</p>
+          <div class="radios" role="radiogroup" aria-label="8.6">
+            <label class="opt"><input type="radio" name="8.6 reviewed during probation" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="8.6 reviewed during probation" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="8.6 reviewed during probation" value="No"><span>No</span></label>
+          </div>
+          <p class="help">Mid-probation check-ins prevent end-of-probation surprises.</p>
+          <div class="reveal" hidden><label class="tl">Add a note (optional)</label><textarea class="txt" name="8.6 note" rows="2"></textarea></div>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">8.7</span>Did anyone ask them how joining felt, and act on what they said?</p>
+          <div class="radios" role="radiogroup" aria-label="8.7">
+            <label class="opt"><input type="radio" name="8.7 asked how joining felt" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="8.7 asked how joining felt" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="8.7 asked how joining felt" value="No"><span>No</span></label>
+          </div>
+          <div class="reveal" hidden><label class="tl">Add a note (optional)</label><textarea class="txt" name="8.7 note" rows="2"></textarea></div>
+        </fieldset>
+      </section>
+
+      <!-- 03 -->
+      <section class="sec">
+        <div class="sec-h"><span class="num">03</span><h2>Performance and growth</h2></div>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">10.5</span>After a good review, does anything visible happen (pay, promotion, development)?</p>
+          <div class="radios" role="radiogroup" aria-label="10.5">
+            <label class="opt"><input type="radio" name="10.5 good review leads somewhere" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="10.5 good review leads somewhere" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="10.5 good review leads somewhere" value="No"><span>No</span></label>
+          </div>
+          <p class="help">Reviews that lead nowhere teach people to stop trying.</p>
+          <div class="reveal" hidden><label class="tl">Add a note (optional)</label><textarea class="txt" name="10.5 note" rows="2"></textarea></div>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">10.8</span>Could anyone on your team be surprised by a bad rating?</p>
+          <div class="radios yn" role="radiogroup" aria-label="10.8">
+            <label class="opt"><input type="radio" name="10.8 could be surprised by a bad rating" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="10.8 could be surprised by a bad rating" value="No"><span>No</span></label>
+          </div>
+          <p class="help">The honest answer should be no; surprises mean feedback is not landing.</p>
+          <label class="tl">Add a note (optional)</label>
+          <textarea class="txt" name="10.8 note" rows="2"></textarea>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">11.2</span>What training did your team get this year, and what problem did it solve?</p>
+          <label class="tl">In your own words</label>
+          <textarea class="txt qinput" name="11.2 training this year and the problem it solved"></textarea>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">11.3</span>How does a new joiner actually learn the job here?</p>
+          <label class="tl">In your own words</label>
+          <textarea class="txt qinput" name="11.3 how a new joiner learns the job"></textarea>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">11.6</span>Do your senior people deliberately pass on what they know (sessions, shadowing, notes)?</p>
+          <div class="radios" role="radiogroup" aria-label="11.6">
+            <label class="opt"><input type="radio" name="11.6 senior people pass on knowledge" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="11.6 senior people pass on knowledge" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="11.6 senior people pass on knowledge" value="No"><span>No</span></label>
+          </div>
+          <div class="reveal" hidden><label class="tl">Add a note (optional)</label><textarea class="txt" name="11.6 note" rows="2"></textarea></div>
+        </fieldset>
+      </section>
+
+      <!-- 04 -->
+      <section class="sec">
+        <div class="sec-h"><span class="num">04</span><h2>Fairness and one-to-ones</h2></div>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">13.4</span>Before anyone on your team was disciplined, were they given a chance to explain their side?</p>
+          <div class="radios" role="radiogroup" aria-label="13.4">
+            <label class="opt"><input type="radio" name="13.4 chance to explain before discipline" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="13.4 chance to explain before discipline" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="13.4 chance to explain before discipline" value="No"><span>No</span></label>
+          </div>
+          <p class="help">Being heard first is both the law's expectation and basic fairness.</p>
+          <div class="reveal" hidden><label class="tl">Add a note (optional)</label><textarea class="txt" name="13.4 note" rows="2"></textarea></div>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">14.4</span>Do you talk to each of your people individually on some regular rhythm?</p>
+          <div class="radios" role="radiogroup" aria-label="14.4">
+            <label class="opt"><input type="radio" name="14.4 regular one-to-ones" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="14.4 regular one-to-ones" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="14.4 regular one-to-ones" value="No"><span>No</span></label>
+          </div>
+          <p class="help">Ten minutes one-to-one prevents most resignations that "came out of nowhere".</p>
+          <div class="reveal" hidden><label class="tl">Add a note (optional)</label><textarea class="txt" name="14.4 note" rows="2"></textarea></div>
+        </fieldset>
+      </section>
+
+      <div class="actions">
+        <button class="btn" type="submit">Send my answers</button>
+        <p class="ns">Your answers are sent only when you press this button, and only to Days of April.</p>
+      </div>
+    </form>
+
+    <section class="thanks" id="thanks" hidden>
+      <img class="seal" src="assets/days-of-april-seal.png" alt="">
+      <h2>Thank you.</h2>
+      <p>We will review what you have shared, come back once with anything that needs a second look, and treat everything as confidential. Your answers appear in our report only as patterns across all managers, never with your name.</p>
+      <p class="sign">Days of April</p>
+    </section>
+
+    <footer class="foot">
+      <img class="seal" src="assets/days-of-april-seal.png" alt="">
+      <p>Everything you share here is confidential, used only for this engagement, and deleted after it ends, as set out in our engagement letter.</p>
+      <p class="cc">Private &amp; Confidential. Prepared for your company by Days of April.</p>
+    </footer>
+  </div>
+</main>
+
+<script>
+(function(){
+  var form=document.getElementById('audit-form');
+  var thanks=document.getElementById('thanks');
+  var fill=document.getElementById('fill');
+  var cnt=document.getElementById('cnt');
+  var qs=Array.prototype.slice.call(document.querySelectorAll('.q'));
+  var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  function answered(fs){
+    if(fs.querySelector('input[type=radio]:checked'))return true;
+    if(fs.querySelector('input[type=checkbox]:checked'))return true;
+    var t=fs.querySelector('.qinput');
+    if(t&&t.value&&t.value.trim()!=='')return true;
+    return false;
+  }
+  function update(){
+    var d=0;for(var i=0;i<qs.length;i++){if(answered(qs[i]))d++;}
+    fill.style.width=(qs.length?d/qs.length*100:0)+'%';
+    cnt.textContent=d+' of '+qs.length+' answered';
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('.radios'),function(g){
+    g.addEventListener('change',function(){
+      var box=g.parentNode.querySelector('.reveal');
+      if(box){var v=g.querySelector('input:checked');box.hidden=!(v&&/^(Partly|No|Disagree|Can.t say)$/.test(v.value));}
+    });
+  });
+  form.addEventListener('input',update);
+  form.addEventListener('change',update);
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    fetch('https://api.web3forms.com/submit',{method:'POST',body:new FormData(form)}).then(finish).catch(finish);
+  });
+  function finish(){form.hidden=true;thanks.hidden=false;window.scrollTo({top:0,behavior:reduce?'auto':'smooth'});}
+  update();
+})();
+</script>
+</body>
+</html>

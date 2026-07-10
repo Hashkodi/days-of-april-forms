@@ -1,0 +1,405 @@
+<!doctype html>
+<!-- ============================================================================
+     Days of April · HR Consultancy — Manager Essentials Programme ·
+     ANONYMOUS STAFF SURVEY (upward feedback, before/after measure)
+     Netlify-hosted HTML form. Locked house style (light mode). ANONYMOUS by
+     design: NO name field, NO email field. Sent only if the employer agreed at
+     intake (client-questionnaire.md P7). If declined, this form is never built.
+
+     DEPLOY-TIME CHECKLIST (set these before this form goes live):
+       1. Replace your company in the intro line and foot (company name only).
+       2. Netlify site/account: publish under the Days of April HR Consultancy
+          Netlify team. Submissions go via Web3Forms (paste the «WEB3FORMS_ACCESS_KEY»). Form id manager-training-staff-survey
+          (matches <form name> and the hidden form-name input — keep identical).
+       3. Submission notifications: set the mailbox in the Netlify dashboard
+          (Site settings > Forms > Form notifications). NOT set in code.
+          Intended: daysofaprilhr@gmail.com  «VERIFY account wiring».
+       4. MANAGER ROUTING (the "Which manager" dropdown): this is the ONLY routing
+          question and it is anonymity-critical. Replace «Manager A/B/C» with the
+          real attending managers' names or roles. OMIT the whole routing block
+          for any manager whose team has fewer than 5 expected respondents; where
+          it is omitted, all results are reported company-wide. THE MERGE RULE
+          (applied at analysis): a manager's individual results are reported only
+          where 5 or more of their people responded; below 5, responses are merged
+          into the all-managers picture and the report says "merged for anonymity".
+          No group smaller than 5 is ever reported.
+       5. Run this survey TWICE with the SAME questions: baseline closes before
+          session 1; follow-up opens about 3 months after the final session and
+          stays open two weeks. The difference between the two is the result.
+       6. Staff never receive this from us: the client forwards the public link
+          (email or a notice-board QR). We collect no staff contact details.
+     ============================================================================ -->
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Staff Survey · an anonymous read of day-to-day management</title>
+<link rel="icon" href="assets/days-of-april-favicon.png">
+<style>
+:root{
+  --navy:#1B2431; --navy-2:#232F3E; --paper:#F5F0E6; --ground:#E9E2D1;
+  --ivory:#F4EFE4; --ink:#1B2431; --champ:#C6AC72; --deep:#9A7B3A;
+  --muted:#6E6857; --sec:#4A5260; --line:#DED7C4;
+  --display:'Cormorant','Hoefler Text',Georgia,serif;
+  --sans:'Poppins','Avenir Next',Avenir,system-ui,sans-serif;
+}
+@font-face{font-family:'Cormorant';src:url('assets/fonts/Cormorant.ttf') format('truetype');font-weight:300 700;font-style:normal;font-display:swap;}
+@font-face{font-family:'Cormorant';src:url('assets/fonts/Cormorant-Italic.ttf') format('truetype');font-weight:300 700;font-style:italic;font-display:swap;}
+@font-face{font-family:'Poppins';src:url('assets/fonts/Poppins-Light.ttf') format('truetype');font-weight:300;font-display:swap;}
+@font-face{font-family:'Poppins';src:url('assets/fonts/Poppins-Regular.ttf') format('truetype');font-weight:400;font-display:swap;}
+@font-face{font-family:'Poppins';src:url('assets/fonts/Poppins-Medium.ttf') format('truetype');font-weight:500;font-display:swap;}
+@font-face{font-family:'Poppins';src:url('assets/fonts/Poppins-SemiBold.ttf') format('truetype');font-weight:600;font-display:swap;}
+
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);font-weight:400;line-height:1.5;}
+img{max-width:100%;display:block;}
+.shell{max-width:780px;margin:0 auto;background:var(--paper);min-height:100vh;box-shadow:0 0 44px rgba(27,36,49,.07);}
+.banner{width:100%;height:auto;}
+.wrap{padding:0 clamp(20px,5vw,54px);}
+
+.sticky{position:sticky;top:0;z-index:20;background:rgba(245,240,230,.94);backdrop-filter:saturate(140%) blur(6px);border-bottom:1px solid var(--line);}
+.sticky .row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px clamp(20px,5vw,54px);}
+.sticky .aud{font-family:var(--sans);font-weight:600;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);}
+.sticky .cnt{font-family:var(--sans);font-weight:500;font-size:11px;letter-spacing:.05em;color:var(--muted);white-space:nowrap;}
+.track{height:2px;background:var(--line);}
+.track .fill{height:2px;width:0;background:var(--navy);transition:width .25s ease;}
+
+.intro{padding:40px 0 6px;}
+.kick{font-family:var(--sans);font-weight:500;font-size:10.5px;letter-spacing:.34em;text-transform:uppercase;color:var(--deep);}
+.intro h1{font-family:var(--display);font-weight:600;font-size:clamp(30px,7vw,44px);line-height:1.02;margin:14px 0 0;letter-spacing:.005em;}
+.intro .for{font-family:var(--display);font-style:italic;font-size:clamp(17px,4vw,21px);color:var(--sec);margin-top:6px;}
+.rule{width:44px;height:1px;background:var(--champ);border:0;margin:22px 0;}
+.welcome{font-size:15px;line-height:1.64;color:var(--ink);max-width:62ch;}
+.anon{margin-top:20px;padding:16px 18px;background:var(--navy);color:var(--ivory);}
+.anon strong{font-weight:600;}
+.anon p{font-size:13.5px;line-height:1.55;margin:0;color:rgba(244,239,228,.9);}
+
+.sec{padding:32px 0;border-top:1px solid var(--line);}
+.sec-h{display:flex;align-items:baseline;gap:16px;margin-bottom:4px;}
+.sec-h .num{font-family:var(--display);font-weight:500;font-size:34px;line-height:.8;color:var(--champ);}
+.sec-h h2{font-family:var(--display);font-weight:600;font-size:24px;line-height:1.05;margin:0;color:var(--ink);}
+.sec .sub{font-size:13.5px;color:var(--muted);margin:0 0 4px 50px;}
+
+.q{border:0;margin:0;padding:22px 0;border-bottom:1px solid var(--line);min-inline-size:auto;}
+.q:last-child{border-bottom:0;}
+.q .qlab{font-size:15px;line-height:1.5;color:var(--ink);margin:0;font-weight:400;}
+.q .help{font-size:13px;line-height:1.5;color:var(--muted);font-style:italic;margin:9px 0 0;}
+
+.route{padding:22px 0 0;}
+.route .qlab{font-size:15px;line-height:1.5;color:var(--ink);margin:0 0 0;font-weight:400;}
+.route .help{font-size:13px;line-height:1.5;color:var(--muted);font-style:italic;margin:9px 0 0;}
+.route select{max-width:430px;margin-top:14px;}
+
+.radios{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:14px;max-width:560px;}
+.opt{position:relative;display:block;}
+.opt input{position:absolute;opacity:0;inset:0;width:100%;height:100%;margin:0;cursor:pointer;}
+.opt span{display:block;padding:12px 6px;text-align:center;border:1px solid var(--line);background:transparent;font-family:var(--sans);font-weight:500;font-size:12.5px;color:var(--sec);transition:.15s;}
+.opt input:checked+span{background:var(--navy);border-color:var(--navy);color:var(--ivory);}
+.opt input:focus-visible+span{outline:2px solid var(--navy);outline-offset:2px;}
+.opt:hover span{border-color:var(--navy);}
+
+.tl{display:block;font-size:12.5px;color:var(--muted);margin:14px 0 6px;}
+input.txt,textarea.txt,select.txt{width:100%;font-family:var(--sans);font-size:14px;color:var(--ink);background:#FBF8F1;border:1px solid var(--line);padding:11px 12px;border-radius:0;}
+textarea.txt{min-height:88px;resize:vertical;line-height:1.55;}
+input.txt:focus,textarea.txt:focus,select.txt:focus{outline:2px solid var(--navy);outline-offset:1px;border-color:var(--navy);}
+
+.actions{padding:34px 0 6px;}
+.btn{display:inline-block;font-family:var(--sans);font-weight:600;font-size:13.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ivory);background:var(--navy);border:1px solid var(--navy);padding:15px 36px;cursor:pointer;text-decoration:none;transition:.15s;}
+.btn:hover{background:var(--navy-2);border-color:var(--navy-2);}
+.ns{font-size:12px;color:var(--muted);margin-top:12px;}
+
+.foot{padding:28px 0 50px;border-top:1px solid var(--line);margin-top:10px;}
+.foot .seal{width:34px;margin-bottom:12px;opacity:.92;}
+.foot p{font-size:12px;line-height:1.6;color:var(--muted);margin:0 0 6px;max-width:66ch;}
+
+.thanks{padding:74px 0;}
+.thanks[hidden]{display:none;}
+.thanks .seal{width:46px;margin-bottom:24px;}
+.thanks h2{font-family:var(--display);font-weight:600;font-size:clamp(28px,7vw,36px);margin:0 0 14px;color:var(--ink);}
+.thanks p{font-size:15px;line-height:1.62;color:var(--sec);max-width:56ch;}
+.thanks .sign{font-family:var(--display);font-style:italic;font-size:19px;color:var(--ink);margin-top:16px;}
+
+.hp{position:absolute!important;left:-9999px;top:-9999px;height:0;overflow:hidden;}
+[hidden]{display:none;}
+@media (max-width:520px){ .sec-h .num{font-size:28px;} .radios{grid-template-columns:repeat(2,1fr);} }
+@media (prefers-reduced-motion:reduce){ *{transition:none!important;scroll-behavior:auto!important;} }
+</style>
+</head>
+<body>
+<main class="shell">
+  <img class="banner" src="assets/survey-cover-banner.png" alt="Days of April · HR Consultancy · Employee Survey">
+
+  <div class="sticky">
+    <div class="row"><span class="aud">Staff Survey &middot; Anonymous</span><span class="cnt" id="cnt">0 answered</span></div>
+    <div class="track"><div class="fill" id="fill"></div></div>
+  </div>
+
+  <div class="wrap">
+    <section class="intro">
+      <span class="kick">Manager Essentials Programme</span>
+      <h1>How day-to-day management works for you</h1>
+      <div class="for">An anonymous survey for everyone at your company</div>
+      <hr class="rule">
+      <p class="welcome">Days of April is an independent HR consultancy. Your company's managers are taking part in a training programme, and this short survey helps make it useful: it asks how day-to-day management works for you now, and the same questions will be asked again after the programme to see what improved. It is anonymous. We do not collect your name, and nobody at your company sees individual answers, only overall patterns. Please answer as things really are. It takes about seven minutes.</p>
+      <div class="anon"><p><strong>Your answers are anonymous.</strong> We do not collect names or email addresses. Where fewer than five people answer about the same manager, those answers are combined with others so no one can be identified. Results reach your company only as overall patterns, never as individual replies.</p></div>
+    </section>
+
+    <form id="mt-form" name="manager-training-staff-survey" method="POST" action="https://api.web3forms.com/submit">
+      <input type="hidden" name="access_key" value="«WEB3FORMS_ACCESS_KEY»">
+      <input type="hidden" name="from_name" value="Days of April HR form">
+      <input type="hidden" name="subject" value="New form submission — manager-training-staff-survey">
+      <input type="hidden" name="form_id" value="manager-training-staff-survey">
+      <p class="hp" aria-hidden="true"><label>Do not fill this in: <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off"></label></p>
+
+      <!--  MANAGER ROUTING — anonymity-critical. Replace «Manager A/B/C» with the real
+            attending managers. OMIT this whole <section> for any manager with fewer than
+            5 expected respondents; when omitted, all results are reported company-wide.
+            This block is intentionally optional and is NOT counted in the progress total. -->
+      <section class="sec">
+        <div class="sec-h"><span class="num">&middot;</span><h2>Which manager</h2></div>
+        <div class="route">
+          <p class="qlab">Which manager do you report to? This is the only routing question, and it is here only so each manager can be given their own overall picture.</p>
+          <select class="txt" name="Which manager reported to">
+            <option value="" selected>Prefer not to say</option>
+            <option>«Manager A»</option>
+            <option>«Manager B»</option>
+            <option>«Manager C»</option>
+          </select>
+          <p class="help">A manager's results are only ever shown where five or more of their people answered. Below that, your answers are merged with others so you cannot be identified.</p>
+        </div>
+      </section>
+
+      <!-- 01 · My work and targets (sessions 1 and 4) -->
+      <section class="sec">
+        <div class="sec-h"><span class="num">01</span><h2>My work and targets</h2></div>
+        <p class="sub">How much of each statement is true for you?</p>
+
+        <fieldset class="q">
+          <p class="qlab">I know what my manager expects from my work this month.</p>
+          <div class="radios" role="radiogroup" aria-label="M1">
+            <label class="opt"><input type="radio" name="M1 knows what manager expects this month" value="Agree"><span>Agree</span></label>
+            <label class="opt"><input type="radio" name="M1 knows what manager expects this month" value="Somewhat"><span>Somewhat</span></label>
+            <label class="opt"><input type="radio" name="M1 knows what manager expects this month" value="Disagree"><span>Disagree</span></label>
+            <label class="opt"><input type="radio" name="M1 knows what manager expects this month" value="Can't say"><span>Can't say</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab">My manager and I could both point to the same list of what my job is meant to produce.</p>
+          <div class="radios" role="radiogroup" aria-label="M2">
+            <label class="opt"><input type="radio" name="M2 shared list of what the job produces" value="Agree"><span>Agree</span></label>
+            <label class="opt"><input type="radio" name="M2 shared list of what the job produces" value="Somewhat"><span>Somewhat</span></label>
+            <label class="opt"><input type="radio" name="M2 shared list of what the job produces" value="Disagree"><span>Disagree</span></label>
+            <label class="opt"><input type="radio" name="M2 shared list of what the job produces" value="Can't say"><span>Can't say</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab">If my work were falling short, I would hear it from my manager early, not for the first time at a review.</p>
+          <div class="radios" role="radiogroup" aria-label="M3">
+            <label class="opt"><input type="radio" name="M3 hears about shortfalls early" value="Agree"><span>Agree</span></label>
+            <label class="opt"><input type="radio" name="M3 hears about shortfalls early" value="Somewhat"><span>Somewhat</span></label>
+            <label class="opt"><input type="radio" name="M3 hears about shortfalls early" value="Disagree"><span>Disagree</span></label>
+            <label class="opt"><input type="radio" name="M3 hears about shortfalls early" value="Can't say"><span>Can't say</span></label>
+          </div>
+        </fieldset>
+      </section>
+
+      <!-- 02 · Talking one-to-one (session 2) -->
+      <section class="sec">
+        <div class="sec-h"><span class="num">02</span><h2>Talking one-to-one</h2></div>
+
+        <fieldset class="q">
+          <p class="qlab">My manager talks with me one-to-one on some regular rhythm, not only when something is wrong.</p>
+          <div class="radios" role="radiogroup" aria-label="M4">
+            <label class="opt"><input type="radio" name="M4 regular one-to-one rhythm" value="Agree"><span>Agree</span></label>
+            <label class="opt"><input type="radio" name="M4 regular one-to-one rhythm" value="Somewhat"><span>Somewhat</span></label>
+            <label class="opt"><input type="radio" name="M4 regular one-to-one rhythm" value="Disagree"><span>Disagree</span></label>
+            <label class="opt"><input type="radio" name="M4 regular one-to-one rhythm" value="Can't say"><span>Can't say</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab">In those conversations I get time for my own topics, not only instructions.</p>
+          <div class="radios" role="radiogroup" aria-label="M5">
+            <label class="opt"><input type="radio" name="M5 time for my own topics" value="Agree"><span>Agree</span></label>
+            <label class="opt"><input type="radio" name="M5 time for my own topics" value="Somewhat"><span>Somewhat</span></label>
+            <label class="opt"><input type="radio" name="M5 time for my own topics" value="Disagree"><span>Disagree</span></label>
+            <label class="opt"><input type="radio" name="M5 time for my own topics" value="Can't say"><span>Can't say</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab">When I raise something with my manager, something usually happens about it.</p>
+          <div class="radios" role="radiogroup" aria-label="M6">
+            <label class="opt"><input type="radio" name="M6 raising something leads to action" value="Agree"><span>Agree</span></label>
+            <label class="opt"><input type="radio" name="M6 raising something leads to action" value="Somewhat"><span>Somewhat</span></label>
+            <label class="opt"><input type="radio" name="M6 raising something leads to action" value="Disagree"><span>Disagree</span></label>
+            <label class="opt"><input type="radio" name="M6 raising something leads to action" value="Can't say"><span>Can't say</span></label>
+          </div>
+        </fieldset>
+      </section>
+
+      <!-- 03 · How my work is corrected (session 3) -->
+      <section class="sec">
+        <div class="sec-h"><span class="num">03</span><h2>How my work is corrected</h2></div>
+
+        <fieldset class="q">
+          <p class="qlab">When my manager corrects my work, it is about the work, not about me as a person.</p>
+          <div class="radios" role="radiogroup" aria-label="M7">
+            <label class="opt"><input type="radio" name="M7 correction is about the work not the person" value="Agree"><span>Agree</span></label>
+            <label class="opt"><input type="radio" name="M7 correction is about the work not the person" value="Somewhat"><span>Somewhat</span></label>
+            <label class="opt"><input type="radio" name="M7 correction is about the work not the person" value="Disagree"><span>Disagree</span></label>
+            <label class="opt"><input type="radio" name="M7 correction is about the work not the person" value="Can't say"><span>Can't say</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab">Corrections happen privately, not in front of others.</p>
+          <div class="radios" role="radiogroup" aria-label="M8">
+            <label class="opt"><input type="radio" name="M8 corrections happen privately" value="Agree"><span>Agree</span></label>
+            <label class="opt"><input type="radio" name="M8 corrections happen privately" value="Somewhat"><span>Somewhat</span></label>
+            <label class="opt"><input type="radio" name="M8 corrections happen privately" value="Disagree"><span>Disagree</span></label>
+            <label class="opt"><input type="radio" name="M8 corrections happen privately" value="Can't say"><span>Can't say</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab">My manager also tells me when I have done something well.</p>
+          <div class="radios" role="radiogroup" aria-label="M9">
+            <label class="opt"><input type="radio" name="M9 hears when done well" value="Agree"><span>Agree</span></label>
+            <label class="opt"><input type="radio" name="M9 hears when done well" value="Somewhat"><span>Somewhat</span></label>
+            <label class="opt"><input type="radio" name="M9 hears when done well" value="Disagree"><span>Disagree</span></label>
+            <label class="opt"><input type="radio" name="M9 hears when done well" value="Can't say"><span>Can't say</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab">I could admit a mistake to my manager without being humiliated for it.</p>
+          <div class="radios" role="radiogroup" aria-label="M10">
+            <label class="opt"><input type="radio" name="M10 safe to admit a mistake" value="Agree"><span>Agree</span></label>
+            <label class="opt"><input type="radio" name="M10 safe to admit a mistake" value="Somewhat"><span>Somewhat</span></label>
+            <label class="opt"><input type="radio" name="M10 safe to admit a mistake" value="Disagree"><span>Disagree</span></label>
+            <label class="opt"><input type="radio" name="M10 safe to admit a mistake" value="Can't say"><span>Can't say</span></label>
+          </div>
+        </fieldset>
+      </section>
+
+      <!-- 04 · Fairness (session 5) -->
+      <section class="sec">
+        <div class="sec-h"><span class="num">04</span><h2>Fairness</h2></div>
+
+        <fieldset class="q">
+          <p class="qlab">My manager hears a person's side before deciding anything against them.</p>
+          <div class="radios" role="radiogroup" aria-label="M11">
+            <label class="opt"><input type="radio" name="M11 hears a person's side first" value="Agree"><span>Agree</span></label>
+            <label class="opt"><input type="radio" name="M11 hears a person's side first" value="Somewhat"><span>Somewhat</span></label>
+            <label class="opt"><input type="radio" name="M11 hears a person's side first" value="Disagree"><span>Disagree</span></label>
+            <label class="opt"><input type="radio" name="M11 hears a person's side first" value="Can't say"><span>Can't say</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab">My manager applies the same rules to everyone in the team.</p>
+          <div class="radios" role="radiogroup" aria-label="M12">
+            <label class="opt"><input type="radio" name="M12 same rules for everyone" value="Agree"><span>Agree</span></label>
+            <label class="opt"><input type="radio" name="M12 same rules for everyone" value="Somewhat"><span>Somewhat</span></label>
+            <label class="opt"><input type="radio" name="M12 same rules for everyone" value="Disagree"><span>Disagree</span></label>
+            <label class="opt"><input type="radio" name="M12 same rules for everyone" value="Can't say"><span>Can't say</span></label>
+          </div>
+        </fieldset>
+      </section>
+
+      <!-- 05 · How the team runs (session 6) -->
+      <section class="sec">
+        <div class="sec-h"><span class="num">05</span><h2>How the team runs</h2></div>
+
+        <fieldset class="q">
+          <p class="qlab">I hear news that affects my work from my manager before I hear it as rumour.</p>
+          <div class="radios" role="radiogroup" aria-label="M13">
+            <label class="opt"><input type="radio" name="M13 hears work news before rumour" value="Agree"><span>Agree</span></label>
+            <label class="opt"><input type="radio" name="M13 hears work news before rumour" value="Somewhat"><span>Somewhat</span></label>
+            <label class="opt"><input type="radio" name="M13 hears work news before rumour" value="Disagree"><span>Disagree</span></label>
+            <label class="opt"><input type="radio" name="M13 hears work news before rumour" value="Can't say"><span>Can't say</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab">Our team meetings end with clear decisions about who does what.</p>
+          <div class="radios" role="radiogroup" aria-label="M14">
+            <label class="opt"><input type="radio" name="M14 meetings end with clear decisions" value="Agree"><span>Agree</span></label>
+            <label class="opt"><input type="radio" name="M14 meetings end with clear decisions" value="Somewhat"><span>Somewhat</span></label>
+            <label class="opt"><input type="radio" name="M14 meetings end with clear decisions" value="Disagree"><span>Disagree</span></label>
+            <label class="opt"><input type="radio" name="M14 meetings end with clear decisions" value="Can't say"><span>Can't say</span></label>
+          </div>
+        </fieldset>
+      </section>
+
+      <!-- 06 · In your own words -->
+      <section class="sec">
+        <div class="sec-h"><span class="num">06</span><h2>In your own words</h2></div>
+        <p class="sub">Both optional. Please avoid anything that would identify you.</p>
+
+        <fieldset class="q">
+          <p class="qlab">What is one thing your manager does that helps you do your job well?</p>
+          <textarea class="txt qinput" name="O1 one thing the manager does that helps"></textarea>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab">What is one thing about how your team is managed that you would change?</p>
+          <textarea class="txt qinput" name="O2 one thing you would change"></textarea>
+        </fieldset>
+      </section>
+
+      <div class="actions">
+        <button class="btn" type="submit">Send my answers</button>
+        <p class="ns">Anonymous. Your answers are sent only when you press this button.</p>
+      </div>
+    </form>
+
+    <section class="thanks" id="thanks" hidden>
+      <img class="seal" src="assets/days-of-april-seal.png" alt="">
+      <h2>Thank you.</h2>
+      <p>Your answers join everyone else's as one overall picture. The same questions will come back to you after the training, and the difference between the two is how your company will know the programme worked. Nothing here is traced back to you.</p>
+      <p class="sign">Days of April</p>
+    </section>
+
+    <footer class="foot">
+      <img class="seal" src="assets/days-of-april-seal.png" alt="">
+      <p>Responses are anonymous. We do not collect names or email addresses. Everything shared is confidential, used only for this engagement, and reported to your company only as overall patterns. Where fewer than five people answer about the same manager, those answers are merged so no one can be identified.</p>
+    </footer>
+  </div>
+</main>
+
+<script>
+(function(){
+  var form=document.getElementById('mt-form');
+  var thanks=document.getElementById('thanks');
+  var fill=document.getElementById('fill');
+  var cnt=document.getElementById('cnt');
+  var qs=Array.prototype.slice.call(document.querySelectorAll('.q'));
+  var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  function answered(fs){
+    if(fs.querySelector('input[type=radio]:checked'))return true;
+    var t=fs.querySelector('.qinput');
+    if(t&&t.value&&t.value.trim()!=='')return true;
+    return false;
+  }
+  function update(){
+    var d=0;for(var i=0;i<qs.length;i++){if(answered(qs[i]))d++;}
+    fill.style.width=(qs.length?d/qs.length*100:0)+'%';
+    cnt.textContent=d+' of '+qs.length+' answered';
+  }
+  form.addEventListener('input',update);
+  form.addEventListener('change',update);
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    fetch('https://api.web3forms.com/submit',{method:'POST',body:new FormData(form)}).then(finish).catch(finish);
+  });
+  function finish(){form.hidden=true;thanks.hidden=false;window.scrollTo({top:0,behavior:reduce?'auto':'smooth'});}
+  update();
+})();
+</script>
+</body>
+</html>

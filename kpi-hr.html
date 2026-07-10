@@ -1,0 +1,339 @@
+<!doctype html>
+<!-- ============================================================================
+     Days of April · HR Consultancy — KPIs & Goal-Setting · HR
+     Netlify-hosted HTML form. Locked house style (light mode: ivory ground, navy
+     text, Cormorant + Poppins, champagne #C6AC72 whisper accent only).
+     The HR / office half of the KPI intake (the H-series: what numbers exist and
+     where they live, how roles and reviews run) plus the document upload folder.
+     The owner / MD has their own link (kpi-owner-md).
+
+     DEPLOY-TIME CHECKLIST (set these before this form goes live):
+       1. Replace your company (page title + intro + foot) with the client's name.
+       2. DOCUMENT UPLOAD: replace #demo-upload-folder (Documents section) with the
+          real Google Drive upload-folder URL for THIS client's engagement folder.
+          «VERIFY the Drive folder opens without a login wall for the client».
+          (This form bears the link: it collects the monthly numbers pack and job
+          descriptions. The owner form kpi-owner-md points at the same folder.)
+       3. Netlify site/account: publish under the Days of April HR Consultancy
+          Netlify team. Submissions go via Web3Forms (paste the «WEB3FORMS_ACCESS_KEY»). Form id kpi-hr  (matches the
+          <form name> and the hidden form-name input — do not change one without
+          the other, or Netlify will not record submissions).
+       4. Submission notifications: set the notification mailbox in the Netlify
+          dashboard (Site settings > Forms > Form notifications). NOT set in code.
+          Intended: daysofaprilhr@gmail.com  «VERIFY account wiring».
+       5. NEVER ASK TWICE: for a post-audit client, HIDE the three «AUDIT-SKIP»
+          questions (H3, H7, H8) and show them as "already on file from your audit".
+          Direct-entry clients see everything.
+       6. Save each audience form's public link into client-questionnaire.md.
+     ============================================================================ -->
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KPIs and Goal-Setting · HR · prepared for your company</title>
+<link rel="icon" href="assets/days-of-april-favicon.png">
+<style>
+:root{
+  --navy:#1B2431; --navy-2:#232F3E; --paper:#F5F0E6; --ground:#E9E2D1;
+  --ivory:#F4EFE4; --ink:#1B2431; --champ:#C6AC72; --deep:#9A7B3A;
+  --muted:#6E6857; --sec:#4A5260; --line:#DED7C4;
+  --display:'Cormorant','Hoefler Text',Georgia,serif;
+  --sans:'Poppins','Avenir Next',Avenir,system-ui,sans-serif;
+}
+@font-face{font-family:'Cormorant';src:url('assets/fonts/Cormorant.ttf') format('truetype');font-weight:300 700;font-style:normal;font-display:swap;}
+@font-face{font-family:'Cormorant';src:url('assets/fonts/Cormorant-Italic.ttf') format('truetype');font-weight:300 700;font-style:italic;font-display:swap;}
+@font-face{font-family:'Poppins';src:url('assets/fonts/Poppins-Light.ttf') format('truetype');font-weight:300;font-display:swap;}
+@font-face{font-family:'Poppins';src:url('assets/fonts/Poppins-Regular.ttf') format('truetype');font-weight:400;font-display:swap;}
+@font-face{font-family:'Poppins';src:url('assets/fonts/Poppins-Medium.ttf') format('truetype');font-weight:500;font-display:swap;}
+@font-face{font-family:'Poppins';src:url('assets/fonts/Poppins-SemiBold.ttf') format('truetype');font-weight:600;font-display:swap;}
+
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);font-weight:400;line-height:1.5;}
+img{max-width:100%;display:block;}
+.shell{max-width:780px;margin:0 auto;background:var(--paper);min-height:100vh;box-shadow:0 0 44px rgba(27,36,49,.07);}
+.banner{width:100%;height:auto;}
+.wrap{padding:0 clamp(20px,5vw,54px);}
+
+.sticky{position:sticky;top:0;z-index:20;background:rgba(245,240,230,.94);backdrop-filter:saturate(140%) blur(6px);border-bottom:1px solid var(--line);}
+.sticky .row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px clamp(20px,5vw,54px);}
+.sticky .aud{font-family:var(--sans);font-weight:600;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);}
+.sticky .cnt{font-family:var(--sans);font-weight:500;font-size:11px;letter-spacing:.05em;color:var(--muted);white-space:nowrap;}
+.track{height:2px;background:var(--line);}
+.track .fill{height:2px;width:0;background:var(--navy);transition:width .25s ease;}
+
+.intro{padding:40px 0 6px;}
+.kick{font-family:var(--sans);font-weight:500;font-size:10.5px;letter-spacing:.34em;text-transform:uppercase;color:var(--deep);}
+.intro h1{font-family:var(--display);font-weight:600;font-size:clamp(30px,7vw,44px);line-height:1.02;margin:14px 0 0;letter-spacing:.005em;}
+.intro .for{font-family:var(--display);font-style:italic;font-size:clamp(17px,4vw,21px);color:var(--sec);margin-top:6px;}
+.rule{width:44px;height:1px;background:var(--champ);border:0;margin:22px 0;}
+.welcome{font-size:15px;line-height:1.64;color:var(--ink);max-width:62ch;}
+.note{margin-top:20px;padding:15px 17px;background:#EDE7D8;border-left:2px solid var(--champ);font-size:13.5px;line-height:1.55;color:var(--sec);}
+
+.sec{padding:32px 0;border-top:1px solid var(--line);}
+.sec-h{display:flex;align-items:baseline;gap:16px;margin-bottom:4px;}
+.sec-h .num{font-family:var(--display);font-weight:500;font-size:34px;line-height:.8;color:var(--champ);}
+.sec-h h2{font-family:var(--display);font-weight:600;font-size:24px;line-height:1.05;margin:0;color:var(--ink);}
+.sec .sub{font-size:13.5px;color:var(--muted);margin:0 0 4px 50px;}
+
+.q{border:0;margin:0;padding:24px 0;border-bottom:1px solid var(--line);min-inline-size:auto;}
+.q:last-child{border-bottom:0;}
+.q .qlab{font-size:15px;line-height:1.5;color:var(--ink);margin:0;font-weight:400;}
+.q .tag{font-family:var(--sans);font-weight:600;font-size:10px;letter-spacing:.1em;color:var(--deep);margin-right:9px;}
+.q .help{font-size:13px;line-height:1.5;color:var(--muted);font-style:italic;margin:9px 0 0;}
+.q .skip{font-style:normal;color:var(--muted);}
+
+.radios{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px;max-width:430px;}
+.radios.yn{grid-template-columns:repeat(2,1fr);max-width:290px;}
+.opt{position:relative;display:block;}
+.opt input{position:absolute;opacity:0;inset:0;width:100%;height:100%;margin:0;cursor:pointer;}
+.opt span{display:block;padding:12px 6px;text-align:center;border:1px solid var(--line);background:transparent;font-family:var(--sans);font-weight:500;font-size:13px;color:var(--sec);transition:.15s;}
+.opt input:checked+span{background:var(--navy);border-color:var(--navy);color:var(--ivory);}
+.opt input:focus-visible+span{outline:2px solid var(--navy);outline-offset:2px;}
+.opt:hover span{border-color:var(--navy);}
+
+.reveal{margin-top:14px;}
+.reveal[hidden]{display:none;}
+.tl{display:block;font-size:12.5px;color:var(--muted);margin:14px 0 6px;}
+input.txt,textarea.txt,select.txt{width:100%;font-family:var(--sans);font-size:14px;color:var(--ink);background:#FBF8F1;border:1px solid var(--line);padding:11px 12px;border-radius:0;}
+textarea.txt{min-height:88px;resize:vertical;line-height:1.55;}
+input.txt:focus,textarea.txt:focus,select.txt:focus{outline:2px solid var(--navy);outline-offset:1px;border-color:var(--navy);}
+
+.drive{margin-top:6px;padding:26px;background:var(--navy);color:var(--ivory);}
+.drive h3{font-family:var(--display);font-weight:600;font-size:22px;margin:0 0 10px;color:var(--ivory);}
+.drive p{font-size:13.5px;line-height:1.58;color:rgba(244,239,228,.82);margin:0 0 18px;max-width:56ch;}
+.drive a.dbtn{display:inline-block;font-family:var(--sans);font-weight:600;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--ivory);background:transparent;border:1px solid var(--champ);padding:14px 30px;text-decoration:none;transition:.15s;}
+.drive a.dbtn:hover{background:rgba(198,172,114,.12);}
+.drive .fine{font-size:12px;color:rgba(244,239,228,.6);margin:16px 0 0;}
+
+.actions{padding:34px 0 6px;}
+.btn{display:inline-block;font-family:var(--sans);font-weight:600;font-size:13.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ivory);background:var(--navy);border:1px solid var(--navy);padding:15px 36px;cursor:pointer;text-decoration:none;transition:.15s;}
+.btn:hover{background:var(--navy-2);border-color:var(--navy-2);}
+.ns{font-size:12px;color:var(--muted);margin-top:12px;}
+
+.foot{padding:28px 0 50px;border-top:1px solid var(--line);margin-top:10px;}
+.foot .seal{width:34px;margin-bottom:12px;opacity:.92;}
+.foot p{font-size:12px;line-height:1.6;color:var(--muted);margin:0 0 6px;max-width:66ch;}
+.foot .cc{font-weight:500;color:var(--sec);}
+
+.thanks{padding:74px 0;}
+.thanks[hidden]{display:none;}
+.thanks .seal{width:46px;margin-bottom:24px;}
+.thanks h2{font-family:var(--display);font-weight:600;font-size:clamp(28px,7vw,36px);margin:0 0 14px;color:var(--ink);}
+.thanks p{font-size:15px;line-height:1.62;color:var(--sec);max-width:56ch;}
+.thanks .sign{font-family:var(--display);font-style:italic;font-size:19px;color:var(--ink);margin-top:16px;}
+
+.hp{position:absolute!important;left:-9999px;top:-9999px;height:0;overflow:hidden;}
+[hidden]{display:none;}
+
+@media (max-width:520px){ .sec-h .num{font-size:28px;} }
+@media (prefers-reduced-motion:reduce){ *{transition:none!important;scroll-behavior:auto!important;} }
+</style>
+</head>
+<body>
+<main class="shell">
+  <img class="banner" src="assets/dataroom-cover-banner.png" alt="Days of April · HR Consultancy · Client Data Room">
+
+  <div class="sticky">
+    <div class="row"><span class="aud">KPIs and Goal-Setting &middot; HR</span><span class="cnt" id="cnt">0 answered</span></div>
+    <div class="track"><div class="fill" id="fill"></div></div>
+  </div>
+
+  <div class="wrap">
+    <section class="intro">
+      <span class="kick">KPIs and Goal-Setting</span>
+      <h1>The numbers to run on</h1>
+      <div class="for">Prepared for your company &middot; for whoever runs HR or the office day to day</div>
+      <hr class="rule">
+      <p class="welcome">This short form is where your KPI kit starts. Your answers tell us which numbers this business already has and where they live, so the kit we build uses what you can actually produce rather than something generic. It takes about ten minutes. There are no wrong answers, and "we do not track that" is a perfectly useful one.</p>
+      <p class="note">This is not a test of the business. It simply maps what you already have, so the kit we build fits you rather than a textbook. Nothing is saved on this device until you send it at the end.</p>
+    </section>
+
+    <form id="kpi-form" name="kpi-hr" method="POST" action="https://api.web3forms.com/submit">
+      <input type="hidden" name="access_key" value="«WEB3FORMS_ACCESS_KEY»">
+      <input type="hidden" name="from_name" value="Days of April HR form">
+      <input type="hidden" name="subject" value="New form submission — kpi-hr">
+      <input type="hidden" name="form_id" value="kpi-hr">
+      <p class="hp" aria-hidden="true"><label>Do not fill this in: <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off"></label></p>
+
+      <!-- OPENER · facts -->
+      <section class="sec">
+        <div class="sec-h"><span class="num">&middot;</span><h2>Before we start</h2></div>
+        <fieldset class="q">
+          <p class="qlab">Your name and role</p>
+          <label class="tl">So we know who to come back to</label>
+          <input class="txt qinput" type="text" name="Respondent name and role">
+        </fieldset>
+      </section>
+
+      <!-- 01 -->
+      <section class="sec">
+        <div class="sec-h"><span class="num">01</span><h2>What numbers exist and where they live</h2></div>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">H1</span>Where are sales figures recorded, and how soon after the month ends could you produce them?</p>
+          <label class="tl">In your own words</label>
+          <textarea class="txt qinput" name="H1 where sales are recorded and how soon"></textarea>
+          <p class="help">The kit only uses numbers that can be pulled without extra work; this tells us what is realistic.</p>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">H2</span>Is daily attendance recorded for everyone?</p>
+          <div class="radios yn" role="radiogroup" aria-label="H2">
+            <label class="opt"><input type="radio" name="H2 daily attendance recorded" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="H2 daily attendance recorded" value="No"><span>No</span></label>
+          </div>
+          <label class="tl">If yes, in what form? (register book, fingerprint machine, spreadsheet)</label>
+          <input class="txt" type="text" name="H2 attendance record form">
+          <p class="help">Attendance is usually the easiest early-warning number a company already owns.</p>
+        </fieldset>
+
+        <fieldset class="q">
+          <!-- «AUDIT-SKIP: pulled from audit 15.2» — hide and pre-fill for post-audit clients. -->
+          <p class="qlab"><span class="tag">H3</span>Could you say how many people left in the last 12 months, without a long search?</p>
+          <div class="radios" role="radiogroup" aria-label="H3">
+            <label class="opt"><input type="radio" name="H3 can produce leavers count" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="H3 can produce leavers count" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="H3 can produce leavers count" value="No"><span>No</span></label>
+          </div>
+          <p class="help">Staff turnover is one of the few numbers that predicts trouble; if it is hard to pull, we will show you a one-line record that fixes that.</p>
+          <div class="reveal" hidden><label class="tl">Add a note (optional)</label><textarea class="txt" name="H3 note" rows="2"></textarea></div>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">H4</span>Does anyone track money owed by customers and how old those debts are?</p>
+          <div class="radios" role="radiogroup" aria-label="H4">
+            <label class="opt"><input type="radio" name="H4 tracks money owed by customers" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="H4 tracks money owed by customers" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="H4 tracks money owed by customers" value="No"><span>No</span></label>
+          </div>
+          <p class="help">Debtor days is often the number an owner most wishes they had watched sooner.</p>
+          <div class="reveal" hidden><label class="tl">Add a note (optional)</label><textarea class="txt" name="H4 note" rows="2"></textarea></div>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">H5</span>Is there a monthly report or numbers pack that goes to the MD now?</p>
+          <div class="radios" role="radiogroup" aria-label="H5">
+            <label class="opt"><input type="radio" name="H5 monthly pack to MD" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="H5 monthly pack to MD" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="H5 monthly pack to MD" value="No"><span>No</span></label>
+          </div>
+          <p class="help">We design the scoreboard to slot into what already reaches the MD, not to add a second pile of paper. If you have a recent one, add it to the upload folder at the end.</p>
+          <div class="reveal" hidden><label class="tl">Add a note (optional)</label><textarea class="txt" name="H5 note" rows="2"></textarea></div>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">H6</span>Which numbers does someone ask you for again and again?</p>
+          <label class="tl">In your own words</label>
+          <textarea class="txt qinput" name="H6 numbers asked for repeatedly"></textarea>
+          <p class="help">Repeat requests are a sign a number belongs on the standing scoreboard, so you stop compiling it by hand each time.</p>
+        </fieldset>
+      </section>
+
+      <!-- 02 -->
+      <section class="sec">
+        <div class="sec-h"><span class="num">02</span><h2>How roles and reviews run today</h2></div>
+
+        <fieldset class="q">
+          <!-- «AUDIT-SKIP: pulled from audit 3.2» — hide and pre-fill for post-audit clients. -->
+          <p class="qlab"><span class="tag">H7</span>Do roles here have written job descriptions?</p>
+          <div class="radios" role="radiogroup" aria-label="H7">
+            <label class="opt"><input type="radio" name="H7 roles have written job descriptions" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="H7 roles have written job descriptions" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="H7 roles have written job descriptions" value="No"><span>No</span></label>
+          </div>
+          <p class="help">The role sheets we build double as simple written roles where none exist, two problems solved at once; where they exist, we build straight from yours. If you have one or two examples, add them to the upload folder at the end; a photo is fine.</p>
+          <div class="reveal" hidden><label class="tl">Add a note (optional)</label><textarea class="txt" name="H7 note" rows="2"></textarea></div>
+        </fieldset>
+
+        <fieldset class="q">
+          <!-- «AUDIT-SKIP: pulled from audit 10.9» — hide and pre-fill for post-audit clients. -->
+          <p class="qlab"><span class="tag">H8</span>When performance is reviewed, is it against anything written, or from memory and impression?</p>
+          <div class="radios" role="radiogroup" aria-label="H8">
+            <label class="opt"><input type="radio" name="H8 reviews against something written" value="Yes"><span>Yes, written</span></label>
+            <label class="opt"><input type="radio" name="H8 reviews against something written" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="H8 reviews against something written" value="No"><span>From memory</span></label>
+          </div>
+          <p class="help">Written targets are the company's protection: a rating or a raise decision can be defended on an agreed number, and the company is covered if a decision is ever challenged.</p>
+          <div class="reveal" hidden><label class="tl">Add a note (optional)</label><textarea class="txt" name="H8 note" rows="2"></textarea></div>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">H9</span>Is there a regular management meeting where numbers are discussed?</p>
+          <label class="tl">If yes, who attends and how often?</label>
+          <textarea class="txt qinput" name="H9 management meeting who and how often"></textarea>
+          <p class="help">If a meeting exists, the review rhythm we design uses it instead of adding a new one to your calendar.</p>
+        </fieldset>
+      </section>
+
+      <!-- 03 · DOCUMENTS -->
+      <section class="sec">
+        <div class="sec-h"><span class="num">03</span><h2>Documents</h2></div>
+        <p class="sub">The document-request list we sent shows exactly what we need. Add what you have here.</p>
+        <div class="drive">
+          <h3>Your secure upload folder</h3>
+          <p>This opens your company's private folder. Drop in the examples the questions above mentioned, such as a recent monthly numbers pack and one or two job descriptions. Scans, exports or clear photos are all fine.</p>
+          <a class="dbtn" href="#demo-upload-folder" target="_blank" rel="noopener">Open the upload folder</a>
+          <p class="fine">Everything you share here is confidential, used only for this engagement, and deleted after it ends, as set out in our engagement letter.</p>
+        </div>
+      </section>
+
+      <div class="actions">
+        <button class="btn" type="submit">Send my answers</button>
+        <p class="ns">Your answers are sent only when you press this button. Uploading documents is a separate step, in the folder above.</p>
+      </div>
+    </form>
+
+    <section class="thanks" id="thanks" hidden>
+      <img class="seal" src="assets/days-of-april-seal.png" alt="">
+      <h2>Thank you.</h2>
+      <p>That gives us what we need to start. We will review what you have shared, come back once with anything that needs a second look, and treat everything as confidential.</p>
+      <p class="sign">Days of April</p>
+    </section>
+
+    <footer class="foot">
+      <img class="seal" src="assets/days-of-april-seal.png" alt="">
+      <p>Everything you share here is confidential, used only for this engagement, and deleted after it ends, as set out in our engagement letter.</p>
+      <p class="cc">Private &amp; Confidential. Prepared for your company by Days of April.</p>
+    </footer>
+  </div>
+</main>
+
+<script>
+(function(){
+  var form=document.getElementById('kpi-form');
+  var thanks=document.getElementById('thanks');
+  var fill=document.getElementById('fill');
+  var cnt=document.getElementById('cnt');
+  var qs=Array.prototype.slice.call(document.querySelectorAll('.q'));
+  var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  function answered(fs){
+    if(fs.querySelector('input[type=radio]:checked'))return true;
+    if(fs.querySelector('input[type=checkbox]:checked'))return true;
+    var t=fs.querySelector('.qinput');
+    if(t&&t.value&&t.value.trim()!=='')return true;
+    return false;
+  }
+  function update(){
+    var d=0;for(var i=0;i<qs.length;i++){if(answered(qs[i]))d++;}
+    fill.style.width=(qs.length?d/qs.length*100:0)+'%';
+    cnt.textContent=d+' of '+qs.length+' answered';
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('.radios'),function(g){
+    g.addEventListener('change',function(){
+      var box=g.parentNode.querySelector('.reveal');
+      if(box){var v=g.querySelector('input:checked');box.hidden=!(v&&/^(Partly|No|Disagree|Can.t say)$/.test(v.value));}
+    });
+  });
+  form.addEventListener('input',update);
+  form.addEventListener('change',update);
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    fetch('https://api.web3forms.com/submit',{method:'POST',body:new FormData(form)}).then(finish).catch(finish);
+  });
+  function finish(){form.hidden=true;thanks.hidden=false;window.scrollTo({top:0,behavior:reduce?'auto':'smooth'});}
+  update();
+})();
+</script>
+</body>
+</html>

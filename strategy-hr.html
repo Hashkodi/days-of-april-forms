@@ -1,0 +1,340 @@
+<!doctype html>
+<!-- ============================================================================
+     Days of April · HR Consultancy — HR Strategy · PART 2 (HR person)
+     Netlify-hosted HTML form. Locked house style (light mode: ivory ground, navy
+     text, Cormorant + Poppins, champagne #C6AC72 whisper accent only).
+
+     DEPLOY-TIME CHECKLIST (set these before this form goes live):
+       1. Replace your company (page title + intro + footer) with the client's name.
+       2. Netlify site/account: publish under the Days of April HR Consultancy
+          Netlify team. Submissions go via Web3Forms (paste the «WEB3FORMS_ACCESS_KEY»). Form id strategy-hr  (matches the
+          <form name> and the hidden form-name input — do not change one without
+          the other, or Netlify will not record submissions).
+       3. Submission notifications: set the notification mailbox in the Netlify
+          dashboard (Site settings > Forms > Form notifications). NOT set in code.
+          Intended: daysofaprilhr@gmail.com  «VERIFY account wiring».
+       4. ORG-CHART UPLOAD: replace #demo-upload-folder (section 02, the Documents
+          block) with the real Google Drive upload-folder URL for THIS client's
+          engagement folder. «VERIFY the Drive folder opens without a login wall
+          for the client». This is where the B2 organisation chart is collected.
+       5. Save each audience form's public link into client-questionnaire.md.
+
+     EDITION NOTE: this is the FULL direct-entry edition (all of Part 2). In the
+     post-audit edition, items tagged «AUDIT-SKIP» are hidden ("already on file
+     from your audit") and «AUDIT-PREFILL» items show the audit answer to refine.
+     B2 resolves by the three-ways-in rule: chart already on file from the audit
+     Data Room -> whole section skipped; chart exists but no audit -> the upload
+     block below; neither -> the three-layer fill-in below the upload. Kept here
+     as one commented file; strip/hide per edition at build.
+     ============================================================================ -->
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HR Strategy · HR · prepared for your company</title>
+<link rel="icon" href="assets/days-of-april-favicon.png">
+<style>
+:root{
+  --navy:#1B2431; --navy-2:#232F3E; --paper:#F5F0E6; --ground:#E9E2D1;
+  --ivory:#F4EFE4; --ink:#1B2431; --champ:#C6AC72; --deep:#9A7B3A;
+  --muted:#6E6857; --sec:#4A5260; --line:#DED7C4;
+  --display:'Cormorant','Hoefler Text',Georgia,serif;
+  --sans:'Poppins','Avenir Next',Avenir,system-ui,sans-serif;
+}
+@font-face{font-family:'Cormorant';src:url('assets/fonts/Cormorant.ttf') format('truetype');font-weight:300 700;font-style:normal;font-display:swap;}
+@font-face{font-family:'Cormorant';src:url('assets/fonts/Cormorant-Italic.ttf') format('truetype');font-weight:300 700;font-style:italic;font-display:swap;}
+@font-face{font-family:'Poppins';src:url('assets/fonts/Poppins-Light.ttf') format('truetype');font-weight:300;font-display:swap;}
+@font-face{font-family:'Poppins';src:url('assets/fonts/Poppins-Regular.ttf') format('truetype');font-weight:400;font-display:swap;}
+@font-face{font-family:'Poppins';src:url('assets/fonts/Poppins-Medium.ttf') format('truetype');font-weight:500;font-display:swap;}
+@font-face{font-family:'Poppins';src:url('assets/fonts/Poppins-SemiBold.ttf') format('truetype');font-weight:600;font-display:swap;}
+
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);font-weight:400;line-height:1.5;}
+img{max-width:100%;display:block;}
+.shell{max-width:780px;margin:0 auto;background:var(--paper);min-height:100vh;box-shadow:0 0 44px rgba(27,36,49,.07);}
+.banner{width:100%;height:auto;}
+.wrap{padding:0 clamp(20px,5vw,54px);}
+
+.sticky{position:sticky;top:0;z-index:20;background:rgba(245,240,230,.94);backdrop-filter:saturate(140%) blur(6px);border-bottom:1px solid var(--line);}
+.sticky .row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px clamp(20px,5vw,54px);}
+.sticky .aud{font-family:var(--sans);font-weight:600;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);}
+.sticky .cnt{font-family:var(--sans);font-weight:500;font-size:11px;letter-spacing:.05em;color:var(--muted);white-space:nowrap;}
+.track{height:2px;background:var(--line);}
+.track .fill{height:2px;width:0;background:var(--navy);transition:width .25s ease;}
+
+.intro{padding:40px 0 6px;}
+.kick{font-family:var(--sans);font-weight:500;font-size:10.5px;letter-spacing:.34em;text-transform:uppercase;color:var(--deep);}
+.intro h1{font-family:var(--display);font-weight:600;font-size:clamp(30px,7vw,44px);line-height:1.02;margin:14px 0 0;letter-spacing:.005em;}
+.intro .for{font-family:var(--display);font-style:italic;font-size:clamp(17px,4vw,21px);color:var(--sec);margin-top:6px;}
+.rule{width:44px;height:1px;background:var(--champ);border:0;margin:22px 0;}
+.welcome{font-size:15px;line-height:1.64;color:var(--ink);max-width:62ch;}
+.note{margin-top:20px;padding:15px 17px;background:#EDE7D8;border-left:2px solid var(--champ);font-size:13.5px;line-height:1.55;color:var(--sec);}
+
+.sec{padding:32px 0;border-top:1px solid var(--line);}
+.sec-h{display:flex;align-items:baseline;gap:16px;margin-bottom:4px;}
+.sec-h .num{font-family:var(--display);font-weight:500;font-size:34px;line-height:.8;color:var(--champ);}
+.sec-h h2{font-family:var(--display);font-weight:600;font-size:24px;line-height:1.05;margin:0;color:var(--ink);}
+.sec .sub{font-size:13.5px;color:var(--muted);margin:0 0 4px 50px;font-style:italic;}
+
+.q{border:0;margin:0;padding:24px 0;border-bottom:1px solid var(--line);min-inline-size:auto;}
+.q:last-child{border-bottom:0;}
+.q .qlab{font-size:15px;line-height:1.5;color:var(--ink);margin:0;font-weight:400;}
+.q .tag{font-family:var(--sans);font-weight:600;font-size:10px;letter-spacing:.1em;color:var(--deep);margin-right:9px;}
+.q .help{font-size:13px;line-height:1.5;color:var(--muted);font-style:italic;margin:9px 0 0;}
+.q .skip{font-style:normal;color:var(--muted);}
+
+.radios{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px;max-width:430px;}
+.radios.yn{grid-template-columns:repeat(2,1fr);max-width:290px;}
+.opt{position:relative;display:block;}
+.opt input{position:absolute;opacity:0;inset:0;width:100%;height:100%;margin:0;cursor:pointer;}
+.opt span{display:block;padding:12px 6px;text-align:center;border:1px solid var(--line);background:transparent;font-family:var(--sans);font-weight:500;font-size:13px;color:var(--sec);transition:.15s;}
+.opt input:checked+span{background:var(--navy);border-color:var(--navy);color:var(--ivory);}
+.opt input:focus-visible+span{outline:2px solid var(--navy);outline-offset:2px;}
+.opt:hover span{border-color:var(--navy);}
+
+.checks{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:12px;}
+.checks .opt span{text-align:left;padding:12px 14px;font-size:12.5px;line-height:1.4;}
+@media (max-width:560px){.checks{grid-template-columns:1fr;}}
+
+.reveal{margin-top:14px;}
+.reveal[hidden]{display:none;}
+.tl{display:block;font-size:12.5px;color:var(--muted);margin:14px 0 6px;}
+input.txt,textarea.txt,select.txt{width:100%;font-family:var(--sans);font-size:14px;color:var(--ink);background:#FBF8F1;border:1px solid var(--line);padding:11px 12px;border-radius:0;}
+textarea.txt{min-height:88px;resize:vertical;line-height:1.55;}
+input.txt:focus,textarea.txt:focus,select.txt:focus{outline:2px solid var(--navy);outline-offset:1px;border-color:var(--navy);}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+@media (max-width:520px){.grid2{grid-template-columns:1fr;}}
+
+.drive{margin-top:6px;padding:26px;background:var(--navy);color:var(--ivory);}
+.drive h3{font-family:var(--display);font-weight:600;font-size:22px;margin:0 0 10px;color:var(--ivory);}
+.drive p{font-size:13.5px;line-height:1.58;color:rgba(244,239,228,.82);margin:0 0 18px;max-width:56ch;}
+.drive a.dbtn{display:inline-block;font-family:var(--sans);font-weight:600;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--ivory);background:transparent;border:1px solid var(--champ);padding:14px 30px;text-decoration:none;transition:.15s;}
+.drive a.dbtn:hover{background:rgba(198,172,114,.12);}
+.drive .fine{font-size:12px;color:rgba(244,239,228,.6);margin:16px 0 0;}
+
+.orsep{display:flex;align-items:center;gap:14px;margin:26px 0 6px;}
+.orsep hr{flex:1;height:1px;background:var(--line);border:0;}
+.orsep span{font-family:var(--sans);font-weight:600;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);}
+
+.actions{padding:34px 0 6px;}
+.btn{display:inline-block;font-family:var(--sans);font-weight:600;font-size:13.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ivory);background:var(--navy);border:1px solid var(--navy);padding:15px 36px;cursor:pointer;text-decoration:none;transition:.15s;}
+.btn:hover{background:var(--navy-2);border-color:var(--navy-2);}
+.ns{font-size:12px;color:var(--muted);margin-top:12px;}
+
+.foot{padding:28px 0 50px;border-top:1px solid var(--line);margin-top:10px;}
+.foot .seal{width:34px;margin-bottom:12px;opacity:.92;}
+.foot p{font-size:12px;line-height:1.6;color:var(--muted);margin:0 0 6px;max-width:66ch;}
+.foot .cc{font-weight:500;color:var(--sec);}
+
+.thanks{padding:74px 0;}
+.thanks[hidden]{display:none;}
+.thanks .seal{width:46px;margin-bottom:24px;}
+.thanks h2{font-family:var(--display);font-weight:600;font-size:clamp(28px,7vw,36px);margin:0 0 14px;color:var(--ink);}
+.thanks p{font-size:15px;line-height:1.62;color:var(--sec);max-width:56ch;}
+.thanks .sign{font-family:var(--display);font-style:italic;font-size:19px;color:var(--ink);margin-top:16px;}
+
+.hp{position:absolute!important;left:-9999px;top:-9999px;height:0;overflow:hidden;}
+[hidden]{display:none;}
+@media (max-width:520px){ .sec-h .num{font-size:28px;} }
+@media (prefers-reduced-motion:reduce){ *{transition:none!important;scroll-behavior:auto!important;} }
+</style>
+</head>
+<body>
+<main class="shell">
+  <img class="banner" src="assets/dataroom-cover-banner.png" alt="Days of April · HR Consultancy · Client Data Room">
+
+  <div class="sticky">
+    <div class="row"><span class="aud">HR Strategy &middot; HR</span><span class="cnt" id="cnt">0 answered</span></div>
+    <div class="track"><div class="fill" id="fill"></div></div>
+  </div>
+
+  <div class="wrap">
+    <section class="intro">
+      <span class="kick">HR Strategy</span>
+      <h1>What you see and hear</h1>
+      <div class="for">Prepared for your company &middot; for whoever runs the HR work</div>
+      <hr class="rule">
+      <p class="welcome">You know the day-to-day people-side better than anyone. This asks what you see and hear; there are no wrong answers and no one is graded. Where we ask for numbers, close guesses are fine.</p>
+      <p class="note">It takes about ten minutes. Nothing you type is saved on this device until you press send at the end. Where a question does not apply, leave it and move on.</p>
+    </section>
+
+    <form id="strategy-form" name="strategy-hr" method="POST" action="https://api.web3forms.com/submit">
+      <input type="hidden" name="access_key" value="«WEB3FORMS_ACCESS_KEY»">
+      <input type="hidden" name="from_name" value="Days of April HR form">
+      <input type="hidden" name="subject" value="New form submission — strategy-hr">
+      <input type="hidden" name="form_id" value="strategy-hr">
+      <p class="hp" aria-hidden="true"><label>Do not fill this in: <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off"></label></p>
+
+      <!-- B1 -->
+      <section class="sec">
+        <div class="sec-h"><span class="num">01</span><h2>The staff's voice</h2></div>
+        <p class="sub">What staff keep asking for is the cheapest early-warning system a company has; passing it on here means it finally lands on a plan.</p>
+        <p class="note" style="margin-left:0;">Leadership does not see or edit the raw answers in this section. This part stays with us.</p>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">B1.1</span>What are the five requests you hear most often from staff?</p>
+          <label class="tl">One per line, roughly in order</label>
+          <input class="txt qinput" type="text" name="B1.1 top staff request 1" placeholder="e.g. transport">
+          <input class="txt" type="text" name="B1.1 top staff request 2" placeholder="e.g. meals" style="margin-top:8px;">
+          <input class="txt" type="text" name="B1.1 top staff request 3" placeholder="e.g. shift flexibility" style="margin-top:8px;">
+          <input class="txt" type="text" name="B1.1 top staff request 4" placeholder="e.g. festival advances" style="margin-top:8px;">
+          <input class="txt" type="text" name="B1.1 top staff request 5" placeholder="e.g. overtime fairness, pay-date certainty" style="margin-top:8px;">
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">B1.2</span>What do people grumble about most?</p>
+          <label class="tl">The honest version. This stays with us.</label>
+          <textarea class="txt qinput" name="B1.2 what people grumble about most"></textarea>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">B1.3</span>What do staff actually like about working here?</p>
+          <label class="tl">The things that keep people</label>
+          <textarea class="txt qinput" name="B1.3 what staff like about working here"></textarea>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">B1.4</span>Has anyone good left in the last year? Why, in their words?</p>
+          <label class="tl">What they said, not the official reason</label>
+          <textarea class="txt qinput" name="B1.4 good leavers and why in their words"></textarea>
+        </fieldset>
+      </section>
+
+      <!-- B2 -->
+      <section class="sec">
+        <div class="sec-h"><span class="num">02</span><h2>Who does what</h2></div>
+        <p class="sub">This becomes your organisation chart, drawn up by us. Most companies get their first real one this way, and it costs you minutes, not hours.</p>
+
+        <!-- «AUDIT-SKIP (way 1): if the audit Data Room already holds a current organisation chart
+             (audit B 14.1 attachment), hide this whole section and none of the below appears.» -->
+
+        <!-- WAY 2 · upload (this engagement's document upload — the Drive block) -->
+        <fieldset class="q" style="border-bottom:0;padding-bottom:8px;">
+          <p class="qlab">If you already have an organisation chart in any form (a drawing, a slide, even a photo of one pinned to a wall), upload it here and skip the rest of this section.</p>
+          <div class="drive">
+            <h3>Your secure upload folder</h3>
+            <p>This opens your company's private folder. Drop in your organisation chart in whatever form it exists, plus your vision, mission or values if you have them written down. A scan, an export or a clear photo is all fine.</p>
+            <a class="dbtn" href="#demo-upload-folder" target="_blank" rel="noopener">Open the upload folder</a>
+            <p class="fine">Everything you share here is confidential, used only for this engagement, and deleted after it ends, as set out in our engagement letter.</p>
+          </div>
+        </fieldset>
+
+        <div class="orsep"><hr><span>or fill in three short lists</span><hr></div>
+
+        <!-- WAY 3 · fill-in fallback -->
+        <fieldset class="q">
+          <p class="qlab">No chart to draw and no software to learn, just three short lists. If even this feels awkward, leave it blank and we will pick it up in a ten-minute call and draw the chart for you.</p>
+          <label class="tl">Layer 1: who runs the whole place?</label>
+          <input class="txt qinput" type="text" name="B2 Layer 1 - who runs the place" placeholder="usually the owner/MD, maybe a GM">
+          <label class="tl">Layer 2: who answers directly to them, and what does each look after?</label>
+          <textarea class="txt" name="B2 Layer 2 - direct reports and areas" placeholder="e.g. Priyantha, factory; Shanika, accounts and admin" rows="3"></textarea>
+          <label class="tl">Layer 3: roughly how many people work under each of those?</label>
+          <input class="txt" type="text" name="B2 Layer 3 - team sizes" placeholder="a close guess is fine">
+          <label class="tl">And the HR work itself: who does it, and roughly how many hours a week?</label>
+          <input class="txt" type="text" name="B2 who does the HR work and how many hours" placeholder="e.g. me, around 6 hours between other duties">
+        </fieldset>
+      </section>
+
+      <!-- B3 -->
+      <section class="sec">
+        <div class="sec-h"><span class="num">03</span><h2>Day-to-day reality</h2></div>
+        <p class="sub">The plan schedules relief for whatever eats your week today.</p>
+
+        <!-- «AUDIT-PREFILL: B3.9 audit B 15.2 shows here for refinement in the post-audit edition» -->
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">B3.9</span>Which people-numbers does anyone actually look at today?</p>
+          <div class="checks">
+            <label class="opt"><input type="checkbox" name="B3.9 looks at - staff leaving" value="Yes"><span>Staff leaving</span></label>
+            <label class="opt"><input type="checkbox" name="B3.9 looks at - absence" value="Yes"><span>Absence</span></label>
+            <label class="opt"><input type="checkbox" name="B3.9 looks at - time to fill a role" value="Yes"><span>Time to fill a role</span></label>
+            <label class="opt"><input type="checkbox" name="B3.9 looks at - staff cost" value="Yes"><span>Staff cost</span></label>
+            <label class="opt"><input type="checkbox" name="B3.9 looks at - survey scores" value="Yes"><span>Survey scores</span></label>
+            <label class="opt"><input type="checkbox" name="B3.9 looks at - none of these" value="Yes"><span>None of these</span></label>
+          </div>
+        </fieldset>
+
+        <!-- «AUDIT-SKIP: B3.10 pulled from audit B 12.1 and our own audit survey if run; hidden post-audit» -->
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">B3.10</span>Has there ever been a staff survey or formal feedback round?</p>
+          <div class="radios" role="radiogroup" aria-label="B3.10">
+            <label class="opt"><input type="radio" name="B3.10 ever a staff survey" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="B3.10 ever a staff survey" value="Informally"><span>Informally</span></label>
+            <label class="opt"><input type="radio" name="B3.10 ever a staff survey" value="Never"><span>Never</span></label>
+          </div>
+          <p class="help">If yes, share the results with the documents.</p>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">B3.11</span>What takes most of your HR time in a normal week?</p>
+          <label class="tl">In your own words</label>
+          <textarea class="txt qinput" name="B3.11 what takes most HR time"></textarea>
+          <p class="help">e.g. attendance chasing, salary queries, hiring, discipline.</p>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">B3.12</span>If you could hand one HR task to someone else forever, which one?</p>
+          <label class="tl">Your honest pick</label>
+          <input class="txt qinput" type="text" name="B3.12 one HR task to hand off forever">
+        </fieldset>
+      </section>
+
+      <div class="actions">
+        <button class="btn" type="submit">Send my answers</button>
+        <p class="ns">Your answers are sent only when you press this button. Uploading your organisation chart is a separate step, in the folder above.</p>
+      </div>
+    </form>
+
+    <section class="thanks" id="thanks" hidden>
+      <img class="seal" src="assets/days-of-april-seal.png" alt="">
+      <h2>Thank you.</h2>
+      <p>We read every word before we meet, so our conversations start from your answers, not a blank page. Everything you share is confidential, used only for this engagement, and deleted after it ends, as set out in our engagement letter. If you have not added your organisation chart yet, the upload folder link stays open.</p>
+      <p class="sign">Days of April</p>
+    </section>
+
+    <footer class="foot">
+      <img class="seal" src="assets/days-of-april-seal.png" alt="">
+      <p>Everything you share here is confidential, used only for this engagement, and deleted after it ends, as set out in our engagement letter.</p>
+      <p class="cc">Private &amp; Confidential. Prepared for your company by Days of April.</p>
+    </footer>
+  </div>
+</main>
+
+<script>
+(function(){
+  var form=document.getElementById('strategy-form');
+  var thanks=document.getElementById('thanks');
+  var fill=document.getElementById('fill');
+  var cnt=document.getElementById('cnt');
+  var qs=Array.prototype.slice.call(document.querySelectorAll('.q'));
+  var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  function answered(fs){
+    if(fs.querySelector('input[type=radio]:checked'))return true;
+    if(fs.querySelector('input[type=checkbox]:checked'))return true;
+    var t=fs.querySelector('.qinput');
+    if(t&&t.value&&t.value.trim()!=='')return true;
+    return false;
+  }
+  function update(){
+    var d=0;for(var i=0;i<qs.length;i++){if(answered(qs[i]))d++;}
+    fill.style.width=(qs.length?d/qs.length*100:0)+'%';
+    cnt.textContent=d+' of '+qs.length+' answered';
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('.radios'),function(g){
+    g.addEventListener('change',function(){
+      var box=g.parentNode.querySelector('.reveal');
+      if(box){var v=g.querySelector('input:checked');box.hidden=!(v&&/^(Partly|No|Disagree|Can.t say)$/.test(v.value));}
+    });
+  });
+  form.addEventListener('input',update);
+  form.addEventListener('change',update);
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    fetch('https://api.web3forms.com/submit',{method:'POST',body:new FormData(form)}).then(finish).catch(finish);
+  });
+  function finish(){form.hidden=true;thanks.hidden=false;window.scrollTo({top:0,behavior:reduce?'auto':'smooth'});}
+  update();
+})();
+</script>
+</body>
+</html>

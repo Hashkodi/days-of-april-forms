@@ -1,0 +1,429 @@
+<!doctype html>
+<!-- ============================================================================
+     Days of April · HR Consultancy — HR Strategy · PART 1 (Owner / MD)
+     Netlify-hosted HTML form. Locked house style (light mode: ivory ground, navy
+     text, Cormorant + Poppins, champagne #C6AC72 whisper accent only).
+
+     DEPLOY-TIME CHECKLIST (set these before this form goes live):
+       1. Replace your company (page title + intro + footer) with the client's name.
+       2. Netlify site/account: publish under the Days of April HR Consultancy
+          Netlify team. Submissions go via Web3Forms (paste the «WEB3FORMS_ACCESS_KEY»). Form id strategy-owner-md  (matches the
+          <form name> and the hidden form-name input — do not change one without
+          the other, or Netlify will not record submissions).
+       3. Submission notifications: set the notification mailbox in the Netlify
+          dashboard (Site settings > Forms > Form notifications). NOT set in code.
+          Intended: daysofaprilhr@gmail.com  «VERIFY account wiring».
+       4. This form has no document upload (the org-chart upload lives on the HR
+          form, strategy-hr.html; finance figures travel with the document list).
+       5. Save each audience form's public link into client-questionnaire.md.
+
+     EDITION NOTE: this is the FULL direct-entry edition (all of Part 1). In the
+     post-audit edition, items tagged «AUDIT-SKIP» below are hidden ("already on
+     file from your audit") and «AUDIT-PREFILL» items show the audit answer for the
+     MD to refine. Kept here as one commented file; strip/hide per edition at build.
+     ============================================================================ -->
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HR Strategy · Owner / MD · prepared for your company</title>
+<link rel="icon" href="assets/days-of-april-favicon.png">
+<style>
+:root{
+  --navy:#1B2431; --navy-2:#232F3E; --paper:#F5F0E6; --ground:#E9E2D1;
+  --ivory:#F4EFE4; --ink:#1B2431; --champ:#C6AC72; --deep:#9A7B3A;
+  --muted:#6E6857; --sec:#4A5260; --line:#DED7C4;
+  --display:'Cormorant','Hoefler Text',Georgia,serif;
+  --sans:'Poppins','Avenir Next',Avenir,system-ui,sans-serif;
+}
+@font-face{font-family:'Cormorant';src:url('assets/fonts/Cormorant.ttf') format('truetype');font-weight:300 700;font-style:normal;font-display:swap;}
+@font-face{font-family:'Cormorant';src:url('assets/fonts/Cormorant-Italic.ttf') format('truetype');font-weight:300 700;font-style:italic;font-display:swap;}
+@font-face{font-family:'Poppins';src:url('assets/fonts/Poppins-Light.ttf') format('truetype');font-weight:300;font-display:swap;}
+@font-face{font-family:'Poppins';src:url('assets/fonts/Poppins-Regular.ttf') format('truetype');font-weight:400;font-display:swap;}
+@font-face{font-family:'Poppins';src:url('assets/fonts/Poppins-Medium.ttf') format('truetype');font-weight:500;font-display:swap;}
+@font-face{font-family:'Poppins';src:url('assets/fonts/Poppins-SemiBold.ttf') format('truetype');font-weight:600;font-display:swap;}
+
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);font-weight:400;line-height:1.5;}
+img{max-width:100%;display:block;}
+.shell{max-width:780px;margin:0 auto;background:var(--paper);min-height:100vh;box-shadow:0 0 44px rgba(27,36,49,.07);}
+.banner{width:100%;height:auto;}
+.wrap{padding:0 clamp(20px,5vw,54px);}
+
+.sticky{position:sticky;top:0;z-index:20;background:rgba(245,240,230,.94);backdrop-filter:saturate(140%) blur(6px);border-bottom:1px solid var(--line);}
+.sticky .row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px clamp(20px,5vw,54px);}
+.sticky .aud{font-family:var(--sans);font-weight:600;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);}
+.sticky .cnt{font-family:var(--sans);font-weight:500;font-size:11px;letter-spacing:.05em;color:var(--muted);white-space:nowrap;}
+.track{height:2px;background:var(--line);}
+.track .fill{height:2px;width:0;background:var(--navy);transition:width .25s ease;}
+
+.intro{padding:40px 0 6px;}
+.kick{font-family:var(--sans);font-weight:500;font-size:10.5px;letter-spacing:.34em;text-transform:uppercase;color:var(--deep);}
+.intro h1{font-family:var(--display);font-weight:600;font-size:clamp(30px,7vw,44px);line-height:1.02;margin:14px 0 0;letter-spacing:.005em;}
+.intro .for{font-family:var(--display);font-style:italic;font-size:clamp(17px,4vw,21px);color:var(--sec);margin-top:6px;}
+.rule{width:44px;height:1px;background:var(--champ);border:0;margin:22px 0;}
+.welcome{font-size:15px;line-height:1.64;color:var(--ink);max-width:62ch;}
+.note{margin-top:20px;padding:15px 17px;background:#EDE7D8;border-left:2px solid var(--champ);font-size:13.5px;line-height:1.55;color:var(--sec);}
+
+.sec{padding:32px 0;border-top:1px solid var(--line);}
+.sec-h{display:flex;align-items:baseline;gap:16px;margin-bottom:4px;}
+.sec-h .num{font-family:var(--display);font-weight:500;font-size:34px;line-height:.8;color:var(--champ);}
+.sec-h h2{font-family:var(--display);font-weight:600;font-size:24px;line-height:1.05;margin:0;color:var(--ink);}
+.sec .sub{font-size:13.5px;color:var(--muted);margin:0 0 4px 50px;font-style:italic;}
+
+.q{border:0;margin:0;padding:24px 0;border-bottom:1px solid var(--line);min-inline-size:auto;}
+.q:last-child{border-bottom:0;}
+.q .qlab{font-size:15px;line-height:1.5;color:var(--ink);margin:0;font-weight:400;}
+.q .tag{font-family:var(--sans);font-weight:600;font-size:10px;letter-spacing:.1em;color:var(--deep);margin-right:9px;}
+.q .help{font-size:13px;line-height:1.5;color:var(--muted);font-style:italic;margin:9px 0 0;}
+.q .skip{font-style:normal;color:var(--muted);}
+
+.radios{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px;max-width:430px;}
+.radios.yn{grid-template-columns:repeat(2,1fr);max-width:290px;}
+.opt{position:relative;display:block;}
+.opt input{position:absolute;opacity:0;inset:0;width:100%;height:100%;margin:0;cursor:pointer;}
+.opt span{display:block;padding:12px 6px;text-align:center;border:1px solid var(--line);background:transparent;font-family:var(--sans);font-weight:500;font-size:13px;color:var(--sec);transition:.15s;}
+.opt input:checked+span{background:var(--navy);border-color:var(--navy);color:var(--ivory);}
+.opt input:focus-visible+span{outline:2px solid var(--navy);outline-offset:2px;}
+.opt:hover span{border-color:var(--navy);}
+
+.checks{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:12px;}
+.checks .opt span{text-align:left;padding:12px 14px;font-size:12.5px;line-height:1.4;}
+.subhead{font-family:var(--sans);font-weight:600;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--deep);margin:20px 0 2px;}
+@media (max-width:560px){.checks{grid-template-columns:1fr;}}
+
+.reveal{margin-top:14px;}
+.reveal[hidden]{display:none;}
+.tl{display:block;font-size:12.5px;color:var(--muted);margin:14px 0 6px;}
+input.txt,textarea.txt,select.txt{width:100%;font-family:var(--sans);font-size:14px;color:var(--ink);background:#FBF8F1;border:1px solid var(--line);padding:11px 12px;border-radius:0;}
+textarea.txt{min-height:88px;resize:vertical;line-height:1.55;}
+input.txt:focus,textarea.txt:focus,select.txt:focus{outline:2px solid var(--navy);outline-offset:1px;border-color:var(--navy);}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+@media (max-width:520px){.grid2{grid-template-columns:1fr;}}
+.block{border:1px solid var(--line);padding:18px 18px 6px;margin-top:14px;background:#FBF8F1;}
+.block .bt{font-family:var(--sans);font-weight:600;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--deep);margin:0 0 4px;}
+
+.actions{padding:34px 0 6px;}
+.btn{display:inline-block;font-family:var(--sans);font-weight:600;font-size:13.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ivory);background:var(--navy);border:1px solid var(--navy);padding:15px 36px;cursor:pointer;text-decoration:none;transition:.15s;}
+.btn:hover{background:var(--navy-2);border-color:var(--navy-2);}
+.ns{font-size:12px;color:var(--muted);margin-top:12px;}
+
+.foot{padding:28px 0 50px;border-top:1px solid var(--line);margin-top:10px;}
+.foot .seal{width:34px;margin-bottom:12px;opacity:.92;}
+.foot p{font-size:12px;line-height:1.6;color:var(--muted);margin:0 0 6px;max-width:66ch;}
+.foot .cc{font-weight:500;color:var(--sec);}
+
+.thanks{padding:74px 0;}
+.thanks[hidden]{display:none;}
+.thanks .seal{width:46px;margin-bottom:24px;}
+.thanks h2{font-family:var(--display);font-weight:600;font-size:clamp(28px,7vw,36px);margin:0 0 14px;color:var(--ink);}
+.thanks p{font-size:15px;line-height:1.62;color:var(--sec);max-width:56ch;}
+.thanks .sign{font-family:var(--display);font-style:italic;font-size:19px;color:var(--ink);margin-top:16px;}
+
+.hp{position:absolute!important;left:-9999px;top:-9999px;height:0;overflow:hidden;}
+[hidden]{display:none;}
+@media (max-width:520px){ .sec-h .num{font-size:28px;} }
+@media (prefers-reduced-motion:reduce){ *{transition:none!important;scroll-behavior:auto!important;} }
+</style>
+</head>
+<body>
+<main class="shell">
+  <img class="banner" src="assets/dataroom-cover-banner.png" alt="Days of April · HR Consultancy · Client Data Room">
+
+  <div class="sticky">
+    <div class="row"><span class="aud">HR Strategy &middot; Owner / MD</span><span class="cnt" id="cnt">0 answered</span></div>
+    <div class="track"><div class="fill" id="fill"></div></div>
+  </div>
+
+  <div class="wrap">
+    <section class="intro">
+      <span class="kick">HR Strategy</span>
+      <h1>Where you are heading</h1>
+      <div class="for">Prepared for your company &middot; for the owner / managing director</div>
+      <hr class="rule">
+      <p class="welcome">Before we plan your HR, tell us where the business is heading, in your own words. There are no wrong answers and nothing to prepare. Numbers can be rough guesses; "not sure" is always fine. You can stop and return anytime on the same link.</p>
+      <p class="note">This is about your plans, not your paperwork, so there is nothing to look up. It takes about twelve minutes, and nothing you type is saved on this device until you press send at the end.</p>
+    </section>
+
+    <form id="strategy-form" name="strategy-owner-md" method="POST" action="https://api.web3forms.com/submit">
+      <input type="hidden" name="access_key" value="«WEB3FORMS_ACCESS_KEY»">
+      <input type="hidden" name="from_name" value="Days of April HR form">
+      <input type="hidden" name="subject" value="New form submission — strategy-owner-md">
+      <input type="hidden" name="form_id" value="strategy-owner-md">
+      <p class="hp" aria-hidden="true"><label>Do not fill this in: <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off"></label></p>
+
+      <!-- A1 -->
+      <section class="sec">
+        <div class="sec-h"><span class="num">01</span><h2>Where you are heading</h2></div>
+        <p class="sub">The whole people-plan hangs off your answer here; ten honest lines from you save two meetings.</p>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">A1.1</span>In a sentence or two: where do you want this business to be in three years?</p>
+          <label class="tl">In everyday words, not business-plan language</label>
+          <textarea class="txt qinput" name="A1.1 where the business should be in three years"></textarea>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">A1.2</span>Do you have a written vision, mission or values?</p>
+          <div class="radios" role="radiogroup" aria-label="A1.2">
+            <label class="opt"><input type="radio" name="A1.2 written vision mission or values" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="A1.2 written vision mission or values" value="Some of it"><span>Some of it</span></label>
+            <label class="opt"><input type="radio" name="A1.2 written vision mission or values" value="No"><span>No</span></label>
+          </div>
+          <p class="help">No is a common answer. If yes, share them with your documents.</p>
+        </fieldset>
+      </section>
+
+      <!-- A2 -->
+      <section class="sec">
+        <div class="sec-h"><span class="num">02</span><h2>Your goals, made countable</h2></div>
+        <p class="sub">Goals with rough numbers become a staffing plan we can cost; goals without numbers stay wishes. Fill in as many as you have, up to three.</p>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">Goal 1</span>Your first goal for the business</p>
+          <label class="tl">What is it?</label>
+          <input class="txt qinput" type="text" name="A2 Goal 1 - what" placeholder="e.g. open a second showroom, start exporting, add a night shift">
+          <div class="grid2">
+            <div><label class="tl">By when, roughly?</label><input class="txt" type="text" name="A2 Goal 1 - by when" placeholder="a guess is fine, or no date yet"></div>
+            <div><label class="tl">How many people will it need?</label><input class="txt" type="text" name="A2 Goal 1 - how many people" placeholder="e.g. 6 to 8, or not sure"></div>
+          </div>
+          <label class="tl">What kind of people?</label>
+          <input class="txt" type="text" name="A2 Goal 1 - what kind" placeholder="e.g. two salespeople and a supervisor, machine operators, a bookkeeper">
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">Goal 2</span>Your second goal <span class="skip">(leave blank if you have only one)</span></p>
+          <label class="tl">What is it?</label>
+          <input class="txt qinput" type="text" name="A2 Goal 2 - what">
+          <div class="grid2">
+            <div><label class="tl">By when, roughly?</label><input class="txt" type="text" name="A2 Goal 2 - by when"></div>
+            <div><label class="tl">How many people will it need?</label><input class="txt" type="text" name="A2 Goal 2 - how many people"></div>
+          </div>
+          <label class="tl">What kind of people?</label>
+          <input class="txt" type="text" name="A2 Goal 2 - what kind">
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">Goal 3</span>Your third goal <span class="skip">(leave blank if you do not have one)</span></p>
+          <label class="tl">What is it?</label>
+          <input class="txt qinput" type="text" name="A2 Goal 3 - what">
+          <div class="grid2">
+            <div><label class="tl">By when, roughly?</label><input class="txt" type="text" name="A2 Goal 3 - by when"></div>
+            <div><label class="tl">How many people will it need?</label><input class="txt" type="text" name="A2 Goal 3 - how many people"></div>
+          </div>
+          <label class="tl">What kind of people?</label>
+          <input class="txt" type="text" name="A2 Goal 3 - what kind">
+        </fieldset>
+      </section>
+
+      <!-- A3 -->
+      <section class="sec">
+        <div class="sec-h"><span class="num">03</span><h2>Projects already moving</h2></div>
+        <p class="sub">Projects fail on people more often than on money; naming the gaps now is cheaper than discovering them mid-project. Only real, dated ones, up to three.</p>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">Project 1</span>A project already moving</p>
+          <label class="tl">The project, in a line</label>
+          <input class="txt qinput" type="text" name="A3 Project 1 - what" placeholder="a new site, product line, certification, big system">
+          <div class="grid2">
+            <div><label class="tl">Who will run it day to day?</label><input class="txt" type="text" name="A3 Project 1 - who runs it" placeholder="a name, or nobody yet"></div>
+            <div><label class="tl">Will it need people you do not have? How many, doing what?</label><input class="txt" type="text" name="A3 Project 1 - new people needed" placeholder="e.g. yes, 3 technicians and a QA checker"></div>
+          </div>
+          <label class="tl">Does anyone need training or a licence/certificate for it? By when?</label>
+          <input class="txt" type="text" name="A3 Project 1 - training or licences" placeholder="e.g. forklift licences by March, food-safety training before opening">
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">Project 2</span>Another project <span class="skip">(leave blank if none)</span></p>
+          <label class="tl">The project, in a line</label>
+          <input class="txt qinput" type="text" name="A3 Project 2 - what">
+          <div class="grid2">
+            <div><label class="tl">Who will run it day to day?</label><input class="txt" type="text" name="A3 Project 2 - who runs it"></div>
+            <div><label class="tl">Will it need people you do not have? How many, doing what?</label><input class="txt" type="text" name="A3 Project 2 - new people needed"></div>
+          </div>
+          <label class="tl">Does anyone need training or a licence/certificate for it? By when?</label>
+          <input class="txt" type="text" name="A3 Project 2 - training or licences">
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">Project 3</span>Another project <span class="skip">(leave blank if none)</span></p>
+          <label class="tl">The project, in a line</label>
+          <input class="txt qinput" type="text" name="A3 Project 3 - what">
+          <div class="grid2">
+            <div><label class="tl">Who will run it day to day?</label><input class="txt" type="text" name="A3 Project 3 - who runs it"></div>
+            <div><label class="tl">Will it need people you do not have? How many, doing what?</label><input class="txt" type="text" name="A3 Project 3 - new people needed"></div>
+          </div>
+          <label class="tl">Does anyone need training or a licence/certificate for it? By when?</label>
+          <input class="txt" type="text" name="A3 Project 3 - training or licences">
+        </fieldset>
+      </section>
+
+      <!-- A4 -->
+      <section class="sec">
+        <div class="sec-h"><span class="num">04</span><h2>Things outside the business that could affect your people</h2></div>
+        <p class="sub">Ticking what worries you takes a minute and stops the plan being blind to what you already see coming. Tick anything that is on your mind.</p>
+
+        <fieldset class="q">
+          <p class="qlab">Tick anything that is on your mind. Add a line at the end if you want.</p>
+
+          <p class="subhead">Rules and government</p>
+          <div class="checks">
+            <label class="opt"><input type="checkbox" name="A4 minimum wage changes" value="Yes"><span>Minimum wage changes</span></label>
+            <label class="opt"><input type="checkbox" name="A4 EPF ETF or tax changes" value="Yes"><span>EPF, ETF or tax changes</span></label>
+            <label class="opt"><input type="checkbox" name="A4 labour inspections" value="Yes"><span>Labour inspections</span></label>
+          </div>
+
+          <p class="subhead">Money</p>
+          <div class="checks">
+            <label class="opt"><input type="checkbox" name="A4 the rupee and import costs" value="Yes"><span>The rupee and import costs</span></label>
+            <label class="opt"><input type="checkbox" name="A4 customers spending less" value="Yes"><span>Customers spending less</span></label>
+            <label class="opt"><input type="checkbox" name="A4 cost of borrowing" value="Yes"><span>Cost of borrowing</span></label>
+          </div>
+
+          <p class="subhead">People</p>
+          <div class="checks">
+            <label class="opt"><input type="checkbox" name="A4 staff leaving for jobs abroad" value="Yes"><span>Staff leaving for jobs abroad</span></label>
+            <label class="opt"><input type="checkbox" name="A4 hard to find skilled people" value="Yes"><span>Hard to find skilled people</span></label>
+            <label class="opt"><input type="checkbox" name="A4 younger staff wanting flexibility" value="Yes"><span>Younger staff wanting flexibility</span></label>
+          </div>
+
+          <p class="subhead">Technology</p>
+          <div class="checks">
+            <label class="opt"><input type="checkbox" name="A4 customers moving online" value="Yes"><span>Customers moving online</span></label>
+            <label class="opt"><input type="checkbox" name="A4 software replacing manual work" value="Yes"><span>Software replacing manual work</span></label>
+            <label class="opt"><input type="checkbox" name="A4 competitors automating" value="Yes"><span>Competitors automating</span></label>
+          </div>
+
+          <p class="subhead">Energy and environment</p>
+          <div class="checks">
+            <label class="opt"><input type="checkbox" name="A4 power costs" value="Yes"><span>Power costs</span></label>
+            <label class="opt"><input type="checkbox" name="A4 weather disruption" value="Yes"><span>Weather disruption</span></label>
+          </div>
+
+          <p class="subhead">Legal</p>
+          <div class="checks">
+            <label class="opt"><input type="checkbox" name="A4 a dispute you worry about" value="Yes"><span>A dispute you worry about</span></label>
+            <label class="opt"><input type="checkbox" name="A4 buyer compliance audits" value="Yes"><span>Buyer compliance audits (if you export)</span></label>
+          </div>
+
+          <label class="tl">Anything else on your mind? (one line, optional)</label>
+          <input class="txt" type="text" name="A4 anything else on your mind">
+        </fieldset>
+      </section>
+
+      <!-- A5 -->
+      <section class="sec">
+        <div class="sec-h"><span class="num">05</span><h2>What you expect, and what you would fix</h2></div>
+        <p class="sub">Your priorities decide where the plan spends its first money and effort.</p>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">A5.11</span>What do you expect from the person who handles HR here?</p>
+          <label class="tl">In your own words</label>
+          <textarea class="txt qinput" name="A5.11 what you expect from HR"></textarea>
+          <p class="help">"Keep us out of trouble and keep good people" is a perfectly good answer.</p>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">A5.12</span>Pick up to three priorities for the year, then edit freely below.</p>
+          <div class="checks">
+            <label class="opt"><input type="checkbox" name="A5.12 priority - everyone on a proper contract" value="Yes"><span>Everyone on a proper contract by December</span></label>
+            <label class="opt"><input type="checkbox" name="A5.12 priority - cut leavers" value="Yes"><span>Cut leavers from 8 to 4 a year</span></label>
+            <label class="opt"><input type="checkbox" name="A5.12 priority - new outlet staffed and trained" value="Yes"><span>The new outlet staffed and trained by opening</span></label>
+            <label class="opt"><input type="checkbox" name="A5.12 priority - second in command" value="Yes"><span>A second-in-command behind your key manager</span></label>
+            <label class="opt"><input type="checkbox" name="A5.12 priority - pay reviewed against market" value="Yes"><span>Pay reviewed against the market once</span></label>
+            <label class="opt"><input type="checkbox" name="A5.12 priority - working discipline procedure" value="Yes"><span>A working discipline procedure</span></label>
+            <label class="opt"><input type="checkbox" name="A5.12 priority - staff records in one place" value="Yes"><span>Staff records in one safe place</span></label>
+            <label class="opt"><input type="checkbox" name="A5.12 priority - proper induction" value="Yes"><span>A proper induction for every new hire</span></label>
+            <label class="opt"><input type="checkbox" name="A5.12 priority - overtime recorded and paid right" value="Yes"><span>Overtime recorded and paid right</span></label>
+            <label class="opt"><input type="checkbox" name="A5.12 priority - one staff survey acted on" value="Yes"><span>One staff survey with results acted on</span></label>
+          </div>
+          <label class="tl">Add or edit your priorities in your own words (optional)</label>
+          <textarea class="txt" name="A5.12 priorities in your own words" rows="2"></textarea>
+        </fieldset>
+
+        <!-- «AUDIT-SKIP: A5.13 pulled from audit B 11.4 / 11.7 and audit A 1.8; hidden in the post-audit edition» -->
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">A5.13</span>Who would be hardest to replace, and is anyone ready behind them?</p>
+          <label class="tl">Including yourself</label>
+          <textarea class="txt qinput" name="A5.13 hardest to replace and who is ready"></textarea>
+        </fieldset>
+
+        <!-- «AUDIT-SKIP: A5.14 pulled from audit A 1.5; hidden in the post-audit edition» -->
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">A5.14</span>Is money set aside for people-matters this year?</p>
+          <div class="radios" role="radiogroup" aria-label="A5.14">
+            <label class="opt"><input type="radio" name="A5.14 money set aside for people-matters" value="Planned budget"><span>Planned budget</span></label>
+            <label class="opt"><input type="radio" name="A5.14 money set aside for people-matters" value="Case by case"><span>Case by case</span></label>
+            <label class="opt"><input type="radio" name="A5.14 money set aside for people-matters" value="No"><span>No</span></label>
+          </div>
+          <p class="help">However it works today is fine.</p>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">A5.15</span>Anything else we should know before we plan?</p>
+          <label class="tl">In your own words</label>
+          <textarea class="txt qinput" name="A5.15 anything else before we plan"></textarea>
+          <p class="help">Family matters, seasonality, partnerships, anything that shapes people decisions.</p>
+        </fieldset>
+      </section>
+
+      <div class="actions">
+        <button class="btn" type="submit">Send my answers</button>
+        <p class="ns">Your answers are sent only when you press this button.</p>
+      </div>
+    </form>
+
+    <section class="thanks" id="thanks" hidden>
+      <img class="seal" src="assets/days-of-april-seal.png" alt="">
+      <h2>Thank you.</h2>
+      <p>We read every word before we meet, so our conversations start from your answers, not a blank page. Everything you share is confidential, used only for this engagement, and deleted after it ends, as set out in our engagement letter.</p>
+      <p class="sign">Days of April</p>
+    </section>
+
+    <footer class="foot">
+      <img class="seal" src="assets/days-of-april-seal.png" alt="">
+      <p>Everything you share here is confidential, used only for this engagement, and deleted after it ends, as set out in our engagement letter.</p>
+      <p class="cc">Private &amp; Confidential. Prepared for your company by Days of April.</p>
+    </footer>
+  </div>
+</main>
+
+<script>
+(function(){
+  var form=document.getElementById('strategy-form');
+  var thanks=document.getElementById('thanks');
+  var fill=document.getElementById('fill');
+  var cnt=document.getElementById('cnt');
+  var qs=Array.prototype.slice.call(document.querySelectorAll('.q'));
+  var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  function answered(fs){
+    if(fs.querySelector('input[type=radio]:checked'))return true;
+    if(fs.querySelector('input[type=checkbox]:checked'))return true;
+    var t=fs.querySelector('.qinput');
+    if(t&&t.value&&t.value.trim()!=='')return true;
+    return false;
+  }
+  function update(){
+    var d=0;for(var i=0;i<qs.length;i++){if(answered(qs[i]))d++;}
+    fill.style.width=(qs.length?d/qs.length*100:0)+'%';
+    cnt.textContent=d+' of '+qs.length+' answered';
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('.radios'),function(g){
+    g.addEventListener('change',function(){
+      var box=g.parentNode.querySelector('.reveal');
+      if(box){var v=g.querySelector('input:checked');box.hidden=!(v&&/^(Partly|No|Disagree|Can.t say)$/.test(v.value));}
+    });
+  });
+  form.addEventListener('input',update);
+  form.addEventListener('change',update);
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    fetch('https://api.web3forms.com/submit',{method:'POST',body:new FormData(form)}).then(finish).catch(finish);
+  });
+  function finish(){form.hidden=true;thanks.hidden=false;window.scrollTo({top:0,behavior:reduce?'auto':'smooth'});}
+  update();
+})();
+</script>
+</body>
+</html>

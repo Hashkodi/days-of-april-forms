@@ -1,0 +1,760 @@
+<!doctype html>
+<!-- ============================================================================
+     Days of April · HR Consultancy — Initial HR Audit · FORM B (HR)
+     The core Data Room form. Netlify-hosted HTML. Locked house style (light mode).
+
+     DEPLOY-TIME CHECKLIST (set these before this form goes live):
+       1. Replace your company (page title + intro + company field default + foot).
+       2. Netlify site/account: publish under the Days of April HR Consultancy
+          Netlify team. Submissions go via Web3Forms (paste the «WEB3FORMS_ACCESS_KEY»). Form id audit-hr  (matches <form name>
+          and the hidden form-name input — keep the two identical).
+       3. Submission notifications: set the mailbox in the Netlify dashboard
+          (Site settings > Forms > Form notifications). NOT set in code.
+          Intended: daysofaprilhr@gmail.com  «VERIFY account wiring».
+       4. DOCUMENT UPLOAD: replace #demo-upload-folder (Documents section) with the
+          real Google Drive upload-folder URL for THIS client's engagement folder.
+          «VERIFY the Drive folder opens without a login wall for the client».
+       5. Save each audience form's public link into client-questionnaire.md.
+     ============================================================================ -->
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Initial HR Audit · HR · prepared for your company</title>
+<link rel="icon" href="assets/days-of-april-favicon.png">
+<style>
+:root{
+  --navy:#1B2431; --navy-2:#232F3E; --paper:#F5F0E6; --ground:#E9E2D1;
+  --ivory:#F4EFE4; --ink:#1B2431; --champ:#C6AC72; --deep:#9A7B3A;
+  --muted:#6E6857; --sec:#4A5260; --line:#DED7C4;
+  --display:'Cormorant','Hoefler Text',Georgia,serif;
+  --sans:'Poppins','Avenir Next',Avenir,system-ui,sans-serif;
+}
+@font-face{font-family:'Cormorant';src:url('assets/fonts/Cormorant.ttf') format('truetype');font-weight:300 700;font-style:normal;font-display:swap;}
+@font-face{font-family:'Cormorant';src:url('assets/fonts/Cormorant-Italic.ttf') format('truetype');font-weight:300 700;font-style:italic;font-display:swap;}
+@font-face{font-family:'Poppins';src:url('assets/fonts/Poppins-Light.ttf') format('truetype');font-weight:300;font-display:swap;}
+@font-face{font-family:'Poppins';src:url('assets/fonts/Poppins-Regular.ttf') format('truetype');font-weight:400;font-display:swap;}
+@font-face{font-family:'Poppins';src:url('assets/fonts/Poppins-Medium.ttf') format('truetype');font-weight:500;font-display:swap;}
+@font-face{font-family:'Poppins';src:url('assets/fonts/Poppins-SemiBold.ttf') format('truetype');font-weight:600;font-display:swap;}
+
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);font-weight:400;line-height:1.5;}
+img{max-width:100%;display:block;}
+.shell{max-width:780px;margin:0 auto;background:var(--paper);min-height:100vh;box-shadow:0 0 44px rgba(27,36,49,.07);}
+.banner{width:100%;height:auto;}
+.wrap{padding:0 clamp(20px,5vw,54px);}
+
+.sticky{position:sticky;top:0;z-index:20;background:rgba(245,240,230,.94);backdrop-filter:saturate(140%) blur(6px);border-bottom:1px solid var(--line);}
+.sticky .row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px clamp(20px,5vw,54px);}
+.sticky .aud{font-family:var(--sans);font-weight:600;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);}
+.sticky .cnt{font-family:var(--sans);font-weight:500;font-size:11px;letter-spacing:.05em;color:var(--muted);white-space:nowrap;}
+.track{height:2px;background:var(--line);}
+.track .fill{height:2px;width:0;background:var(--navy);transition:width .25s ease;}
+
+.intro{padding:40px 0 6px;}
+.kick{font-family:var(--sans);font-weight:500;font-size:10.5px;letter-spacing:.34em;text-transform:uppercase;color:var(--deep);}
+.intro h1{font-family:var(--display);font-weight:600;font-size:clamp(30px,7vw,44px);line-height:1.02;margin:14px 0 0;letter-spacing:.005em;}
+.intro .for{font-family:var(--display);font-style:italic;font-size:clamp(17px,4vw,21px);color:var(--sec);margin-top:6px;}
+.rule{width:44px;height:1px;background:var(--champ);border:0;margin:22px 0;}
+.welcome{font-size:15px;line-height:1.64;color:var(--ink);max-width:62ch;}
+.note{margin-top:20px;padding:15px 17px;background:#EDE7D8;border-left:2px solid var(--champ);font-size:13.5px;line-height:1.55;color:var(--sec);}
+
+.sec{padding:32px 0;border-top:1px solid var(--line);}
+.sec-h{display:flex;align-items:baseline;gap:16px;margin-bottom:4px;}
+.sec-h .num{font-family:var(--display);font-weight:500;font-size:34px;line-height:.8;color:var(--champ);}
+.sec-h h2{font-family:var(--display);font-weight:600;font-size:24px;line-height:1.05;margin:0;color:var(--ink);}
+.sec .sub{font-size:13.5px;color:var(--muted);margin:0 0 4px 50px;}
+
+.q{border:0;margin:0;padding:24px 0;border-bottom:1px solid var(--line);min-inline-size:auto;}
+.q:last-child{border-bottom:0;}
+.q .qlab{font-size:15px;line-height:1.5;color:var(--ink);margin:0;font-weight:400;}
+.q .tag{font-family:var(--sans);font-weight:600;font-size:10px;letter-spacing:.1em;color:var(--deep);margin-right:9px;}
+.q .help{font-size:13px;line-height:1.5;color:var(--muted);font-style:italic;margin:9px 0 0;}
+.q .skip{font-style:normal;color:var(--muted);}
+.q .attach{font-size:12.5px;color:var(--sec);margin:8px 0 0;}
+
+.radios{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px;max-width:430px;}
+.radios.yn{grid-template-columns:repeat(2,1fr);max-width:290px;}
+.opt{position:relative;display:block;}
+.opt input{position:absolute;opacity:0;inset:0;width:100%;height:100%;margin:0;cursor:pointer;}
+.opt span{display:block;padding:12px 6px;text-align:center;border:1px solid var(--line);background:transparent;font-family:var(--sans);font-weight:500;font-size:13px;color:var(--sec);transition:.15s;}
+.opt input:checked+span{background:var(--navy);border-color:var(--navy);color:var(--ivory);}
+.opt input:focus-visible+span{outline:2px solid var(--navy);outline-offset:2px;}
+.opt:hover span{border-color:var(--navy);}
+
+.reveal{margin-top:14px;}
+.reveal[hidden]{display:none;}
+.tl{display:block;font-size:12.5px;color:var(--muted);margin:14px 0 6px;}
+input.txt,textarea.txt,select.txt{width:100%;font-family:var(--sans);font-size:14px;color:var(--ink);background:#FBF8F1;border:1px solid var(--line);padding:11px 12px;border-radius:0;}
+textarea.txt{min-height:88px;resize:vertical;line-height:1.55;}
+input.txt:focus,textarea.txt:focus,select.txt:focus{outline:2px solid var(--navy);outline-offset:1px;border-color:var(--navy);}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+@media (max-width:520px){.grid2{grid-template-columns:1fr;}}
+
+.drive{margin-top:6px;padding:26px;background:var(--navy);color:var(--ivory);}
+.drive h3{font-family:var(--display);font-weight:600;font-size:22px;margin:0 0 10px;color:var(--ivory);}
+.drive p{font-size:13.5px;line-height:1.58;color:rgba(244,239,228,.82);margin:0 0 18px;max-width:56ch;}
+.drive a.dbtn{display:inline-block;font-family:var(--sans);font-weight:600;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--ivory);background:transparent;border:1px solid var(--champ);padding:14px 30px;text-decoration:none;transition:.15s;}
+.drive a.dbtn:hover{background:rgba(198,172,114,.12);}
+.drive .fine{font-size:12px;color:rgba(244,239,228,.6);margin:16px 0 0;}
+
+.actions{padding:34px 0 6px;}
+.btn{display:inline-block;font-family:var(--sans);font-weight:600;font-size:13.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ivory);background:var(--navy);border:1px solid var(--navy);padding:15px 36px;cursor:pointer;text-decoration:none;transition:.15s;}
+.btn:hover{background:var(--navy-2);border-color:var(--navy-2);}
+.ns{font-size:12px;color:var(--muted);margin-top:12px;}
+
+.foot{padding:28px 0 50px;border-top:1px solid var(--line);margin-top:10px;}
+.foot .seal{width:34px;margin-bottom:12px;opacity:.92;}
+.foot p{font-size:12px;line-height:1.6;color:var(--muted);margin:0 0 6px;max-width:66ch;}
+.foot .cc{font-weight:500;color:var(--sec);}
+
+.thanks{padding:74px 0;}
+.thanks[hidden]{display:none;}
+.thanks .seal{width:46px;margin-bottom:24px;}
+.thanks h2{font-family:var(--display);font-weight:600;font-size:clamp(28px,7vw,36px);margin:0 0 14px;color:var(--ink);}
+.thanks p{font-size:15px;line-height:1.62;color:var(--sec);max-width:56ch;}
+.thanks .sign{font-family:var(--display);font-style:italic;font-size:19px;color:var(--ink);margin-top:16px;}
+
+.hp{position:absolute!important;left:-9999px;top:-9999px;height:0;overflow:hidden;}
+[hidden]{display:none;}
+@media (max-width:520px){ .sec-h .num{font-size:28px;} }
+@media (prefers-reduced-motion:reduce){ *{transition:none!important;scroll-behavior:auto!important;} }
+</style>
+</head>
+<body>
+<main class="shell">
+  <img class="banner" src="assets/dataroom-cover-banner.png" alt="Days of April · HR Consultancy · Client Data Room">
+
+  <div class="sticky">
+    <div class="row"><span class="aud">Audit &middot; HR</span><span class="cnt" id="cnt">0 answered</span></div>
+    <div class="track"><div class="fill" id="fill"></div></div>
+  </div>
+
+  <div class="wrap">
+    <section class="intro">
+      <span class="kick">Initial HR Audit</span>
+      <h1>How it really runs</h1>
+      <div class="for">Prepared for your company &middot; for whoever runs HR day to day</div>
+      <hr class="rule">
+      <p class="welcome">This form is about how things actually run, not how they should run. Honest answers make the audit useful: where something does not exist yet, saying so is exactly what we need, because the gaps are what we help you fix. Nothing here is scored against you personally.</p>
+      <p class="note">This is not here to find fault with you or anyone else. It is here to help HR and the company get streamlined and steer clear of trouble later. It takes about fifteen minutes, and you can send it in one sitting. Where a question does not apply, say so and move on.</p>
+    </section>
+
+    <form id="audit-form" name="audit-hr" method="POST" action="https://api.web3forms.com/submit">
+      <input type="hidden" name="access_key" value="«WEB3FORMS_ACCESS_KEY»">
+      <input type="hidden" name="from_name" value="Days of April HR form">
+      <input type="hidden" name="subject" value="New form submission — audit-hr">
+      <input type="hidden" name="form_id" value="audit-hr">
+      <p class="hp" aria-hidden="true"><label>Do not fill this in: <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off"></label></p>
+
+      <!-- OPENER · facts -->
+      <section class="sec">
+        <div class="sec-h"><span class="num">&middot;</span><h2>About the company</h2></div>
+        <p class="sub">Quick facts, not scored.</p>
+
+        <fieldset class="q">
+          <p class="qlab">Company name</p>
+          <input class="txt" type="text" name="Company name" value="your company">
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab">Roughly how many people work here right now?</p>
+          <select class="txt qinput" name="Headcount band">
+            <option value="" selected>Choose one</option>
+            <option>1 to 10</option>
+            <option>11 to 25</option>
+            <option>26 to 50</option>
+            <option>51 to 100</option>
+            <option>100 plus</option>
+          </select>
+          <p class="help">Count everyone you pay, full and part time. Leave out one-off contractors.</p>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab">Do you employ anyone on fixed-term or contract terms?</p>
+          <div class="radios yn" role="radiogroup" aria-label="fixed term">
+            <label class="opt"><input type="radio" name="Employs fixed-term or contract staff" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="Employs fixed-term or contract staff" value="No"><span>No</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab">Your name and role</p>
+          <label class="tl">So we know who to come back to</label>
+          <input class="txt qinput" type="text" name="Respondent name and role">
+        </fieldset>
+      </section>
+
+      <!-- 01 -->
+      <section class="sec">
+        <div class="sec-h"><span class="num">01</span><h2>Who runs HR</h2></div>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">2.1</span>Is there a named person responsible for HR, even as part of their role?</p>
+          <div class="radios" role="radiogroup" aria-label="2.1">
+            <label class="opt"><input type="radio" name="2.1 named person responsible for HR" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="2.1 named person responsible for HR" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="2.1 named person responsible for HR" value="No"><span>No</span></label>
+          </div>
+          <p class="help">If it is nobody's job, it becomes everybody's problem; we help define it.</p>
+          <div class="reveal" hidden><label class="tl">Add a note (optional)</label><textarea class="txt" name="2.1 note" rows="2"></textarea></div>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">2.2</span>Does that person have enough time for HR, or is it always squeezed in?</p>
+          <div class="radios" role="radiogroup" aria-label="2.2">
+            <label class="opt"><input type="radio" name="2.2 enough time for HR" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="2.2 enough time for HR" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="2.2 enough time for HR" value="No"><span>No</span></label>
+          </div>
+          <p class="help">Tells us whether findings need a person or just a process.</p>
+          <div class="reveal" hidden><label class="tl">Add a note (optional)</label><textarea class="txt" name="2.2 note" rows="2"></textarea></div>
+        </fieldset>
+      </section>
+
+      <!-- 02 -->
+      <section class="sec">
+        <div class="sec-h"><span class="num">02</span><h2>Hiring</h2></div>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">3.2</span>Does each role have a short written job description?</p>
+          <div class="radios" role="radiogroup" aria-label="3.2">
+            <label class="opt"><input type="radio" name="3.2 written job descriptions" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="3.2 written job descriptions" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="3.2 written job descriptions" value="No"><span>No</span></label>
+          </div>
+          <p class="help">Written roles make hiring, reviews and probation decisions defensible.</p>
+          <p class="attach">If yes, add one or two examples to the upload folder at the end. A photo is fine.</p>
+          <div class="reveal" hidden><label class="tl">Add a note (optional)</label><textarea class="txt" name="3.2 note" rows="2"></textarea></div>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">3.4</span>When you advertise openings, where do they usually go?</p>
+          <label class="tl">Where they are advertised</label>
+          <input class="txt qinput" type="text" name="3.4 where openings are advertised">
+          <p class="help">Shows whether the right people can find you.</p>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">3.5</span>Do existing staff hear about openings before outsiders?</p>
+          <div class="radios" role="radiogroup" aria-label="3.5">
+            <label class="opt"><input type="radio" name="3.5 staff hear of openings first" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="3.5 staff hear of openings first" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="3.5 staff hear of openings first" value="No"><span>No</span></label>
+          </div>
+          <p class="help">Costs nothing and keeps your best people from job-hunting elsewhere.</p>
+          <div class="reveal" hidden><label class="tl">Add a note (optional)</label><textarea class="txt" name="3.5 note" rows="2"></textarea></div>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">3.8</span>Do at least two people assess a candidate before an offer is made?</p>
+          <div class="radios" role="radiogroup" aria-label="3.8">
+            <label class="opt"><input type="radio" name="3.8 two assessors before an offer" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="3.8 two assessors before an offer" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="3.8 two assessors before an offer" value="No"><span>No</span></label>
+          </div>
+          <p class="help">Protects you from one person's blind spot.</p>
+          <div class="reveal" hidden><label class="tl">Add a note (optional)</label><textarea class="txt" name="3.8 note" rows="2"></textarea></div>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">3.10</span>Are references actually checked before a hire is confirmed?</p>
+          <div class="radios" role="radiogroup" aria-label="3.10">
+            <label class="opt"><input type="radio" name="3.10 references checked" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="3.10 references checked" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="3.10 references checked" value="No"><span>No</span></label>
+          </div>
+          <p class="help">Ten minutes on the phone prevents the expensive wrong hire.</p>
+          <div class="reveal" hidden><label class="tl">Add a note (optional)</label><textarea class="txt" name="3.10 note" rows="2"></textarea></div>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">3.11</span>Is every job offer put in writing, with pay and conditions?</p>
+          <div class="radios" role="radiogroup" aria-label="3.11">
+            <label class="opt"><input type="radio" name="3.11 written job offers" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="3.11 written job offers" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="3.11 written job offers" value="No"><span>No</span></label>
+          </div>
+          <p class="help">A written offer protects the company as much as the employee.</p>
+          <div class="reveal" hidden><label class="tl">Add a note (optional)</label><textarea class="txt" name="3.11 note" rows="2"></textarea></div>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">3.12</span>Is the appointment letter or contract signed on or before the first working day?</p>
+          <div class="radios" role="radiogroup" aria-label="3.12">
+            <label class="opt"><input type="radio" name="3.12 appointment letter signed by day one" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="3.12 appointment letter signed by day one" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="3.12 appointment letter signed by day one" value="No"><span>No</span></label>
+          </div>
+          <p class="help">Signing late weakens the company's position in any later dispute.</p>
+          <div class="reveal" hidden><label class="tl">Add a note (optional)</label><textarea class="txt" name="3.12 note" rows="2"></textarea></div>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">3.17</span>When a position opens, is it usually filled within a reasonable time?</p>
+          <div class="radios" role="radiogroup" aria-label="3.17">
+            <label class="opt"><input type="radio" name="3.17 positions filled in reasonable time" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="3.17 positions filled in reasonable time" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="3.17 positions filled in reasonable time" value="No"><span>No</span></label>
+          </div>
+          <p class="help">Long-open vacancies quietly overload the rest of the team.</p>
+          <div class="reveal" hidden><label class="tl">Add a note (optional)</label><textarea class="txt" name="3.17 note" rows="2"></textarea></div>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">3.18</span>If you use agencies or headhunters, are the terms agreed in writing? <span class="skip">(Skip if never used.)</span></p>
+          <div class="radios" role="radiogroup" aria-label="3.18">
+            <label class="opt"><input type="radio" name="3.18 agency terms in writing" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="3.18 agency terms in writing" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="3.18 agency terms in writing" value="No"><span>No</span></label>
+          </div>
+          <p class="help">Written terms prevent fee disputes after a placement.</p>
+          <div class="reveal" hidden><label class="tl">Add a note (optional)</label><textarea class="txt" name="3.18 note" rows="2"></textarea></div>
+        </fieldset>
+      </section>
+
+      <!-- 03 -->
+      <section class="sec">
+        <div class="sec-h"><span class="num">03</span><h2>Contracts and probation</h2></div>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">4.1</span>Does every single employee hold a signed appointment letter or contract?</p>
+          <div class="radios" role="radiogroup" aria-label="4.1">
+            <label class="opt"><input type="radio" name="4.1 every employee has a signed contract" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="4.1 every employee has a signed contract" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="4.1 every employee has a signed contract" value="No"><span>No</span></label>
+          </div>
+          <p class="help">The single most protective document a company can have.</p>
+          <div class="reveal" hidden><label class="tl">Add a note (optional)</label><textarea class="txt" name="4.1 note" rows="2"></textarea></div>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">4.5</span>When probation ends, does the employee get a written confirmation letter promptly?</p>
+          <div class="radios" role="radiogroup" aria-label="4.5">
+            <label class="opt"><input type="radio" name="4.5 prompt confirmation letter after probation" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="4.5 prompt confirmation letter after probation" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="4.5 prompt confirmation letter after probation" value="No"><span>No</span></label>
+          </div>
+          <p class="help">Without it, probation quietly never ends, which helps no one in a dispute.</p>
+          <div class="reveal" hidden><label class="tl">Add a note (optional)</label><textarea class="txt" name="4.5 note" rows="2"></textarea></div>
+        </fieldset>
+      </section>
+
+      <!-- 04 -->
+      <section class="sec">
+        <div class="sec-h"><span class="num">04</span><h2>Pay and statutory</h2></div>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">5.6</span>Does everyone get a payslip showing pay and all deductions, each pay period?</p>
+          <div class="radios" role="radiogroup" aria-label="5.6">
+            <label class="opt"><input type="radio" name="5.6 payslips each period" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="5.6 payslips each period" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="5.6 payslips each period" value="No"><span>No</span></label>
+          </div>
+          <p class="help">Payslips answer most pay questions before they become complaints.</p>
+          <div class="reveal" hidden><label class="tl">Add a note (optional)</label><textarea class="txt" name="5.6 note" rows="2"></textarea></div>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">5.13</span>Is there a set way things run when an employee announces a pregnancy (leave, cover, return)?</p>
+          <div class="radios" role="radiogroup" aria-label="5.13">
+            <label class="opt"><input type="radio" name="5.13 set process for pregnancy" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="5.13 set process for pregnancy" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="5.13 set process for pregnancy" value="No"><span>No</span></label>
+          </div>
+          <p class="help">A calm, standard process protects the employee and the company at a sensitive time.</p>
+          <div class="reveal" hidden><label class="tl">Add a note (optional)</label><textarea class="txt" name="5.13 note" rows="2"></textarea></div>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">5.20</span>If the Labour Department has ever raised anything, was it fully sorted out? <span class="skip">(Skip if never inspected.)</span></p>
+          <div class="radios" role="radiogroup" aria-label="5.20">
+            <label class="opt"><input type="radio" name="5.20 labour department findings resolved" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="5.20 labour department findings resolved" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="5.20 labour department findings resolved" value="No"><span>No</span></label>
+          </div>
+          <p class="help">Closed findings stay closed; open ones resurface at the worst moment.</p>
+          <div class="reveal" hidden><label class="tl">Add a note (optional)</label><textarea class="txt" name="5.20 note" rows="2"></textarea></div>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">9.1</span>Is there a logic to how similar jobs are paid, written or not?</p>
+          <div class="radios" role="radiogroup" aria-label="9.1">
+            <label class="opt"><input type="radio" name="9.1 logic to how similar jobs are paid" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="9.1 logic to how similar jobs are paid" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="9.1 logic to how similar jobs are paid" value="No"><span>No</span></label>
+          </div>
+          <p class="help">Consistency here prevents most quiet resentment about pay.</p>
+          <div class="reveal" hidden><label class="tl">Add a note (optional)</label><textarea class="txt" name="9.1 note" rows="2"></textarea></div>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">9.2</span>Does someone check pay against the market at least once a year?</p>
+          <div class="radios" role="radiogroup" aria-label="9.2">
+            <label class="opt"><input type="radio" name="9.2 pay checked against market yearly" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="9.2 pay checked against market yearly" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="9.2 pay checked against market yearly" value="No"><span>No</span></label>
+          </div>
+          <p class="help">You find out you are underpaying when someone resigns; a check is cheaper.</p>
+          <div class="reveal" hidden><label class="tl">Add a note (optional)</label><textarea class="txt" name="9.2 note" rows="2"></textarea></div>
+        </fieldset>
+      </section>
+
+      <!-- 05 -->
+      <section class="sec">
+        <div class="sec-h"><span class="num">05</span><h2>Records and files</h2></div>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">6.1</span>Does every employee have a personal file, paper or digital?</p>
+          <div class="radios" role="radiogroup" aria-label="6.1">
+            <label class="opt"><input type="radio" name="6.1 personal file per employee" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="6.1 personal file per employee" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="6.1 personal file per employee" value="No"><span>No</span></label>
+          </div>
+          <p class="help">One place per person means any question about them is answerable in minutes.</p>
+          <div class="reveal" hidden><label class="tl">Add a note (optional)</label><textarea class="txt" name="6.1 note" rows="2"></textarea></div>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">6.6</span>Are the files of people who have left kept for a sensible period?</p>
+          <div class="radios" role="radiogroup" aria-label="6.6">
+            <label class="opt"><input type="radio" name="6.6 leaver files kept" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="6.6 leaver files kept" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="6.6 leaver files kept" value="No"><span>No</span></label>
+          </div>
+          <p class="help">Old files answer reference requests, EPF queries and disputes long after someone leaves.</p>
+          <div class="reveal" hidden><label class="tl">Add a note (optional)</label><textarea class="txt" name="6.6 note" rows="2"></textarea></div>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">6.10</span>When a personal file is taken out, does someone sign for it?</p>
+          <div class="radios" role="radiogroup" aria-label="6.10">
+            <label class="opt"><input type="radio" name="6.10 files signed out" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="6.10 files signed out" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="6.10 files signed out" value="No"><span>No</span></label>
+          </div>
+          <p class="help">Files go missing without this; a simple register means they always come back.</p>
+          <div class="reveal" hidden><label class="tl">Add a note (optional)</label><textarea class="txt" name="6.10 note" rows="2"></textarea></div>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">15.2</span>Could you produce headcount, staff turnover and absence figures within a day if asked?</p>
+          <div class="radios" role="radiogroup" aria-label="15.2">
+            <label class="opt"><input type="radio" name="15.2 basic people figures within a day" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="15.2 basic people figures within a day" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="15.2 basic people figures within a day" value="No"><span>No</span></label>
+          </div>
+          <p class="help">These three numbers are the start of every good people decision.</p>
+          <div class="reveal" hidden><label class="tl">Add a note (optional)</label><textarea class="txt" name="15.2 note" rows="2"></textarea></div>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">15.4</span>Does payroll run on software or a controlled, repeatable process?</p>
+          <div class="radios" role="radiogroup" aria-label="15.4">
+            <label class="opt"><input type="radio" name="15.4 payroll on a controlled process" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="15.4 payroll on a controlled process" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="15.4 payroll on a controlled process" value="No"><span>No</span></label>
+          </div>
+          <p class="help">A controlled process survives the payroll person's holiday.</p>
+          <div class="reveal" hidden><label class="tl">Add a note (optional)</label><textarea class="txt" name="15.4 note" rows="2"></textarea></div>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">15.6</span>If one computer was lost tomorrow, would the HR records survive?</p>
+          <div class="radios" role="radiogroup" aria-label="15.6">
+            <label class="opt"><input type="radio" name="15.6 HR records would survive a lost computer" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="15.6 HR records would survive a lost computer" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="15.6 HR records would survive a lost computer" value="No"><span>No</span></label>
+          </div>
+          <p class="help">One backup decision now saves years of records later.</p>
+          <div class="reveal" hidden><label class="tl">Add a note (optional)</label><textarea class="txt" name="15.6 note" rows="2"></textarea></div>
+        </fieldset>
+      </section>
+
+      <!-- 06 -->
+      <section class="sec">
+        <div class="sec-h"><span class="num">06</span><h2>Policies</h2></div>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">7.1</span>Is there a written leave policy: how to apply, who approves, what happens to unused leave?</p>
+          <div class="radios" role="radiogroup" aria-label="7.1">
+            <label class="opt"><input type="radio" name="7.1 written leave policy" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="7.1 written leave policy" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="7.1 written leave policy" value="No"><span>No</span></label>
+          </div>
+          <p class="help">A written policy means leave decisions stop being arguments.</p>
+          <div class="reveal" hidden><label class="tl">Add a note (optional)</label><textarea class="txt" name="7.1 note" rows="2"></textarea></div>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">7.2</span>Is there a written code of conduct?</p>
+          <div class="radios" role="radiogroup" aria-label="7.2">
+            <label class="opt"><input type="radio" name="7.2 written code of conduct" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="7.2 written code of conduct" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="7.2 written code of conduct" value="No"><span>No</span></label>
+          </div>
+          <p class="help">Expected behaviour in writing makes discipline fair and defensible.</p>
+          <div class="reveal" hidden><label class="tl">Add a note (optional)</label><textarea class="txt" name="7.2 note" rows="2"></textarea></div>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">7.3</span>Is there an anti-harassment policy with a clear way to complain?</p>
+          <div class="radios" role="radiogroup" aria-label="7.3">
+            <label class="opt"><input type="radio" name="7.3 anti-harassment policy" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="7.3 anti-harassment policy" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="7.3 anti-harassment policy" value="No"><span>No</span></label>
+          </div>
+          <p class="help">Protects your people, and protects the company the day something happens.</p>
+          <div class="reveal" hidden><label class="tl">Add a note (optional)</label><textarea class="txt" name="7.3 note" rows="2"></textarea></div>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">7.4</span>Are there written rules for using company systems and data?</p>
+          <div class="radios" role="radiogroup" aria-label="7.4">
+            <label class="opt"><input type="radio" name="7.4 written IT and data rules" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="7.4 written IT and data rules" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="7.4 written IT and data rules" value="No"><span>No</span></label>
+          </div>
+          <p class="help">Clear rules make the one serious IT incident manageable instead of chaotic.</p>
+          <div class="reveal" hidden><label class="tl">Add a note (optional)</label><textarea class="txt" name="7.4 note" rows="2"></textarea></div>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">7.7</span>Are policies reviewed when the law or the company changes?</p>
+          <div class="radios" role="radiogroup" aria-label="7.7">
+            <label class="opt"><input type="radio" name="7.7 policies reviewed on change" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="7.7 policies reviewed on change" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="7.7 policies reviewed on change" value="No"><span>No</span></label>
+          </div>
+          <p class="help">Laws move; a policy written once and forgotten can quietly become non-compliant.</p>
+          <div class="reveal" hidden><label class="tl">Add a note (optional)</label><textarea class="txt" name="7.7 note" rows="2"></textarea></div>
+        </fieldset>
+      </section>
+
+      <!-- 07 -->
+      <section class="sec">
+        <div class="sec-h"><span class="num">07</span><h2>Performance and development</h2></div>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">10.2</span>Do managers and staff sit down about performance at least twice a year?</p>
+          <div class="radios" role="radiogroup" aria-label="10.2">
+            <label class="opt"><input type="radio" name="10.2 performance conversations twice a year" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="10.2 performance conversations twice a year" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="10.2 performance conversations twice a year" value="No"><span>No</span></label>
+          </div>
+          <p class="help">Regular conversations catch problems while they are still small.</p>
+          <div class="reveal" hidden><label class="tl">Add a note (optional)</label><textarea class="txt" name="10.2 note" rows="2"></textarea></div>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">10.9</span>Does each role have clear targets or KPIs that reviews measure against?</p>
+          <div class="radios" role="radiogroup" aria-label="10.9">
+            <label class="opt"><input type="radio" name="10.9 clear targets or KPIs per role" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="10.9 clear targets or KPIs per role" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="10.9 clear targets or KPIs per role" value="No"><span>No</span></label>
+          </div>
+          <p class="help">With targets, reviews become facts instead of opinions.</p>
+          <div class="reveal" hidden><label class="tl">Add a note (optional)</label><textarea class="txt" name="10.9 note" rows="2"></textarea></div>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">11.1</span>Is there a regular way of identifying the skills and training the business needs?</p>
+          <div class="radios" role="radiogroup" aria-label="11.1">
+            <label class="opt"><input type="radio" name="11.1 regular training-needs process" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="11.1 regular training-needs process" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="11.1 regular training-needs process" value="No"><span>No</span></label>
+          </div>
+          <p class="help">Training chosen against real gaps pays for itself; training chosen at random does not.</p>
+          <div class="reveal" hidden><label class="tl">Add a note (optional)</label><textarea class="txt" name="11.1 note" rows="2"></textarea></div>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">11.4</span>Do the people you could not afford to lose have a development plan?</p>
+          <div class="radios" role="radiogroup" aria-label="11.4">
+            <label class="opt"><input type="radio" name="11.4 development plan for key people" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="11.4 development plan for key people" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="11.4 development plan for key people" value="No"><span>No</span></label>
+          </div>
+          <p class="help">Your key people stay longer when someone is visibly investing in them.</p>
+          <div class="reveal" hidden><label class="tl">Add a note (optional)</label><textarea class="txt" name="11.4 note" rows="2"></textarea></div>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">11.7</span>For critical roles, is there someone who could step up if needed, even informally?</p>
+          <div class="radios" role="radiogroup" aria-label="11.7">
+            <label class="opt"><input type="radio" name="11.7 cover for critical roles" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="11.7 cover for critical roles" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="11.7 cover for critical roles" value="No"><span>No</span></label>
+          </div>
+          <p class="help">The absence answer here is the single biggest business risk we find in SMEs.</p>
+          <div class="reveal" hidden><label class="tl">Add a note (optional)</label><textarea class="txt" name="11.7 note" rows="2"></textarea></div>
+        </fieldset>
+      </section>
+
+      <!-- 08 -->
+      <section class="sec">
+        <div class="sec-h"><span class="num">08</span><h2>Staff voice and culture</h2></div>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">12.1</span>Is there any regular way of hearing how staff feel: a survey, staff meetings, a suggestion box?</p>
+          <div class="radios" role="radiogroup" aria-label="12.1">
+            <label class="opt"><input type="radio" name="12.1 regular way of hearing staff" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="12.1 regular way of hearing staff" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="12.1 regular way of hearing staff" value="No"><span>No</span></label>
+          </div>
+          <p class="help">You cannot fix what never reaches you; our audit survey will give you a first reading.</p>
+          <div class="reveal" hidden><label class="tl">Add a note (optional)</label><textarea class="txt" name="12.1 note" rows="2"></textarea></div>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">12.5</span>When someone resigns, does anyone ask why and note it down?</p>
+          <div class="radios" role="radiogroup" aria-label="12.5">
+            <label class="opt"><input type="radio" name="12.5 exit reasons noted" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="12.5 exit reasons noted" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="12.5 exit reasons noted" value="No"><span>No</span></label>
+          </div>
+          <p class="help">Leavers tell you the truth on the way out; it is free intelligence.</p>
+          <div class="reveal" hidden><label class="tl">Add a note (optional)</label><textarea class="txt" name="12.5 note" rows="2"></textarea></div>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">12.10</span>Are there regular staff meetings or briefings where the company shares news?</p>
+          <div class="radios" role="radiogroup" aria-label="12.10">
+            <label class="opt"><input type="radio" name="12.10 regular staff briefings" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="12.10 regular staff briefings" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="12.10 regular staff briefings" value="No"><span>No</span></label>
+          </div>
+          <p class="help">Staff who hear news from management trust management; the grapevine version is always worse.</p>
+          <div class="reveal" hidden><label class="tl">Add a note (optional)</label><textarea class="txt" name="12.10 note" rows="2"></textarea></div>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">13.1</span>Is there a written discipline procedure: verbal, written warning, inquiry, sanction?</p>
+          <div class="radios" role="radiogroup" aria-label="13.1">
+            <label class="opt"><input type="radio" name="13.1 written discipline procedure" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="13.1 written discipline procedure" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="13.1 written discipline procedure" value="No"><span>No</span></label>
+          </div>
+          <p class="help">Written steps protect the company legally and feel fairer to everyone.</p>
+          <p class="attach">If yes, add it to the upload folder at the end, or a photo.</p>
+          <div class="reveal" hidden><label class="tl">Add a note (optional)</label><textarea class="txt" name="13.1 note" rows="2"></textarea></div>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">13.6</span>If a staff member has a complaint, is there a set way to raise it besides going to their own manager?</p>
+          <div class="radios" role="radiogroup" aria-label="13.6">
+            <label class="opt"><input type="radio" name="13.6 grievance channel beyond own manager" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="13.6 grievance channel beyond own manager" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="13.6 grievance channel beyond own manager" value="No"><span>No</span></label>
+          </div>
+          <p class="help">A working channel catches serious problems while they are still private.</p>
+          <div class="reveal" hidden><label class="tl">Add a note (optional)</label><textarea class="txt" name="13.6 note" rows="2"></textarea></div>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">13.10</span>When someone leaves, is there a set routine: access removed, property returned, exit noted?</p>
+          <div class="radios" role="radiogroup" aria-label="13.10">
+            <label class="opt"><input type="radio" name="13.10 set leaving routine" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="13.10 set leaving routine" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="13.10 set leaving routine" value="No"><span>No</span></label>
+          </div>
+          <p class="help">A clean exit protects data, assets and the relationship.</p>
+          <div class="reveal" hidden><label class="tl">Add a note (optional)</label><textarea class="txt" name="13.10 note" rows="2"></textarea></div>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">14.1</span>Is there a current organisation chart showing who reports to whom?</p>
+          <div class="radios" role="radiogroup" aria-label="14.1">
+            <label class="opt"><input type="radio" name="14.1 current org chart" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="14.1 current org chart" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="14.1 current org chart" value="No"><span>No</span></label>
+          </div>
+          <p class="help">We use it to check spans and cover; if none exists, we draw one for you.</p>
+          <p class="attach">If yes, add it to the upload folder at the end, or a photo.</p>
+          <div class="reveal" hidden><label class="tl">Add a note (optional)</label><textarea class="txt" name="14.1 note" rows="2"></textarea></div>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">14.7</span>Do new managers get any help learning to manage people?</p>
+          <div class="radios" role="radiogroup" aria-label="14.7">
+            <label class="opt"><input type="radio" name="14.7 support for new managers" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="14.7 support for new managers" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="14.7 support for new managers" value="No"><span>No</span></label>
+          </div>
+          <p class="help">Most people problems trace to an unsupported first-time manager.</p>
+          <div class="reveal" hidden><label class="tl">Add a note (optional)</label><textarea class="txt" name="14.7 note" rows="2"></textarea></div>
+        </fieldset>
+      </section>
+
+      <!-- 09 · DOCUMENTS -->
+      <section class="sec">
+        <div class="sec-h"><span class="num">09</span><h2>Documents</h2></div>
+        <p class="sub">The document-request list we sent shows exactly what we need. Add what you have here.</p>
+        <div class="drive">
+          <h3>Your secure upload folder</h3>
+          <p>This opens your company's private folder. Drop in the documents from the request list, plus anything you attached above (job descriptions, the discipline procedure, the org chart). Scans, exports or clear photos are all fine.</p>
+          <a class="dbtn" href="#demo-upload-folder" target="_blank" rel="noopener">Open the upload folder</a>
+          <p class="fine">Everything you share here is confidential, used only for this engagement, and deleted after it ends, as set out in our engagement letter.</p>
+        </div>
+      </section>
+
+      <div class="actions">
+        <button class="btn" type="submit">Send my answers</button>
+        <p class="ns">Your answers are sent only when you press this button. Uploading documents is a separate step, in the folder above.</p>
+      </div>
+    </form>
+
+    <section class="thanks" id="thanks" hidden>
+      <img class="seal" src="assets/days-of-april-seal.png" alt="">
+      <h2>Thank you.</h2>
+      <p>That gives us what we need to begin. We will review what you have shared, come back once with anything that needs a second look, and keep everything confidential throughout. If you have not added your documents yet, the upload folder link stays open.</p>
+      <p class="sign">Days of April</p>
+    </section>
+
+    <footer class="foot">
+      <img class="seal" src="assets/days-of-april-seal.png" alt="">
+      <p>Everything you share here is confidential, used only for this engagement, and deleted after it ends, as set out in our engagement letter.</p>
+      <p class="cc">Private &amp; Confidential. Prepared for your company by Days of April.</p>
+    </footer>
+  </div>
+</main>
+
+<script>
+(function(){
+  var form=document.getElementById('audit-form');
+  var thanks=document.getElementById('thanks');
+  var fill=document.getElementById('fill');
+  var cnt=document.getElementById('cnt');
+  var qs=Array.prototype.slice.call(document.querySelectorAll('.q'));
+  var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  function answered(fs){
+    if(fs.querySelector('input[type=radio]:checked'))return true;
+    if(fs.querySelector('input[type=checkbox]:checked'))return true;
+    var t=fs.querySelector('.qinput');
+    if(t&&t.value&&t.value.trim()!=='')return true;
+    return false;
+  }
+  function update(){
+    var d=0;for(var i=0;i<qs.length;i++){if(answered(qs[i]))d++;}
+    fill.style.width=(qs.length?d/qs.length*100:0)+'%';
+    cnt.textContent=d+' of '+qs.length+' answered';
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('.radios'),function(g){
+    g.addEventListener('change',function(){
+      var box=g.parentNode.querySelector('.reveal');
+      if(box){var v=g.querySelector('input:checked');box.hidden=!(v&&/^(Partly|No|Disagree|Can.t say)$/.test(v.value));}
+    });
+  });
+  form.addEventListener('input',update);
+  form.addEventListener('change',update);
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    fetch('https://api.web3forms.com/submit',{method:'POST',body:new FormData(form)}).then(finish).catch(finish);
+  });
+  function finish(){form.hidden=true;thanks.hidden=false;window.scrollTo({top:0,behavior:reduce?'auto':'smooth'});}
+  update();
+})();
+</script>
+</body>
+</html>

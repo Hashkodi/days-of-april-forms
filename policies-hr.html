@@ -1,0 +1,540 @@
+<!doctype html>
+<!-- ============================================================================
+     Days of April · HR Consultancy — HR Policies & Handbook · HR
+     The HR facts form: what exists, which sections apply, the working day,
+     travel/loans/welfare/vehicles, and the client-branding (logo + colours)
+     request. Netlify-hosted HTML. Locked house style (light mode).
+
+     DEPLOY-TIME CHECKLIST (set these before this form goes live):
+       1. Replace your company (page title + intro + company field + foot).
+       2. Netlify site/account: publish under the Days of April HR Consultancy
+          Netlify team. Submissions go via Web3Forms (paste the «WEB3FORMS_ACCESS_KEY»). Form id policies-hr  (matches
+          <form name> and the hidden form-name input — keep the two identical, or
+          Netlify will not record submissions).
+       3. Submission notifications: set the mailbox in the Netlify dashboard
+          (Site settings > Forms > Form notifications). NOT set in code.
+          Intended: daysofaprilhr@gmail.com  «VERIFY account wiring».
+       4. DOCUMENT UPLOAD: replace #demo-upload-folder (Documents section) with the
+          real Google Drive upload-folder URL for THIS client's engagement folder.
+          It carries BOTH the existing policies/handbook AND the company logo.
+          «VERIFY the Drive folder opens without a login wall for the client».
+       5. Save the public link into client-questionnaire.md.
+     ============================================================================ -->
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HR Policies &amp; Handbook · HR · prepared for your company</title>
+<link rel="icon" href="assets/days-of-april-favicon.png">
+<style>
+:root{
+  --navy:#1B2431; --navy-2:#232F3E; --paper:#F5F0E6; --ground:#E9E2D1;
+  --ivory:#F4EFE4; --ink:#1B2431; --champ:#C6AC72; --deep:#9A7B3A;
+  --muted:#6E6857; --sec:#4A5260; --line:#DED7C4;
+  --display:'Cormorant','Hoefler Text',Georgia,serif;
+  --sans:'Poppins','Avenir Next',Avenir,system-ui,sans-serif;
+}
+@font-face{font-family:'Cormorant';src:url('assets/fonts/Cormorant.ttf') format('truetype');font-weight:300 700;font-style:normal;font-display:swap;}
+@font-face{font-family:'Cormorant';src:url('assets/fonts/Cormorant-Italic.ttf') format('truetype');font-weight:300 700;font-style:italic;font-display:swap;}
+@font-face{font-family:'Poppins';src:url('assets/fonts/Poppins-Light.ttf') format('truetype');font-weight:300;font-display:swap;}
+@font-face{font-family:'Poppins';src:url('assets/fonts/Poppins-Regular.ttf') format('truetype');font-weight:400;font-display:swap;}
+@font-face{font-family:'Poppins';src:url('assets/fonts/Poppins-Medium.ttf') format('truetype');font-weight:500;font-display:swap;}
+@font-face{font-family:'Poppins';src:url('assets/fonts/Poppins-SemiBold.ttf') format('truetype');font-weight:600;font-display:swap;}
+
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);font-weight:400;line-height:1.5;}
+img{max-width:100%;display:block;}
+.shell{max-width:780px;margin:0 auto;background:var(--paper);min-height:100vh;box-shadow:0 0 44px rgba(27,36,49,.07);}
+.banner{width:100%;height:auto;}
+.wrap{padding:0 clamp(20px,5vw,54px);}
+
+.sticky{position:sticky;top:0;z-index:20;background:rgba(245,240,230,.94);backdrop-filter:saturate(140%) blur(6px);border-bottom:1px solid var(--line);}
+.sticky .row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px clamp(20px,5vw,54px);}
+.sticky .aud{font-family:var(--sans);font-weight:600;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);}
+.sticky .cnt{font-family:var(--sans);font-weight:500;font-size:11px;letter-spacing:.05em;color:var(--muted);white-space:nowrap;}
+.track{height:2px;background:var(--line);}
+.track .fill{height:2px;width:0;background:var(--navy);transition:width .25s ease;}
+
+.intro{padding:40px 0 6px;}
+.kick{font-family:var(--sans);font-weight:500;font-size:10.5px;letter-spacing:.34em;text-transform:uppercase;color:var(--deep);}
+.intro h1{font-family:var(--display);font-weight:600;font-size:clamp(30px,7vw,44px);line-height:1.02;margin:14px 0 0;letter-spacing:.005em;}
+.intro .for{font-family:var(--display);font-style:italic;font-size:clamp(17px,4vw,21px);color:var(--sec);margin-top:6px;}
+.rule{width:44px;height:1px;background:var(--champ);border:0;margin:22px 0;}
+.welcome{font-size:15px;line-height:1.64;color:var(--ink);max-width:62ch;}
+.note{margin-top:20px;padding:15px 17px;background:#EDE7D8;border-left:2px solid var(--champ);font-size:13.5px;line-height:1.55;color:var(--sec);}
+
+.sec{padding:32px 0;border-top:1px solid var(--line);}
+.sec-h{display:flex;align-items:baseline;gap:16px;margin-bottom:4px;}
+.sec-h .num{font-family:var(--display);font-weight:500;font-size:34px;line-height:.8;color:var(--champ);}
+.sec-h h2{font-family:var(--display);font-weight:600;font-size:24px;line-height:1.05;margin:0;color:var(--ink);}
+.sec .sub{font-size:13.5px;color:var(--muted);margin:0 0 4px 50px;}
+
+.q{border:0;margin:0;padding:24px 0;border-bottom:1px solid var(--line);min-inline-size:auto;}
+.q:last-child{border-bottom:0;}
+.q .qlab{font-size:15px;line-height:1.5;color:var(--ink);margin:0;font-weight:400;}
+.q .tag{font-family:var(--sans);font-weight:600;font-size:10px;letter-spacing:.1em;color:var(--deep);margin-right:9px;}
+.q .help{font-size:13px;line-height:1.5;color:var(--muted);font-style:italic;margin:9px 0 0;}
+.q .skip{font-style:normal;color:var(--muted);}
+.q .attach{font-size:12.5px;color:var(--sec);margin:8px 0 0;}
+
+.radios{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px;max-width:430px;}
+.radios.yn{grid-template-columns:repeat(2,1fr);max-width:290px;}
+.checks{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px;max-width:520px;}
+@media (max-width:520px){.checks{grid-template-columns:1fr;}}
+.opt{position:relative;display:block;}
+.opt input{position:absolute;opacity:0;inset:0;width:100%;height:100%;margin:0;cursor:pointer;}
+.opt span{display:block;padding:12px 6px;text-align:center;border:1px solid var(--line);background:transparent;font-family:var(--sans);font-weight:500;font-size:13px;color:var(--sec);transition:.15s;}
+.opt input:checked+span{background:var(--navy);border-color:var(--navy);color:var(--ivory);}
+.opt input:focus-visible+span{outline:2px solid var(--navy);outline-offset:2px;}
+.opt:hover span{border-color:var(--navy);}
+
+.reveal{margin-top:14px;}
+.reveal[hidden]{display:none;}
+.tl{display:block;font-size:12.5px;color:var(--muted);margin:14px 0 6px;}
+input.txt,textarea.txt,select.txt{width:100%;font-family:var(--sans);font-size:14px;color:var(--ink);background:#FBF8F1;border:1px solid var(--line);padding:11px 12px;border-radius:0;}
+textarea.txt{min-height:88px;resize:vertical;line-height:1.55;}
+input.txt:focus,textarea.txt:focus,select.txt:focus{outline:2px solid var(--navy);outline-offset:1px;border-color:var(--navy);}
+
+.drive{margin-top:6px;padding:26px;background:var(--navy);color:var(--ivory);}
+.drive h3{font-family:var(--display);font-weight:600;font-size:22px;margin:0 0 10px;color:var(--ivory);}
+.drive p{font-size:13.5px;line-height:1.58;color:rgba(244,239,228,.82);margin:0 0 18px;max-width:56ch;}
+.drive a.dbtn{display:inline-block;font-family:var(--sans);font-weight:600;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--ivory);background:transparent;border:1px solid var(--champ);padding:14px 30px;text-decoration:none;transition:.15s;}
+.drive a.dbtn:hover{background:rgba(198,172,114,.12);}
+.drive .fine{font-size:12px;color:rgba(244,239,228,.6);margin:16px 0 0;}
+
+.actions{padding:34px 0 6px;}
+.btn{display:inline-block;font-family:var(--sans);font-weight:600;font-size:13.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ivory);background:var(--navy);border:1px solid var(--navy);padding:15px 36px;cursor:pointer;text-decoration:none;transition:.15s;}
+.btn:hover{background:var(--navy-2);border-color:var(--navy-2);}
+.ns{font-size:12px;color:var(--muted);margin-top:12px;}
+
+.foot{padding:28px 0 50px;border-top:1px solid var(--line);margin-top:10px;}
+.foot .seal{width:34px;margin-bottom:12px;opacity:.92;}
+.foot p{font-size:12px;line-height:1.6;color:var(--muted);margin:0 0 6px;max-width:66ch;}
+.foot .cc{font-weight:500;color:var(--sec);}
+
+.thanks{padding:74px 0;}
+.thanks[hidden]{display:none;}
+.thanks .seal{width:46px;margin-bottom:24px;}
+.thanks h2{font-family:var(--display);font-weight:600;font-size:clamp(28px,7vw,36px);margin:0 0 14px;color:var(--ink);}
+.thanks p{font-size:15px;line-height:1.62;color:var(--sec);max-width:56ch;}
+.thanks .sign{font-family:var(--display);font-style:italic;font-size:19px;color:var(--ink);margin-top:16px;}
+
+.hp{position:absolute!important;left:-9999px;top:-9999px;height:0;overflow:hidden;}
+[hidden]{display:none;}
+@media (max-width:520px){ .sec-h .num{font-size:28px;} }
+@media (prefers-reduced-motion:reduce){ *{transition:none!important;scroll-behavior:auto!important;} }
+</style>
+</head>
+<body>
+<main class="shell">
+  <img class="banner" src="assets/dataroom-cover-banner.png" alt="Days of April · HR Consultancy · Client Data Room">
+
+  <div class="sticky">
+    <div class="row"><span class="aud">Policies &amp; Handbook &middot; HR</span><span class="cnt" id="cnt">0 answered</span></div>
+    <div class="track"><div class="fill" id="fill"></div></div>
+  </div>
+
+  <div class="wrap">
+    <section class="intro">
+      <span class="kick">HR Policies &amp; Employee Handbook</span>
+      <h1>What your company already has</h1>
+      <div class="for">Prepared for your company &middot; for whoever runs HR day to day</div>
+      <hr class="rule">
+      <p class="welcome">This form tells us which documents your company actually needs, so we draft only those, and it maps how your company runs, so every page describes you rather than a template. Where something does not exist yet, saying so is exactly what we need, because that is what we build for you. It takes about ten minutes, and you can send it in one sitting.</p>
+      <p class="note">This is not here to find fault with you or anyone else. It is here to help the company set out plainly how things are done, so nothing is left to guesswork later. Where a question does not apply, say so and move on.</p>
+    </section>
+
+    <form id="doa-form" name="policies-hr" method="POST" action="https://api.web3forms.com/submit">
+      <input type="hidden" name="access_key" value="«WEB3FORMS_ACCESS_KEY»">
+      <input type="hidden" name="from_name" value="Days of April HR form">
+      <input type="hidden" name="subject" value="New form submission — policies-hr">
+      <input type="hidden" name="form_id" value="policies-hr">
+      <p class="hp" aria-hidden="true"><label>Do not fill this in: <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off"></label></p>
+
+      <!-- 01 · The company -->
+      <section class="sec">
+        <div class="sec-h"><span class="num">01</span><h2>The company</h2></div>
+        <p class="sub">Quick facts, not scored.</p>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">1</span>Company name</p>
+          <input class="txt" type="text" name="1 Company name" value="your company">
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">2</span>What does the business mainly do?</p>
+          <label class="tl">One line</label>
+          <input class="txt qinput" type="text" name="2 what the business does">
+          <p class="help">Leave rules in Sri Lanka differ by trade; one line from you means every number in your policies is the right one for your business.</p>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">3</span>Roughly how many people work here right now?</p>
+          <select class="txt qinput" name="3 headcount band">
+            <option value="" selected>Choose one</option>
+            <option>1 to 10</option>
+            <option>11 to 25</option>
+            <option>26 to 50</option>
+            <option>51 to 100</option>
+            <option>100 plus</option>
+          </select>
+          <p class="help">Two important legal duties switch on around 15 staff; knowing your size means your policies promise exactly what the law asks, no more and no less.</p>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">4</span>Does anyone work shifts, nights, or regular weekend rosters?</p>
+          <div class="radios yn" role="radiogroup" aria-label="4">
+            <label class="opt"><input type="radio" name="4 shifts nights weekends" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="4 shifts nights weekends" value="No"><span>No</span></label>
+          </div>
+          <label class="tl">If yes, one line on the pattern (optional)</label>
+          <input class="txt" type="text" name="4 shift pattern">
+          <p class="help">If shifts exist, your hours policy is written around your real roster, so it protects you instead of contradicting you.</p>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">5</span>Do you employ anyone on fixed-term, casual or daily-paid terms?</p>
+          <div class="radios yn" role="radiogroup" aria-label="5">
+            <label class="opt"><input type="radio" name="5 fixed-term casual daily-paid" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="5 fixed-term casual daily-paid" value="No"><span>No</span></label>
+          </div>
+          <p class="help">Different terms carry different entitlements; covering them properly now prevents disputes later.</p>
+        </fieldset>
+      </section>
+
+      <!-- 02 · What exists today -->
+      <section class="sec">
+        <div class="sec-h"><span class="num">02</span><h2>What exists today</h2></div>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">6</span>Is there a written leave policy: how to apply, who approves, what happens to unused leave?</p>
+          <div class="radios" role="radiogroup" aria-label="6">
+            <label class="opt"><input type="radio" name="6 written leave policy" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="6 written leave policy" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="6 written leave policy" value="No"><span>No</span></label>
+          </div>
+          <p class="help">Whatever exists, we build on it rather than starting from zero, which keeps the review short for you.</p>
+          <p class="attach">If any of these exist, add them to the upload folder at the end. A photo is fine.</p>
+          <div class="reveal" hidden><label class="tl">Add a note (optional)</label><textarea class="txt" name="6 note" rows="2"></textarea></div>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">7</span>Is there a written code of conduct?</p>
+          <div class="radios" role="radiogroup" aria-label="7">
+            <label class="opt"><input type="radio" name="7 written code of conduct" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="7 written code of conduct" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="7 written code of conduct" value="No"><span>No</span></label>
+          </div>
+          <div class="reveal" hidden><label class="tl">Add a note (optional)</label><textarea class="txt" name="7 note" rows="2"></textarea></div>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">8</span>Is there an anti-harassment policy with a clear way to complain?</p>
+          <div class="radios" role="radiogroup" aria-label="8">
+            <label class="opt"><input type="radio" name="8 anti-harassment policy" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="8 anti-harassment policy" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="8 anti-harassment policy" value="No"><span>No</span></label>
+          </div>
+          <div class="reveal" hidden><label class="tl">Add a note (optional)</label><textarea class="txt" name="8 note" rows="2"></textarea></div>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">9</span>Are there written rules for using company systems and data?</p>
+          <div class="radios" role="radiogroup" aria-label="9">
+            <label class="opt"><input type="radio" name="9 written IT and data rules" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="9 written IT and data rules" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="9 written IT and data rules" value="No"><span>No</span></label>
+          </div>
+          <div class="reveal" hidden><label class="tl">Add a note (optional)</label><textarea class="txt" name="9 note" rows="2"></textarea></div>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">10</span>Is there a written discipline procedure: verbal, written warning, inquiry, sanction?</p>
+          <div class="radios" role="radiogroup" aria-label="10">
+            <label class="opt"><input type="radio" name="10 written discipline procedure" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="10 written discipline procedure" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="10 written discipline procedure" value="No"><span>No</span></label>
+          </div>
+          <p class="help">If one exists, the new policies point to it; if not, we flag it for its own piece of work rather than leaving a gap.</p>
+          <div class="reveal" hidden><label class="tl">Add a note (optional)</label><textarea class="txt" name="10 note" rows="2"></textarea></div>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">11</span>Is there an employee handbook or welcome document for new staff?</p>
+          <div class="radios" role="radiogroup" aria-label="11">
+            <label class="opt"><input type="radio" name="11 employee handbook exists" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="11 employee handbook exists" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="11 employee handbook exists" value="No"><span>No</span></label>
+          </div>
+          <div class="reveal" hidden><label class="tl">Add a note (optional)</label><textarea class="txt" name="11 note" rows="2"></textarea></div>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">12</span>Which of these have caused a real disagreement in the last year? Tick all that apply.</p>
+          <div class="checks">
+            <label class="opt"><input type="checkbox" name="12 caused disagreement: leave" value="Leave"><span>Leave</span></label>
+            <label class="opt"><input type="checkbox" name="12 caused disagreement: overtime or hours" value="Overtime or hours"><span>Overtime or hours</span></label>
+            <label class="opt"><input type="checkbox" name="12 caused disagreement: behaviour complaint" value="A complaint about behaviour"><span>A complaint about behaviour</span></label>
+            <label class="opt"><input type="checkbox" name="12 caused disagreement: resignation or exit" value="A resignation or exit"><span>A resignation or exit</span></label>
+            <label class="opt"><input type="checkbox" name="12 caused disagreement: none" value="None of these"><span>None of these</span></label>
+          </div>
+          <p class="help">Your policies get drafted problem-first: the ones that have already cost you time and goodwill are written sharpest.</p>
+        </fieldset>
+      </section>
+
+      <!-- 03 · Which sections apply -->
+      <section class="sec">
+        <div class="sec-h"><span class="num">03</span><h2>Which handbook sections apply to you</h2></div>
+        <p class="sub">A module is built only where the answer is Yes, so the handbook has no ghost pages.</p>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">15</span>Does the company give staff any loans or advances: salary advances, festival advances, emergency loans?</p>
+          <div class="radios yn" role="radiogroup" aria-label="15">
+            <label class="opt"><input type="radio" name="15 loans or advances" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="15 loans or advances" value="No"><span>No</span></label>
+          </div>
+          <p class="help">If you do, the handbook states the rules once, clearly, so every request stops being a fresh negotiation and staff know exactly what they can ask for.</p>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">16</span>Is there a welfare society, staff fund, funeral support, or a regular staff event such as a trip or party?</p>
+          <div class="radios yn" role="radiogroup" aria-label="16">
+            <label class="opt"><input type="radio" name="16 welfare society or events" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="16 welfare society or events" value="No"><span>No</span></label>
+          </div>
+          <p class="help">These are the benefits staff value most and hear about least; a page in the handbook makes sure every employee actually knows what you already provide.</p>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">17</span>Do any staff travel for work: field sales, deliveries, site visits, overnight stays?</p>
+          <div class="radios yn" role="radiogroup" aria-label="17">
+            <label class="opt"><input type="radio" name="17 staff travel for work" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="17 staff travel for work" value="No"><span>No</span></label>
+          </div>
+          <p class="help">If yes, the handbook carries a travel page with your allowance schedule as an annex, so claims run on known rates instead of case-by-case decisions.</p>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">18</span>Is there a factory, production floor, workshop or site where physical work happens?</p>
+          <div class="radios yn" role="radiogroup" aria-label="18">
+            <label class="opt"><input type="radio" name="18 factory or site" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="18 factory or site" value="No"><span>No</span></label>
+          </div>
+          <p class="help">If yes, the handbook adds a safety annex and a plain page on workplace injuries, which protects your people first and your company in any claim.</p>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">19</span>Does the company provide any staff with vehicles, motorbikes or a fuel arrangement?</p>
+          <div class="radios yn" role="radiogroup" aria-label="19">
+            <label class="opt"><input type="radio" name="19 vehicles or fuel" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="19 vehicles or fuel" value="No"><span>No</span></label>
+          </div>
+          <p class="help">A short vehicles page sets the driving and accident rules once, before the day anyone needs them.</p>
+        </fieldset>
+      </section>
+
+      <!-- 04 · How the working day runs -->
+      <section class="sec">
+        <div class="sec-h"><span class="num">04</span><h2>How the working day runs</h2></div>
+        <p class="sub">These feed the hours, attendance, maternity and transfer pages.</p>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">20</span>Meal and tea breaks: what are the lengths and times?</p>
+          <label class="tl">In your own words</label>
+          <input class="txt qinput" type="text" name="20 meal and tea breaks">
+          <p class="help">Your handbook then states your real break pattern, so staff know exactly what applies and no one has to ask.</p>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">21</span>How is attendance recorded, and how do you keep an eye on it? For example fingerprint machine, register, app.</p>
+          <label class="tl">In your own words</label>
+          <input class="txt qinput" type="text" name="21 how attendance is recorded">
+          <p class="help">Stating your method in the handbook makes the attendance record something that protects the company if a pay or timekeeping question ever comes up.</p>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">22</span>Is there CCTV on the premises?</p>
+          <div class="radios yn" role="radiogroup" aria-label="22">
+            <label class="opt"><input type="radio" name="22 CCTV on premises" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="22 CCTV on premises" value="No"><span>No</span></label>
+          </div>
+          <label class="tl">If yes, which areas (optional)</label>
+          <input class="txt" type="text" name="22 CCTV areas">
+          <p class="help">If we name it plainly in the handbook, staff know it is there for safety and security, which keeps everything above board.</p>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">23</span>Do any staff work partly from home (hybrid)?</p>
+          <div class="radios yn" role="radiogroup" aria-label="23">
+            <label class="opt"><input type="radio" name="23 hybrid working" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="23 hybrid working" value="No"><span>No</span></label>
+          </div>
+          <label class="tl">If yes, which roles and what is the pattern (optional)</label>
+          <input class="txt" type="text" name="23 hybrid roles and pattern">
+          <p class="help">If yes, the handbook adds a short work-from-home page, so home days come with clear expectations instead of grey areas.</p>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">24</span>Does the company work from more than one branch or location?</p>
+          <div class="radios yn" role="radiogroup" aria-label="24">
+            <label class="opt"><input type="radio" name="24 more than one branch" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="24 more than one branch" value="No"><span>No</span></label>
+          </div>
+          <p class="help">This decides whether the handbook carries a transfers page at all; single-site companies get no unnecessary clause.</p>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">25</span>Is there a crèche, or a private space a nursing mother can use on return from maternity leave?</p>
+          <div class="radios yn" role="radiogroup" aria-label="25">
+            <label class="opt"><input type="radio" name="25 creche or nursing space" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="25 creche or nursing space" value="No"><span>No</span></label>
+          </div>
+          <p class="help">We only describe a facility you actually have, so nothing in the handbook promises something that is not there.</p>
+        </fieldset>
+      </section>
+
+      <!-- 05 · Travel, transport, money help and welfare -->
+      <section class="sec">
+        <div class="sec-h"><span class="num">05</span><h2>Travel, transport, money help and welfare</h2></div>
+        <p class="sub">Only what you say Yes to is written up; each becomes a clear page.</p>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">26</span>Does the company provide transport for staff, such as a staff bus or van?</p>
+          <div class="radios yn" role="radiogroup" aria-label="26">
+            <label class="opt"><input type="radio" name="26 staff transport provided" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="26 staff transport provided" value="No"><span>No</span></label>
+          </div>
+          <label class="tl">If yes, one line (optional)</label>
+          <input class="txt" type="text" name="26 staff transport detail">
+          <p class="help">A short line in the handbook sets out who it is for and how it runs, so it is understood the same way by everyone.</p>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">27</span>For office staff who sometimes travel for work, is it a petrol or travel allowance, or an arranged vehicle, and how is the amount worked out?</p>
+          <label class="tl">In your own words</label>
+          <input class="txt qinput" type="text" name="27 office staff travel arrangement">
+          <p class="help">This lets us write your travel page around your real arrangement, so claims run on a known basis instead of case-by-case.</p>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">28</span>Do staff travel together to attend things like a colleague's or a family funeral?</p>
+          <div class="radios yn" role="radiogroup" aria-label="28">
+            <label class="opt"><input type="radio" name="28 staff travel together to funerals" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="28 staff travel together to funerals" value="No"><span>No</span></label>
+          </div>
+          <p class="help">If this is part of how your company looks after people, the handbook can say so, and staff feel the care behind it.</p>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">29</span>Loans and money help: if you offer salary advances, festival advances or emergency (distress) loans, which do you offer, and what limits or conditions do you already use?</p>
+          <label class="tl">In your own words</label>
+          <textarea class="txt qinput" name="29 loans and money help detail"></textarea>
+          <p class="help">We will set the rules out clearly and agree them with you, so every request stops being a fresh negotiation and staff know exactly what they can ask for.</p>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">30</span>Welfare: is there a welfare society or staff fund, and what happens when there is a death in a staff member's family? If there is nothing in place and you would like one, we can propose it.</p>
+          <label class="tl">In your own words</label>
+          <textarea class="txt qinput" name="30 welfare detail"></textarea>
+          <p class="help">These are the things staff value most and hear about least; putting them in writing, or helping you start them, makes the care you give visible.</p>
+        </fieldset>
+      </section>
+
+      <!-- 06 · Making it your own -->
+      <section class="sec">
+        <div class="sec-h"><span class="num">06</span><h2>Making the handbook your company's own</h2></div>
+        <p class="sub">The handbook is your company's document, produced in your brand, delivered as a printable PDF.</p>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">31</span>Please share your company LOGO.</p>
+          <p class="attach">Upload it via the Drive link at the end of this form. The best version you have, ideally a PNG or a vector file.</p>
+          <p class="help">Your staff receive a handbook that looks like your company, not a generic booklet, which is part of what makes them take it seriously.</p>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">32</span>Your BRAND COLOURS, and your fonts if you have set ones.</p>
+          <label class="tl">Colours and fonts, or note that you have attached a brand sheet</label>
+          <input class="txt qinput" type="text" name="32 brand colours and fonts">
+          <p class="help">We match the handbook to your brand exactly, so it sits naturally alongside everything else your company hands out.</p>
+        </fieldset>
+
+        <fieldset class="q">
+          <p class="qlab"><span class="tag">33</span>Anything specific you want in how the printed handbook looks or feels, or a short message from the MD for the opening page?</p>
+          <label class="tl">In your own words</label>
+          <textarea class="txt qinput" name="33 look and feel or MD message"></textarea>
+          <p class="help">The opening page speaks in your voice; a couple of lines here make the most personal page in the book genuinely yours.</p>
+        </fieldset>
+      </section>
+
+      <!-- 07 · DOCUMENTS -->
+      <section class="sec">
+        <div class="sec-h"><span class="num">07</span><h2>Documents and logo</h2></div>
+        <p class="sub">Your existing policies or handbook, plus your logo, go here. Our document request lists what we need.</p>
+        <div class="drive">
+          <h3>Your secure upload folder</h3>
+          <p>This opens your company's private folder. Drop in any existing policies or handbook you mentioned above, and your company logo for the handbook cover and pages. Scans, exports or clear photos are all fine.</p>
+          <a class="dbtn" href="#demo-upload-folder" target="_blank" rel="noopener">Open the upload folder</a>
+          <p class="fine">Everything you share here is confidential, used only for this engagement, and deleted after it ends, as set out in our engagement letter.</p>
+        </div>
+      </section>
+
+      <div class="actions">
+        <button class="btn" type="submit">Send my answers</button>
+        <p class="ns">Your answers are sent only when you press this button. Uploading documents and the logo is a separate step, in the folder above.</p>
+      </div>
+    </form>
+
+    <section class="thanks" id="thanks" hidden>
+      <img class="seal" src="assets/days-of-april-seal.png" alt="">
+      <h2>Thank you.</h2>
+      <p>That gives us what we need to begin. From these answers we will send you one short list of the policies we recommend, with a line on why each one is worth having, before anything is drafted. If you have not added your documents or logo yet, the upload folder link stays open.</p>
+      <p class="sign">Days of April</p>
+    </section>
+
+    <footer class="foot">
+      <img class="seal" src="assets/days-of-april-seal.png" alt="">
+      <p>Everything you share here is confidential, used only for this engagement, and deleted after it ends, as set out in our engagement letter.</p>
+      <p class="cc">Private &amp; Confidential. Prepared for your company by Days of April.</p>
+    </footer>
+  </div>
+</main>
+
+<script>
+(function(){
+  var form=document.getElementById('doa-form');
+  var thanks=document.getElementById('thanks');
+  var fill=document.getElementById('fill');
+  var cnt=document.getElementById('cnt');
+  var qs=Array.prototype.slice.call(document.querySelectorAll('.q'));
+  var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  function answered(fs){
+    if(fs.querySelector('input[type=radio]:checked'))return true;
+    if(fs.querySelector('input[type=checkbox]:checked'))return true;
+    var t=fs.querySelector('.qinput');
+    if(t&&t.value&&t.value.trim()!=='')return true;
+    return false;
+  }
+  function update(){
+    var d=0;for(var i=0;i<qs.length;i++){if(answered(qs[i]))d++;}
+    fill.style.width=(qs.length?d/qs.length*100:0)+'%';
+    cnt.textContent=d+' of '+qs.length+' answered';
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('.radios'),function(g){
+    g.addEventListener('change',function(){
+      var box=g.parentNode.querySelector('.reveal');
+      if(box){var v=g.querySelector('input:checked');box.hidden=!(v&&/^(Partly|No|Disagree|Can.t say)$/.test(v.value));}
+    });
+  });
+  form.addEventListener('input',update);
+  form.addEventListener('change',update);
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    fetch('https://api.web3forms.com/submit',{method:'POST',body:new FormData(form)}).then(finish).catch(finish);
+  });
+  function finish(){form.hidden=true;thanks.hidden=false;window.scrollTo({top:0,behavior:reduce?'auto':'smooth'});}
+  update();
+})();
+</script>
+</body>
+</html>
