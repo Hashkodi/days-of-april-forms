@@ -1,0 +1,425 @@
+<!doctype html>
+<!-- ============================================================================
+     Days of April · HR Consultancy — THE HR HEALTH CHECK (public lead magnet)
+     Free 12-question self-check. Locked house style (ivory ground, navy text,
+     Cormorant + Poppins, champagne whisper accent). DRAFT — needs Hashini's
+     look-approval before deploy.
+
+     BACKEND: Web3Forms (host-agnostic — works on GitHub Pages / Cloudflare
+     Pages / Netlify alike). Key is the standing HR backup key from
+     brand-config.md. Scoring happens in the browser; the visitor sees their
+     band instantly and the submission (answers + score + flagged areas)
+     arrives at daysofaprilhr@gmail.com.
+
+     DEPLOY-TIME CHECKLIST:
+       1. HOST: Netlify credits are exhausted until 2026-08-01. Until then this
+          deploys to the public days-of-april-forms GitHub Pages repo (or
+          Cloudflare Pages). Web3Forms works the same on every host.
+       2. GMAIL FILTER CHECK (CRITICAL): Web3Forms mail was previously
+          auto-labelled "HR-Day of April" and sent to Trash by a Gmail filter.
+          Before going live, check Gmail Settings > Filters on
+          daysofaprilhr@gmail.com and delete/repair any filter touching these.
+       3. DRY RUN: submit this form ourselves end to end and confirm the email
+          lands in the INBOX (not spam/trash) before the link is shared.
+       4. After 2026-08-01 the form MAY move to Netlify Forms with the other
+          forms; until then Web3Forms is the wired backend.
+     ============================================================================ -->
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The HR Health Check · Days of April · HR Consultancy</title>
+<meta name="description" content="A free twelve-question check of your company's people side: contracts, EPF and ETF, files, policies and performance. Takes about five minutes, with an instant result.">
+<link rel="icon" href="assets/days-of-april-favicon.png">
+<style>
+:root{
+  --navy:#1B2431; --navy-2:#232F3E; --paper:#F5F0E6; --ground:#E9E2D1;
+  --ivory:#F4EFE4; --ink:#1B2431; --champ:#C6AC72; --deep:#9A7B3A;
+  --muted:#6E6857; --sec:#4A5260; --line:#DED7C4;
+  --display:'Cormorant','Hoefler Text',Georgia,serif;
+  --sans:'Poppins','Avenir Next',Avenir,system-ui,sans-serif;
+}
+@font-face{font-family:'Cormorant';src:url('assets/fonts/Cormorant.ttf') format('truetype');font-weight:300 700;font-style:normal;font-display:swap;}
+@font-face{font-family:'Cormorant';src:url('assets/fonts/Cormorant-Italic.ttf') format('truetype');font-weight:300 700;font-style:italic;font-display:swap;}
+@font-face{font-family:'Poppins';src:url('assets/fonts/Poppins-Light.ttf') format('truetype');font-weight:300;font-display:swap;}
+@font-face{font-family:'Poppins';src:url('assets/fonts/Poppins-Regular.ttf') format('truetype');font-weight:400;font-display:swap;}
+@font-face{font-family:'Poppins';src:url('assets/fonts/Poppins-Medium.ttf') format('truetype');font-weight:500;font-display:swap;}
+@font-face{font-family:'Poppins';src:url('assets/fonts/Poppins-SemiBold.ttf') format('truetype');font-weight:600;font-display:swap;}
+
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);font-weight:400;line-height:1.5;}
+img{max-width:100%;display:block;}
+.shell{max-width:780px;margin:0 auto;background:var(--paper);min-height:100vh;box-shadow:0 0 44px rgba(27,36,49,.07);}
+.banner{width:100%;height:auto;}
+.wrap{padding:0 clamp(20px,5vw,54px);}
+
+.sticky{position:sticky;top:0;z-index:20;background:rgba(245,240,230,.94);backdrop-filter:saturate(140%) blur(6px);border-bottom:1px solid var(--line);}
+.sticky .row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px clamp(20px,5vw,54px);}
+.sticky .aud{font-family:var(--sans);font-weight:600;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);}
+.sticky .cnt{font-family:var(--sans);font-weight:500;font-size:11px;letter-spacing:.05em;color:var(--muted);white-space:nowrap;}
+.track{height:2px;background:var(--line);}
+.track .fill{height:2px;width:0;background:var(--navy);transition:width .25s ease;}
+
+.intro{padding:40px 0 6px;}
+.kick{font-family:var(--sans);font-weight:500;font-size:10.5px;letter-spacing:.34em;text-transform:uppercase;color:var(--deep);}
+.intro h1{font-family:var(--display);font-weight:600;font-size:clamp(30px,7vw,44px);line-height:1.02;margin:14px 0 0;letter-spacing:.005em;}
+.intro .for{font-family:var(--display);font-style:italic;font-size:clamp(17px,4vw,21px);color:var(--sec);margin-top:6px;}
+.rule{width:44px;height:1px;background:var(--champ);border:0;margin:22px 0;}
+.welcome{font-size:15px;line-height:1.64;color:var(--ink);max-width:62ch;}
+.note{margin-top:20px;padding:15px 17px;background:#EDE7D8;border-left:2px solid var(--champ);font-size:13.5px;line-height:1.55;color:var(--sec);}
+
+.sec{padding:32px 0;border-top:1px solid var(--line);}
+.sec-h{display:flex;align-items:baseline;gap:16px;margin-bottom:4px;}
+.sec-h .num{font-family:var(--display);font-weight:500;font-size:34px;line-height:.8;color:var(--champ);}
+.sec-h h2{font-family:var(--display);font-weight:600;font-size:24px;line-height:1.05;margin:0;color:var(--ink);}
+
+.q{border:0;margin:0;padding:24px 0;border-bottom:1px solid var(--line);min-inline-size:auto;}
+.q:last-child{border-bottom:0;}
+.q .qlab{font-size:15px;line-height:1.5;color:var(--ink);margin:0;font-weight:400;}
+.q .tag{font-family:var(--sans);font-weight:600;font-size:10px;letter-spacing:.1em;color:var(--deep);margin-right:9px;}
+.q .help{font-size:13px;line-height:1.5;color:var(--muted);font-style:italic;margin:9px 0 0;}
+
+.radios{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px;max-width:430px;}
+.opt{position:relative;display:block;}
+.opt input{position:absolute;opacity:0;inset:0;width:100%;height:100%;margin:0;cursor:pointer;}
+.opt span{display:block;padding:12px 6px;text-align:center;border:1px solid var(--line);background:transparent;font-family:var(--sans);font-weight:500;font-size:13px;color:var(--sec);transition:.15s;}
+.opt input:checked+span{background:var(--navy);border-color:var(--navy);color:var(--ivory);}
+.opt input:focus-visible+span{outline:2px solid var(--navy);outline-offset:2px;}
+.opt:hover span{border-color:var(--navy);}
+
+.tl{display:block;font-size:12.5px;color:var(--muted);margin:14px 0 6px;}
+input.txt,select.txt{width:100%;font-family:var(--sans);font-size:14px;color:var(--ink);background:#FBF8F1;border:1px solid var(--line);padding:11px 12px;border-radius:0;}
+input.txt::placeholder{color:#A39B8B;opacity:1;font-style:italic;}
+input.txt:focus,select.txt:focus{outline:2px solid var(--navy);outline-offset:1px;border-color:var(--navy);}
+
+.actions{padding:34px 0 6px;}
+.btn{display:inline-block;font-family:var(--sans);font-weight:600;font-size:13.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ivory);background:var(--navy);border:1px solid var(--navy);padding:15px 36px;cursor:pointer;text-decoration:none;transition:.15s;}
+.btn:hover{background:var(--navy-2);border-color:var(--navy-2);}
+.ns{font-size:12px;color:var(--muted);margin-top:12px;}
+
+.foot{padding:28px 0 50px;border-top:1px solid var(--line);margin-top:10px;}
+.foot .seal{width:34px;margin-bottom:12px;opacity:.92;}
+.foot p{font-size:12px;line-height:1.6;color:var(--muted);margin:0 0 6px;max-width:66ch;}
+
+.thanks{padding:64px 0;}
+.thanks[hidden]{display:none;}
+.thanks .seal{width:46px;margin-bottom:24px;}
+.thanks .band{font-family:var(--sans);font-weight:600;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--deep);}
+.thanks h2{font-family:var(--display);font-weight:600;font-size:clamp(28px,7vw,36px);margin:10px 0 14px;color:var(--ink);}
+.thanks p{font-size:15px;line-height:1.62;color:var(--sec);max-width:56ch;}
+.thanks ul{margin:14px 0 0;padding-left:20px;}
+.thanks li{font-size:14.5px;line-height:1.7;color:var(--ink);}
+.thanks .cta{margin-top:26px;padding:17px 19px;background:#EDE7D8;border-left:2px solid var(--champ);font-size:14px;line-height:1.6;color:var(--ink);max-width:56ch;}
+.thanks .sign{font-family:var(--display);font-style:italic;font-size:19px;color:var(--ink);margin-top:18px;}
+
+.hp{position:absolute!important;left:-9999px;top:-9999px;height:0;overflow:hidden;}
+[hidden]{display:none;}
+
+@media (max-width:520px){ .sec-h .num{font-size:28px;} }
+@media (prefers-reduced-motion:reduce){ *{transition:none!important;scroll-behavior:auto!important;} }
+</style>
+</head>
+<body>
+<main class="shell">
+  <img class="banner" src="assets/health-check-cover-banner.png" alt="Days of April · HR Consultancy · HR Health Check">
+
+  <div class="sticky">
+    <div class="row"><span class="aud">HR Health Check</span><span class="cnt" id="cnt">0 answered</span></div>
+    <div class="track"><div class="fill" id="fill"></div></div>
+  </div>
+
+  <div class="wrap">
+    <section class="intro">
+      <span class="kick">Free self-check</span>
+      <h1>How is your company's people side, really?</h1>
+      <div class="for">Twelve questions. About five minutes. An instant answer.</div>
+      <hr class="rule">
+      <p class="welcome">Answer honestly; nobody sees this but you and us. At the end you get an instant reading of where your company stands on the things inspections, disputes and growth all turn on, and we send you a short personal note on what your answers suggest.</p>
+      <p class="note">This is not about finding fault. Most companies grow faster than their paperwork, and every gap this check can surface is fixable. Your answers are confidential and there is no obligation attached to anything here.</p>
+    </section>
+
+    <form id="hc-form">
+      <input type="hidden" name="access_key" value="1d6ef026-a545-4152-b41b-cd74ae1eb1db">
+      <input type="hidden" name="from_name" value="Days of April HR Health Check">
+      <input type="hidden" name="subject" value="New HR Health Check response">
+      <input type="hidden" name="form_id" value="hr-health-check">
+      <input type="hidden" name="score" id="f-score" value="">
+      <input type="hidden" name="result band" id="f-band" value="">
+      <input type="hidden" name="flagged areas" id="f-flags" value="">
+      <p class="hp" aria-hidden="true"><label>Do not fill this in: <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off"></label></p>
+
+      <!-- 01 -->
+      <section class="sec">
+        <div class="sec-h"><span class="num">01</span><h2>The paperwork</h2></div>
+
+        <fieldset class="q" data-topic="Employment contracts">
+          <p class="qlab"><span class="tag">1</span>Does every employee have a signed contract or appointment letter on file?</p>
+          <div class="radios" role="radiogroup" aria-label="1">
+            <label class="opt"><input type="radio" name="1 signed contracts for everyone" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="1 signed contracts for everyone" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="1 signed contracts for everyone" value="No"><span>No</span></label>
+          </div>
+          <p class="help">The first document any inspection or dispute asks for.</p>
+        </fieldset>
+
+        <fieldset class="q" data-topic="EPF and ETF">
+          <p class="qlab"><span class="tag">2</span>Do EPF and ETF go out on time every month, for everyone on the payroll?</p>
+          <div class="radios" role="radiogroup" aria-label="2">
+            <label class="opt"><input type="radio" name="2 epf etf on time for everyone" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="2 epf etf on time for everyone" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="2 epf etf on time for everyone" value="No"><span>No</span></label>
+          </div>
+          <p class="help">This is the single item with the most direct cost to the owner when it slips.</p>
+        </fieldset>
+
+        <fieldset class="q" data-topic="Employee files">
+          <p class="qlab"><span class="tag">3</span>If asked, could you produce any employee's complete file within an hour?</p>
+          <div class="radios" role="radiogroup" aria-label="3">
+            <label class="opt"><input type="radio" name="3 complete file within an hour" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="3 complete file within an hour" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="3 complete file within an hour" value="No"><span>No</span></label>
+          </div>
+          <p class="help">Contract, ID copy, leave record, letters. The hour is the honest test.</p>
+        </fieldset>
+
+        <fieldset class="q" data-topic="Leave records">
+          <p class="qlab"><span class="tag">4</span>Is leave taken recorded in writing for every employee?</p>
+          <div class="radios" role="radiogroup" aria-label="4">
+            <label class="opt"><input type="radio" name="4 leave recorded in writing" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="4 leave recorded in writing" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="4 leave recorded in writing" value="No"><span>No</span></label>
+          </div>
+          <p class="help">Memory-kept leave is where staff disputes most often begin.</p>
+        </fieldset>
+      </section>
+
+      <!-- 02 -->
+      <section class="sec">
+        <div class="sec-h"><span class="num">02</span><h2>The rules of the game</h2></div>
+
+        <fieldset class="q" data-topic="Written policies">
+          <p class="qlab"><span class="tag">5</span>Are there written company policies staff can actually read, covering at least leave, conduct and discipline?</p>
+          <div class="radios" role="radiogroup" aria-label="5">
+            <label class="opt"><input type="radio" name="5 written policies staff can read" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="5 written policies staff can read" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="5 written policies staff can read" value="No"><span>No</span></label>
+          </div>
+          <p class="help">Unwritten rules are applied unevenly, and unevenness is what gets challenged.</p>
+        </fieldset>
+
+        <fieldset class="q" data-topic="Discipline in writing">
+          <p class="qlab"><span class="tag">6</span>When someone has to be warned about conduct or performance, is every step put in writing at the time?</p>
+          <div class="radios" role="radiogroup" aria-label="6">
+            <label class="opt"><input type="radio" name="6 discipline steps in writing" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="6 discipline steps in writing" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="6 discipline steps in writing" value="No"><span>No</span></label>
+          </div>
+          <p class="help">What was written at the time is the only version that counts later.</p>
+        </fieldset>
+
+        <fieldset class="q" data-topic="Exits and final documents">
+          <p class="qlab"><span class="tag">7</span>When someone leaves, do they get their final documents properly: a letter, final dues worked out, a certificate of service?</p>
+          <div class="radios" role="radiogroup" aria-label="7">
+            <label class="opt"><input type="radio" name="7 exits documented properly" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="7 exits documented properly" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="7 exits documented properly" value="No"><span>No</span></label>
+          </div>
+          <p class="help">A clean exit closes the file. An untidy one keeps it open for years.</p>
+        </fieldset>
+
+        <fieldset class="q" data-topic="A reliable legal source">
+          <p class="qlab"><span class="tag">8</span>When a legal question about staff comes up, is there a reliable, current source the company checks, rather than memory?</p>
+          <div class="radios" role="radiogroup" aria-label="8">
+            <label class="opt"><input type="radio" name="8 reliable legal source" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="8 reliable legal source" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="8 reliable legal source" value="No"><span>No</span></label>
+          </div>
+          <p class="help">The rules change. Answers from memory age quietly.</p>
+        </fieldset>
+      </section>
+
+      <!-- 03 -->
+      <section class="sec">
+        <div class="sec-h"><span class="num">03</span><h2>People and performance</h2></div>
+
+        <fieldset class="q" data-topic="New-joiner steps">
+          <p class="qlab"><span class="tag">9</span>Do new joiners get their letter, EPF registration and a proper introduction in the first week?</p>
+          <div class="radios" role="radiogroup" aria-label="9">
+            <label class="opt"><input type="radio" name="9 new joiner first week done right" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="9 new joiner first week done right" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="9 new joiner first week done right" value="No"><span>No</span></label>
+          </div>
+          <p class="help">The first week decides how the next year goes, on paper and in person.</p>
+        </fieldset>
+
+        <fieldset class="q" data-topic="Targets and reviews">
+          <p class="qlab"><span class="tag">10</span>Do staff have written targets, or any regular review of how they are doing?</p>
+          <div class="radios" role="radiogroup" aria-label="10">
+            <label class="opt"><input type="radio" name="10 written targets or reviews" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="10 written targets or reviews" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="10 written targets or reviews" value="No"><span>No</span></label>
+          </div>
+          <p class="help">Without a written yardstick, raises and promotions run on impressions.</p>
+        </fieldset>
+
+        <fieldset class="q" data-topic="Key-person cover">
+          <p class="qlab"><span class="tag">11</span>If a key person resigned tomorrow, could someone else carry their duties within a month?</p>
+          <div class="radios" role="radiogroup" aria-label="11">
+            <label class="opt"><input type="radio" name="11 key person cover" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="11 key person cover" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="11 key person cover" value="No"><span>No</span></label>
+          </div>
+          <p class="help">The quiet risk in most growing companies: everything works until one person leaves.</p>
+        </fieldset>
+
+        <fieldset class="q" data-topic="A consistent pay basis">
+          <p class="qlab"><span class="tag">12</span>Is pay set on a consistent basis, rather than case by case?</p>
+          <div class="radios" role="radiogroup" aria-label="12">
+            <label class="opt"><input type="radio" name="12 consistent pay basis" value="Yes"><span>Yes</span></label>
+            <label class="opt"><input type="radio" name="12 consistent pay basis" value="Partly"><span>Partly</span></label>
+            <label class="opt"><input type="radio" name="12 consistent pay basis" value="No"><span>No</span></label>
+          </div>
+          <p class="help">Case-by-case pay feels flexible. It is also how good people quietly conclude it is unfair.</p>
+        </fieldset>
+      </section>
+
+      <!-- Contact -->
+      <section class="sec">
+        <div class="sec-h"><span class="num">04</span><h2>Where to send your note</h2></div>
+
+        <fieldset class="q">
+          <p class="qlab">Your name</p>
+          <input class="txt" type="text" name="name" required autocomplete="name">
+        </fieldset>
+        <fieldset class="q">
+          <p class="qlab">Your email</p>
+          <input class="txt" type="email" name="email" required autocomplete="email" placeholder="e.g. you@company.lk">
+          <p class="help">We send one short note on what your answers suggest. No mailing list, no follow-up calls unless you ask.</p>
+        </fieldset>
+        <fieldset class="q">
+          <p class="qlab">Company name (optional)</p>
+          <input class="txt" type="text" name="company">
+        </fieldset>
+        <fieldset class="q">
+          <p class="qlab">Roughly how many staff? (optional)</p>
+          <label class="tl">Choose one</label>
+          <select class="txt" name="headcount">
+            <option value="">Prefer not to say</option>
+            <option>Under 15</option>
+            <option>15 to 50</option>
+            <option>51 to 200</option>
+            <option>Over 200</option>
+          </select>
+        </fieldset>
+      </section>
+
+      <div class="actions">
+        <button class="btn" type="submit">See my result</button>
+        <p class="ns">Your answers are sent only when you press this button. Your result appears immediately.</p>
+      </div>
+      <p id="senderr" role="alert" hidden style="color:#A5402D;font-size:14px;line-height:1.55;margin:16px 0 0;">Something went wrong sending your answers. Please try again in a moment, or email us at daysofaprilhr@gmail.com.</p>
+    </form>
+
+    <section class="thanks" id="thanks" hidden>
+      <img class="seal" src="assets/days-of-april-seal.png" alt="">
+      <span class="band" id="r-band"></span>
+      <h2 id="r-head"></h2>
+      <p id="r-body"></p>
+      <div id="r-flagwrap" hidden>
+        <p style="margin-top:20px;"><strong>Worth a closer look:</strong></p>
+        <ul id="r-flags"></ul>
+      </div>
+      <div class="cta">A self-check shows you the surface. The full HR Audit looks at the evidence behind each answer and gives you a scored report with a plan. If you would like to talk it through, email <strong>daysofaprilhr@gmail.com</strong> or message <strong>@daysofaprilhr</strong> on Instagram.</div>
+      <p class="sign">Days of April</p>
+    </section>
+
+    <footer class="foot">
+      <img class="seal" src="assets/days-of-april-seal.png" alt="">
+      <p>Everything you enter here is confidential, used only to prepare your result and the note we send you, and never shared.</p>
+    </footer>
+  </div>
+</main>
+
+<script>
+(function(){
+  var form=document.getElementById('hc-form');
+  var thanks=document.getElementById('thanks');
+  var fill=document.getElementById('fill');
+  var cnt=document.getElementById('cnt');
+  var qs=Array.prototype.slice.call(document.querySelectorAll('.q[data-topic]'));
+  var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var VAL={Yes:2,Partly:1,No:0};
+
+  function picked(fs){return fs.querySelector('input[type=radio]:checked');}
+  function update(){
+    var d=0;for(var i=0;i<qs.length;i++){if(picked(qs[i]))d++;}
+    fill.style.width=(qs.length?d/qs.length*100:0)+'%';
+    cnt.textContent=d+' of '+qs.length+' answered';
+  }
+  form.addEventListener('change',update);
+  form.addEventListener('input',update);
+
+  function result(){
+    var score=0,flags=[];
+    for(var i=0;i<qs.length;i++){
+      var p=picked(qs[i]);
+      var v=p?VAL[p.value]:0;
+      score+=v;
+      if(v<2){flags.push(qs[i].getAttribute('data-topic'));}
+    }
+    var band,head,body;
+    if(score>=20){
+      band='Your result: in good order';
+      head='The foundations look solid.';
+      body='The basics that inspections and disputes turn on look covered. The gaps that hurt companies at this level are usually the ones that are invisible from inside, which is exactly what an outside check once a year is for.';
+    }else if(score>=12){
+      band='Your result: worth tightening';
+      head='A solid base, with gaps.';
+      body='Most growing companies sit here: the business has moved faster than its paperwork. The areas below are usually quick to close once someone looks at them properly, and closing them early costs a fraction of what leaving them costs.';
+    }else{
+      band='Your result: needs attention';
+      head='Several areas need attention.';
+      body='A few of the areas below are the ones inspectors and tribunals ask about first. None of this is unusual and all of it is fixable, but it is worth getting an outside read soon, while every fix is still a quiet one.';
+    }
+    return {score:score,band:band,head:head,body:body,flags:flags};
+  }
+
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var unanswered=0;for(var i=0;i<qs.length;i++){if(!picked(qs[i]))unanswered++;}
+    if(unanswered>0){
+      if(!window.confirm(unanswered+' question'+(unanswered>1?'s are':' is')+' unanswered and will count as No. See your result anyway?')){return;}
+    }
+    var r=result();
+    document.getElementById('f-score').value=r.score+' of 24';
+    document.getElementById('f-band').value=r.band.replace('Your result: ','');
+    document.getElementById('f-flags').value=r.flags.join(', ')||'none';
+    var btn=form.querySelector('[type=submit]'); if(btn){btn.disabled=true;btn.setAttribute('aria-busy','true');}
+    fetch('https://api.web3forms.com/submit',{method:'POST',body:new FormData(form)})
+      .then(function(res){if(res.ok){finish(r);}else{failed();}}).catch(failed);
+  });
+
+  function finish(r){
+    document.getElementById('r-band').textContent=r.band;
+    document.getElementById('r-head').textContent=r.head;
+    document.getElementById('r-body').textContent=r.body;
+    var wrap=document.getElementById('r-flagwrap');
+    var ul=document.getElementById('r-flags');
+    ul.innerHTML='';
+    if(r.flags.length){
+      for(var i=0;i<r.flags.length;i++){var li=document.createElement('li');li.textContent=r.flags[i];ul.appendChild(li);}
+      wrap.hidden=false;
+    }else{wrap.hidden=true;}
+    form.hidden=true;thanks.hidden=false;
+    thanks.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
+  }
+  function failed(){
+    var b=form.querySelector('[type=submit]');if(b){b.disabled=false;b.removeAttribute('aria-busy');}
+    var er=document.getElementById('senderr');if(er){er.hidden=false;er.scrollIntoView({behavior:reduce?'auto':'smooth',block:'center'});}
+  }
+  update();
+})();
+</script>
+</body>
+</html>
